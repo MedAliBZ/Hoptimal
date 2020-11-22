@@ -1,0 +1,20 @@
+<RCC>
+    <qresource prefix="/pics">
+        <file>pics/exit.png</file>
+        <file>pics/Home.png</file>
+        <file>pics/new.png</file>
+        <file>pics/Patient.png</file>
+        <file>pics/print.png</file>
+        <file>pics/RendezVous.png</file>
+        <file>pics/trash.png</file>
+        <file>pics/trashOpen.png</file>
+        <file>pics/trashmp3.wav</file>
+        <file>pics/logo_gif.gif</file>
+        <file>pics/maladePic.png</file>
+        <file>pics/rdvPic.png</file>
+        <file>pics/email_closed.png</file>
+        <file>pics/email_open.png</file>
+        <file>pics/pdf_image.jpg</file>
+        <file>pics/pdf_icon1.png</file>
+    </qresource>
+</RCC>
