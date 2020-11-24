@@ -34,6 +34,7 @@ public:
     void afficher(QString,QString,QString,QString,QDateTime);
 
     void Delete();
+
 };
 
 #endif // RENDEZVOUS_H
