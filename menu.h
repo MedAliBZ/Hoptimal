@@ -22,9 +22,8 @@ class Menu : public QMainWindow
 private:
     Patient P;
     RendezVous R;
-    QList<Patient*> mesPatients;
-    QList<RendezVous*> mesRendezVous;
     ConnectDB db;
+    bool advanced_bool;
 
 public:
     Menu(QWidget *parent = nullptr);
@@ -57,6 +56,8 @@ public:
     void initialiserRDV();
 
     void afficherRDV(QString id,QString nomPatient,QString prenomPatient,QString email,QDateTime dateTime);
+
+    void advanced();
 
 private slots:
     void on_menu_listeRendezVous_clicked();
@@ -124,6 +125,17 @@ private slots:
     void on_numChambrePatient_textChanged(const QString &arg1);
 
     void on_cinPatient_textChanged(const QString &arg1);
+
+    void on_advanced_cin_textChanged(const QString &arg1);
+
+    void on_advanced_nom_textChanged(const QString &arg1);
+
+    void on_advanced_prenom_textChanged(const QString &arg1);
+
+    void on_advanced_chambre_textChanged(const QString &arg1);
+
+
+    void on_advanced_button_clicked();
 
 private:
     Ui::Menu *ui;

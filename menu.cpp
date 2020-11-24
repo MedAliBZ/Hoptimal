@@ -26,14 +26,13 @@ Menu::Menu(QWidget *parent)
 
     ui->stackedWidget->setCurrentIndex(0);
 
-    ui->rechercheRendezVous->setPlaceholderText("Rechercher par l'ID de la rendez vous");
-    ui->recherchePatient->setPlaceholderText("Rechercher par cin");
-
     initialiserImages();
     initialiserPatient();
     initialiserRDV();
     setWindowTitle("Hoptimal");
 
+    advanced_bool=false;
+    ui->advanced_2->setVisible(false);
 }
 
 Menu::~Menu()
@@ -44,6 +43,25 @@ Menu::~Menu()
 
 //usefull functions
 
+void Menu::advanced(){
+        QSqlQuery *qery=new QSqlQuery(db.getDb());
+        qery->exec("UPDATE PATIENT SET Nom=LOWER(Nom),Prenom=LOWER(Prenom);");
+        delete qery;
+        QString arg1=ui->recherchePatient->text();
+        QString column=triPatient();
+
+            QSqlQueryModel *modal=new QSqlQueryModel();
+            QSqlQuery *qry=new QSqlQuery(db.getDb());
+            qry->prepare("SELECT "+column+" FROM PATIENT "
+                         "WHERE CIN LIKE '%"+ui->advanced_cin->text()+"%'"
+                         " AND NOM LIKE '%"+ui->advanced_nom->text()+"%' AND PRENOM LIKE '%"+ui->advanced_prenom->text()+"%'"
+                         " AND NUMCHAMBRE LIKE '%"+ui->advanced_chambre->text()+"%' ORDER BY "+column);
+            qry->exec();
+            modal->setQuery(*qry);
+            ui->listPatient->setModel(modal);
+            qDebug("List patient refreshed.");
+
+}
 
 void Menu::initialiserErrorsPatient(){
     ui->Nom_error->setText("");
@@ -142,6 +160,13 @@ void Menu::refreshDBPatient()
 
 void Menu::initialiserImages()
 {
+    ui->rechercheRendezVous->setPlaceholderText("Rechercher par l'ID de la rendez vous");
+    ui->recherchePatient->setPlaceholderText("Rechercher par cin");
+    ui->advanced_cin->setPlaceholderText("Rechercher par cin");
+    ui->advanced_nom->setPlaceholderText("Rechercher par nom");
+    ui->advanced_prenom->setPlaceholderText("Rechercher par prenom");
+    ui->advanced_chambre->setPlaceholderText("Rechercher par numero de la chambre");
+
     QIcon icon,icon1,iconMail,iconPdf;
     QPixmap qpm,qpm1,qpm2,qpm3;
     QPixmap qpmDelete,qpmMail;
@@ -701,4 +726,40 @@ void Menu::on_cinPatient_textChanged(const QString &arg1)
     }
     else
         ui->Cin_error->setText("");
+}
+
+void Menu::on_advanced_cin_textChanged(const QString &arg1)
+{
+    advanced();
+}
+
+void Menu::on_advanced_nom_textChanged(const QString &arg1)
+{
+    advanced();
+}
+
+void Menu::on_advanced_prenom_textChanged(const QString &arg1)
+{
+    advanced();
+}
+
+void Menu::on_advanced_chambre_textChanged(const QString &arg1)
+{
+    advanced();
+}
+
+
+
+void Menu::on_advanced_button_clicked()
+{
+    advanced_bool=!advanced_bool;
+    if(advanced_bool){
+        ui->advanced_2->setVisible(true);
+        ui->recherchePatient->setEnabled(false);
+        ui->recherchePatient->setText("");
+    }
+    else{
+        ui->advanced_2->setVisible(false);
+        ui->recherchePatient->setEnabled(true);
+    }
 }
