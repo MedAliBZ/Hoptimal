@@ -23,7 +23,8 @@ private:
     Patient P;
     RendezVous R;
     ConnectDB db;
-    bool advanced_bool;
+    bool advancedPatient_bool;
+    bool advancedRDV_bool;
 
 public:
     Menu(QWidget *parent = nullptr);
@@ -57,7 +58,9 @@ public:
 
     void afficherRDV(QString id,QString nomPatient,QString prenomPatient,QString email,QDateTime dateTime);
 
-    void advanced();
+    void advancedPatient();
+
+    void advancedRDV();
 
 private slots:
     void on_menu_listeRendezVous_clicked();
@@ -136,6 +139,16 @@ private slots:
 
 
     void on_advanced_button_clicked();
+
+    void on_advanced_cinrdv_textChanged(const QString &arg1);
+
+    void on_advanced_nomrdv_textChanged(const QString &arg1);
+
+    void on_advanced_prenomrdv_textChanged(const QString &arg1);
+
+    void on_advanced_emailrdv_textChanged(const QString &arg1);
+
+    void on_advancedButton_rdv_clicked();
 
 private:
     Ui::Menu *ui;

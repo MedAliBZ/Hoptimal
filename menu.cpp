@@ -30,8 +30,9 @@ Menu::Menu(QWidget *parent)
     initialiserPatient();
     initialiserRDV();
     setWindowTitle("Hoptimal");
-
-    advanced_bool=false;
+    advancedRDV_bool=false;
+    ui->advanced_rdv->setVisible(false);
+    advancedPatient_bool=false;
     ui->advanced_2->setVisible(false);
 }
 
@@ -43,7 +44,30 @@ Menu::~Menu()
 
 //usefull functions
 
-void Menu::advanced(){
+void Menu::advancedRDV(){
+    QSqlQuery *qery=new QSqlQuery(db.getDb());
+    qery->exec("UPDATE rdv SET nomPatient=LOWER(nomPatient),prenomPatient=LOWER(prenomPatient);");
+    delete qery;
+    QString arg1=ui->rechercheRendezVous->text();
+    QString column=triRDV();
+
+        QSqlQueryModel *modal=new QSqlQueryModel();
+        QSqlQuery *qry=new QSqlQuery(db.getDb());
+        qry->prepare("SELECT "+column+" FROM rdv "
+                     "WHERE id LIKE '%"+ui->advanced_cinrdv->text()+"%'"
+                     " AND nomPatient LIKE '%"+ui->advanced_nomrdv->text()+"%'"
+                     " AND prenomPatient LIKE '%"+ui->advanced_prenomrdv->text()+"%'"
+                     " AND email LIKE '%"+ui->advanced_emailrdv->text()+"%'"
+                     " ORDER BY "+column);//changehere
+        qry->exec();
+        modal->setQuery(*qry);
+        ui->listRendezVous->setModel(modal);
+        qDebug("List RDV refreshed.");
+
+}
+
+
+void Menu::advancedPatient(){
         QSqlQuery *qery=new QSqlQuery(db.getDb());
         qery->exec("UPDATE PATIENT SET Nom=LOWER(Nom),Prenom=LOWER(Prenom);");
         delete qery;
@@ -166,11 +190,21 @@ void Menu::initialiserImages()
     ui->advanced_nom->setPlaceholderText("Rechercher par nom");
     ui->advanced_prenom->setPlaceholderText("Rechercher par prenom");
     ui->advanced_chambre->setPlaceholderText("Rechercher par numero de la chambre");
+    ui->advanced_cinrdv->setPlaceholderText("Rechercher par l'ID de la rendez vous");
+    ui->advanced_nomrdv->setPlaceholderText("Rechercher par le nom du patient");
+    ui->advanced_prenomrdv->setPlaceholderText("Rechercher par le prenom du patient");
+    ui->advanced_emailrdv->setPlaceholderText("Rechercher par l'email du patient");
 
-    QIcon icon,icon1,iconMail,iconPdf;
-    QPixmap qpm,qpm1,qpm2,qpm3;
+    QIcon icon,icon1,iconMail,iconPdf,advancedIcon;
+    QPixmap qpm,qpm1,qpm2,qpm3,advanced;
     QPixmap qpmDelete,qpmMail;
 
+    if(advanced.load(":/pics/pics/advanced.png"))
+    {
+        advancedIcon.addPixmap(advanced);
+        ui->advanced_button->setIcon(advancedIcon);
+        ui->advancedButton_rdv->setIcon(advancedIcon);
+    }
     if(qpm3.load(":/pics/pics/pdf_icon1.png"))
     {
         iconPdf.addPixmap(qpm3);
@@ -413,14 +447,23 @@ void Menu::on_listRendezVous_doubleClicked(const QModelIndex &index)
 
 void Menu::on_triPatient_currentTextChanged()
 {
+    if(!advancedPatient_bool){
     ui->recherchePatient->setText("");
     refreshDBPatient();
+    }
+    else
+        advancedPatient();
 }
 
 void Menu::on_triRDV_currentTextChanged()
 {
+    if(!advancedRDV_bool){
     ui->rechercheRendezVous->setText("");
     refreshDBRdv();
+    }
+    else
+       advancedRDV();
+
 }
 
 //patient slots
@@ -730,30 +773,30 @@ void Menu::on_cinPatient_textChanged(const QString &arg1)
 
 void Menu::on_advanced_cin_textChanged(const QString &arg1)
 {
-    advanced();
+    advancedPatient();
 }
 
 void Menu::on_advanced_nom_textChanged(const QString &arg1)
 {
-    advanced();
+    advancedPatient();
 }
 
 void Menu::on_advanced_prenom_textChanged(const QString &arg1)
 {
-    advanced();
+    advancedPatient();
 }
 
 void Menu::on_advanced_chambre_textChanged(const QString &arg1)
 {
-    advanced();
+    advancedPatient();
 }
 
 
 
 void Menu::on_advanced_button_clicked()
 {
-    advanced_bool=!advanced_bool;
-    if(advanced_bool){
+    advancedPatient_bool=!advancedPatient_bool;
+    if(advancedPatient_bool){
         ui->advanced_2->setVisible(true);
         ui->recherchePatient->setEnabled(false);
         ui->recherchePatient->setText("");
@@ -761,5 +804,39 @@ void Menu::on_advanced_button_clicked()
     else{
         ui->advanced_2->setVisible(false);
         ui->recherchePatient->setEnabled(true);
+    }
+}
+
+void Menu::on_advanced_cinrdv_textChanged(const QString &arg1)
+{
+    advancedRDV();
+}
+
+void Menu::on_advanced_nomrdv_textChanged(const QString &arg1)
+{
+    advancedRDV();
+}
+
+void Menu::on_advanced_prenomrdv_textChanged(const QString &arg1)
+{
+    advancedRDV();
+}
+
+void Menu::on_advanced_emailrdv_textChanged(const QString &arg1)
+{
+    advancedRDV();
+}
+
+void Menu::on_advancedButton_rdv_clicked()
+{
+    advancedRDV_bool=!advancedRDV_bool;
+    if(advancedRDV_bool){
+        ui->advanced_rdv->setVisible(true);
+        ui->rechercheRendezVous->setEnabled(false);
+        ui->rechercheRendezVous->setText("");
+    }
+    else{
+        ui->advanced_rdv->setVisible(false);
+        ui->rechercheRendezVous->setEnabled(true);
     }
 }

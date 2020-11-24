@@ -16,5 +16,6 @@
         <file>pics/email_open.png</file>
         <file>pics/pdf_image.jpg</file>
         <file>pics/pdf_icon1.png</file>
+        <file>pics/advanced.png</file>
     </qresource>
 </RCC>
