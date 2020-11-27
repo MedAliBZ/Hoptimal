@@ -1,6 +1,6 @@
 #include "connectdb.h"
 
-ConnectDB::ConnectDB()
+void ConnectDB::Connect()
 {
     db = QSqlDatabase::addDatabase("QODBC");
     db.setDatabaseName("HoptimalDB");

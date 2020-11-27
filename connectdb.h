@@ -8,7 +8,7 @@
 class ConnectDB
 {
 public:
-    ConnectDB();
+    void Connect();
     void closeDB(){db.close();};
     QSqlDatabase getDb(){return this->db;};
 private:

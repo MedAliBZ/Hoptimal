@@ -9,6 +9,15 @@
 #include <QMessageBox>
 #include <QSound>
 #include <windows.h>
+#include "ui_menu.h"
+#include <QVector>
+#include <QPropertyAnimation>
+#include <QMovie>
+#include <QLayout>
+#include <QSqlQueryModel>
+#include <fstream>
+#include <QFile>
+#include <QTextStream>
 
 
 QT_BEGIN_NAMESPACE

@@ -5,6 +5,14 @@
 #include <QDateTime>
 #include <QString>
 #include <QDialog>
+#include <QSqlQueryModel>
+#include "ui_rendezvous.h"
+#include <QMessageBox>
+#include <QSound>
+#include <QSqlQuery>
+#include <QFile>
+#include <QTextStream>
+#include <windows.h>
 
 
 class RendezVous {
@@ -34,6 +42,14 @@ public:
     void afficher(QString,QString,QString,QString,QDateTime);
 
     void Delete();
+
+    QSqlQueryModel* search(QSqlQuery qry,QString column,QString id,QString nomPatient,QString prenomPatient,QString email);
+
+    QSqlQueryModel* search(QSqlQuery qry,QString column);
+
+    QSqlQueryModel* search(QSqlQuery qry,QString column,QString arg1);
+
+    void updateMinuscule();
 
 };
 

@@ -1,13 +1,4 @@
 #include "patient.h"
-#include <QListWidget>
-#include <QIntValidator>
-#include <QMessageBox>
-#include <QString>
-#include <QSound>
-#include <QPrinter>
-#include <QPainter>
-#include <QSqlQueryModel>
-
 
 bool Patient::modifyValues(QString nom, QString prenom, QDate dateNaissance,QString newCin,QString numChambre,QString oldCin){
    QSqlQuery qry;
@@ -24,8 +15,8 @@ bool Patient::modifyValues(QString nom, QString prenom, QDate dateNaissance,QStr
     qry.addBindValue(oldCin);
 
     if(!qry.exec()){
-        QMessageBox::critical(nullptr, QObject::tr("CIN already exists."),
-                    QObject::tr("Please change the CIN."), QMessageBox::Ok);
+        QMessageBox::critical(nullptr, QObject::tr("Le CIN existe déjà."),
+                    QObject::tr("Veuillez changer le CIN."), QMessageBox::Ok);
         return false;
     }
     else{
@@ -51,8 +42,8 @@ bool Patient::addValuesToDB(QString nom, QString prenom, QDate dateNaissance,QSt
 
 
     if(!qry.exec()){
-        QMessageBox::critical(nullptr, QObject::tr("CIN already exists."),
-                    QObject::tr("Please change the CIN."), QMessageBox::Ok);
+        QMessageBox::critical(nullptr, QObject::tr("Le CIN existe déjà."),
+                    QObject::tr("Veuillez changer le CIN."), QMessageBox::Ok);
         return false;
     }
     else{
@@ -84,8 +75,8 @@ void Patient::printPDF(){
     if (! painter.begin(&printer)) { // failed to open file
         qWarning("failed to open file, is it writable?");
         QMessageBox msgBox;
-        msgBox.setIcon(QMessageBox::Information);
-        msgBox.setText("failed to create the pdf.");
+        msgBox.setIcon(QMessageBox::Critical);
+        msgBox.setText("On n'a pas réussi à créer le pdf.");
         msgBox.exec();
     }
     else{
@@ -109,7 +100,7 @@ void Patient::printPDF(){
         painter.end();
         QMessageBox msgBox;
         msgBox.setIcon(QMessageBox::Information);
-        msgBox.setText("A pdf has been created.");
+        msgBox.setText("Le pdf a été créé.");
         msgBox.exec();
     }
 }

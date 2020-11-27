@@ -7,6 +7,13 @@
 #include <QVector>
 #include "connectdb.h"
 #include <QSqlQueryModel>
+#include <QListWidget>
+#include <QIntValidator>
+#include <QMessageBox>
+#include <QSound>
+#include <QPrinter>
+#include <QPainter>
+
 
 
 class Patient
@@ -14,7 +21,6 @@ class Patient
 private:
     QString nom,prenom,CIN,numChambre;
     QDate dateNaissance;
-    QVector<QString> maladies;
 
 public:
 

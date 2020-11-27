@@ -1,18 +1,4 @@
 #include "menu.h"
-#include "ui_menu.h"
-#include "patient.h"
-#include "rendezvous.h"
-#include <QVector>
-#include <QPropertyAnimation>
-#include <QMovie>
-#include <QLayout>
-#include <QSqlQueryModel>
-#include <fstream>
-#include <QFile>
-#include <QTextStream>
-
-
-
 
 
 Menu::Menu(QWidget *parent)
@@ -44,35 +30,21 @@ Menu::~Menu()
 //usefull functions
 
 void Menu::advancedRDV(){
-    QSqlQuery *qery=new QSqlQuery(db.getDb());
-    qery->exec("UPDATE rdv SET nomPatient=LOWER(nomPatient),prenomPatient=LOWER(prenomPatient);");
-    delete qery;
-    QString arg1=ui->rechercheRendezVous->text();
+    R.updateMinuscule();
     QString column=triRDV();
-
-        QSqlQueryModel *modal=new QSqlQueryModel();
-        QSqlQuery *qry=new QSqlQuery(db.getDb());
-        qry->prepare("SELECT "+column+" FROM rdv "
-                     "WHERE id LIKE '%"+ui->advanced_cinrdv->text()+"%'"
-                     " AND nomPatient LIKE '%"+ui->advanced_nomrdv->text()+"%'"
-                     " AND prenomPatient LIKE '%"+ui->advanced_prenomrdv->text()+"%'"
-                     " AND email LIKE '%"+ui->advanced_emailrdv->text()+"%'"
-                     " ORDER BY "+column);//changehere
-        qry->exec();
-        modal->setQuery(*qry);
-        ui->listRendezVous->setModel(modal);
-        qDebug("List RDV refreshed.");
+    QSqlQuery qry;
+    ui->listRendezVous->setModel(R.search(qry,column,ui->advanced_cinrdv->text(),ui->advanced_nomrdv->text(),ui->advanced_prenomrdv->text(),ui->advanced_emailrdv->text()));
+    qDebug("List RDV refreshed.");
 
 }
 
 
 void Menu::advancedPatient(){
-        P.updateMinuscule();
-        QString arg1=ui->recherchePatient->text();
-        QString column=triPatient();
-        QSqlQuery qry;
-        ui->listPatient->setModel(P.search(qry,column,ui->advanced_cin->text(),ui->advanced_nom->text(),ui->advanced_prenom->text(),ui->advanced_chambre->text()));
-        qDebug("List patient refreshed.");
+    P.updateMinuscule();
+    QString column=triPatient();
+    QSqlQuery qry;
+    ui->listPatient->setModel(P.search(qry,column,ui->advanced_cin->text(),ui->advanced_nom->text(),ui->advanced_prenom->text(),ui->advanced_chambre->text()));
+    qDebug("List patient refreshed.");
 
 }
 
@@ -105,28 +77,16 @@ QString Menu::triRDV()
 
 void Menu::refreshDBRdv()
 {
-    QSqlQuery *qry=new QSqlQuery(db.getDb());
-    qry->exec("UPDATE rdv SET nomPatient=LOWER(nomPatient),prenomPatient=LOWER(prenomPatient);");
-    delete qry;
+    R.updateMinuscule();
     QString arg1=ui->rechercheRendezVous->text();
+    QSqlQuery qry;
     QString column=triRDV();
     if(arg1!=""){
-        QSqlQueryModel *modal=new QSqlQueryModel();
-        QSqlQuery *qry=new QSqlQuery(db.getDb());
-        qry->prepare("SELECT "+column+" FROM rdv "
-                     "WHERE "+column+" LIKE '%"+arg1+"%' ORDER BY "+column);
-        qry->exec();
-        modal->setQuery(*qry);
-        ui->listRendezVous->setModel(modal);
+        ui->listRendezVous->setModel(R.search(qry,column,arg1));
         qDebug("List RDV refreshed.");
     }
     else{
-        QSqlQueryModel *modal=new QSqlQueryModel();
-        QSqlQuery *qry=new QSqlQuery(db.getDb());
-        qry->prepare("SELECT "+column+" FROM rdv ORDER BY "+column);
-        qry->exec();
-        modal->setQuery(*qry);
-        ui->listRendezVous->setModel(modal);
+        ui->listRendezVous->setModel(R.search(qry,column));
         qDebug("list RDV refreshed.");
     }
 }
@@ -458,7 +418,7 @@ void Menu::on_ajouterPatient_clicked()
     if(CIN.size()==0 || nom.size()==0 || prenom.size()==0 || numChambre.size()==0){
         QMessageBox msgBox;
         msgBox.setIcon(QMessageBox::Critical);
-        msgBox.setText("Can't leave empty fields.");
+        msgBox.setText("Impossible de laisser des champs vides.");
         msgBox.setDefaultButton(QMessageBox::Ok);
         msgBox.exec();
     }
@@ -467,40 +427,49 @@ void Menu::on_ajouterPatient_clicked()
         //number check and testing
         QIntValidator v(0,1316134911,this);
         int pos=0;
-        if(!v.validate(CIN,pos)){
-            //if u have letters in the cin
+        if(CIN=="00000000"){
             QMessageBox msgBox;
             msgBox.setIcon(QMessageBox::Critical);
-            msgBox.setText("You can't have letters in the CIN.");
+            msgBox.setText("Le CIN ne peut pas être 00000000.");
             msgBox.setDefaultButton(QMessageBox::Ok);
             msgBox.exec();
         }
         else{
-            //cin length verification
-            if(CIN.size()==8){
-                //affecting variables to class if everything went fine
+            if(!v.validate(CIN,pos)){
+                //if u have letters in the cin
+                QMessageBox msgBox;
+                msgBox.setIcon(QMessageBox::Critical);
+                msgBox.setText("Vous ne pouvez pas avoir des lettres dans le CIN.");
+                msgBox.setDefaultButton(QMessageBox::Ok);
+                msgBox.exec();
+            }
+            else{
+                //cin length verification
+                if(CIN.size()==8){
+                    //affecting variables to class if everything went fine
 
-                if(ui->ajouterPatient->text()=="Ajouter"){
-                    if(P.addValuesToDB(nom,prenom,dateNaissance,CIN,numChambre)){
-                        ui->stackedWidget->setCurrentIndex(1);
-                        refreshDBPatient();
-                        initialiserPatient();
+                    if(ui->ajouterPatient->text()=="Ajouter"){
+                        if(P.addValuesToDB(nom,prenom,dateNaissance,CIN,numChambre)){
+                            ui->stackedWidget->setCurrentIndex(1);
+                            refreshDBPatient();
+                            initialiserPatient();
+                        }
+                    }
+                    else{
+                        if(P.modifyValues(nom,prenom,dateNaissance,CIN,numChambre,P.getCIN())){
+                            ui->stackedWidget->setCurrentIndex(1);
+                            refreshDBPatient();
+                            initialiserPatient();
+                        }
                     }
                 }
                 else{
-                    if(P.modifyValues(nom,prenom,dateNaissance,CIN,numChambre,P.getCIN())){
-                        ui->stackedWidget->setCurrentIndex(1);
-                        refreshDBPatient();
-                        initialiserPatient();
-                    }
+                    QMessageBox msgBox;
+                    msgBox.setIcon(QMessageBox::Critical);
+                    msgBox.setText("La longueur du CIN doit être de 8.");
+                    msgBox.setDefaultButton(QMessageBox::Ok);
+                    msgBox.exec();
                 }
-            }
-            else{
-                QMessageBox msgBox;
-                msgBox.setIcon(QMessageBox::Critical);
-                msgBox.setText("CIN length must be 8.");
-                msgBox.setDefaultButton(QMessageBox::Ok);
-                msgBox.exec();
             }
         }
     }
@@ -563,7 +532,7 @@ void Menu::on_ajouterRendezVous_clicked()
     if(ui->idRendezVous->text().size()==0 || ui->emailPatientRendezVous->text().size()==0 || ui->nomPatientRendezVous->text().size()==0 || ui->prenomPatientRendezVous->text().size()==0){
         QMessageBox msgBox;
         msgBox.setIcon(QMessageBox::Critical);
-        msgBox.setText("Can't leave empty fields.");
+        msgBox.setText("Impossible de laisser des champs vides.");
         msgBox.setDefaultButton(QMessageBox::Ok);
         msgBox.exec();
     }
@@ -572,7 +541,7 @@ void Menu::on_ajouterRendezVous_clicked()
         if(!R.isEmailAddress(ui->emailPatientRendezVous->text())){
             QMessageBox msgBox;
             msgBox.setIcon(QMessageBox::Critical);
-            msgBox.setText("Invalid Email.");
+            msgBox.setText("Email invalide.");
             msgBox.setDefaultButton(QMessageBox::Ok);
             msgBox.exec();
         }
@@ -662,7 +631,7 @@ void Menu::on_email_sending_clicked()
     R.send_email(R.getEmail(),R.getDateTime().date().toString("dd/MM/yyyy"),R.getDateTime().time().toString("hh:mm"),R.getPrenom());
     QMessageBox msgBox;
     msgBox.setIcon(QMessageBox::Information);
-    msgBox.setText("An email has been sent.");
+    msgBox.setText("Un email a été envoyé.");
     msgBox.setDefaultButton(QMessageBox::Ok);
     if(msgBox.exec()==QMessageBox::Ok)
         ui->stackedWidget->setCurrentIndex(2);

@@ -1,11 +1,4 @@
 #include "rendezvous.h"
-#include "ui_rendezvous.h"
-#include <QMessageBox>
-#include <QSound>
-#include <QSqlQuery>
-#include <QFile>
-#include <QTextStream>
-#include <windows.h>
 
 
 //usefull functions
@@ -28,8 +21,8 @@ bool RendezVous::modifyValues(QString nomPatient, QString prenomPatient,QString 
 
 
     if(!qry.exec()){
-        QMessageBox::critical(nullptr, QObject::tr("CIN already exists."),
-                    QObject::tr("Please change the CIN."), QMessageBox::Ok);
+        QMessageBox::critical(nullptr, QObject::tr("Id already exists."),
+                    QObject::tr("Please change the Id."), QMessageBox::Ok);
         return false;
     }
     else{
@@ -55,8 +48,8 @@ bool RendezVous::addValuesToDB(QString nomPatient, QString prenomPatient,QString
 
 
     if(!qry.exec()){
-        QMessageBox::critical(nullptr, QObject::tr("id exists already"),
-                    QObject::tr("please change the id."), QMessageBox::Cancel);
+        QMessageBox::critical(nullptr, QObject::tr("L'identifiant existe déjà"),
+                    QObject::tr("Veuillez changer l'identifiant."), QMessageBox::Cancel);
         return false;
     }
     else{
@@ -114,4 +107,39 @@ void RendezVous::Delete(){
     QSqlQuery qry;
     qry.prepare("DELETE FROM rdv WHERE id='"+this->id+"';");
     qry.exec();
+}
+
+QSqlQueryModel* RendezVous::search(QSqlQuery qry,QString column,QString id,QString nomPatient,QString prenomPatient,QString email){
+    QSqlQueryModel *modal=new QSqlQueryModel();
+    qry.prepare("SELECT "+column+" FROM rdv "
+                 "WHERE id LIKE '%"+id+"%'"
+                 " AND nomPatient LIKE '%"+nomPatient+"%'"
+                 " AND prenomPatient LIKE '%"+prenomPatient+"%'"
+                 " AND email LIKE '%"+email+"%'"
+                 " ORDER BY "+column);
+    qry.exec();
+    modal->setQuery(qry);
+    return modal;
+}
+
+QSqlQueryModel* RendezVous::search(QSqlQuery qry,QString column){
+    QSqlQueryModel *modal=new QSqlQueryModel();
+    qry.prepare("SELECT "+column+" FROM rdv ORDER BY "+column);
+    qry.exec();
+    modal->setQuery(qry);
+    return modal;
+}
+
+QSqlQueryModel* RendezVous::search(QSqlQuery qry,QString column,QString arg1){
+    QSqlQueryModel *modal=new QSqlQueryModel();
+    qry.prepare("SELECT "+column+" FROM rdv "
+                 "WHERE "+column+" LIKE '%"+arg1+"%' ORDER BY "+column);
+    qry.exec();
+    modal->setQuery(qry);
+    return modal;
+}
+
+void RendezVous::updateMinuscule(){
+    QSqlQuery qery;
+    qery.exec("UPDATE rdv SET nomPatient=LOWER(nomPatient),prenomPatient=LOWER(prenomPatient);");
 }
