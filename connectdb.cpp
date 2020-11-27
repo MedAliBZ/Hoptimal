@@ -16,7 +16,7 @@ void ConnectDB::Connect()
                           "dateNaissance DATE NOT NULL,"
                           "numChambre VARCHAR(20) NOT NULL);";
         QString rdv = "CREATE TABLE rdv("
-                      "id VARCHAR(20) NOT NULL PRIMARY KEY,"
+                      "id VARCHAR(20) NOT NULL PRIMARY KEY ,"
                       "nomPatient VARCHAR(20) NOT NULL,"
                       "prenomPatient VARCHAR(20) NOT NULL,"
                       "email VARCHAR(100) NOT NULL,"
