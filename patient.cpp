@@ -6,7 +6,7 @@
 #include <QSound>
 #include <QPrinter>
 #include <QPainter>
-
+#include <QSqlQueryModel>
 
 
 bool Patient::modifyValues(QString nom, QString prenom, QDate dateNaissance,QString newCin,QString numChambre,QString oldCin){
@@ -123,7 +123,36 @@ void Patient::afficher(QString CIN,QString nom,QString prenom,QDate dateNaissanc
 }
 
 
-QSqlQuery Patient::qryPrep(QString text){
-    QSqlQuery qry(text);
-    return qry;
+QSqlQueryModel* Patient::search(QSqlQuery qry,QString column,QString cin,QString nom,QString prenom,QString numChambre){
+    QSqlQueryModel *modal=new QSqlQueryModel();
+    qry.prepare("SELECT "+column+" FROM PATIENT "
+                "WHERE CIN LIKE '%"+cin+"%'"
+                " AND NOM LIKE '%"+nom+"%' AND PRENOM LIKE '%"+prenom+"%'"
+                " AND NUMCHAMBRE LIKE '%"+numChambre+"%' ORDER BY "+column);
+    qry.exec();
+    modal->setQuery(qry);
+    return modal;
+}
+
+QSqlQueryModel* Patient::search(QSqlQuery qry,QString column){
+    QSqlQueryModel *modal=new QSqlQueryModel();
+    qry.prepare("SELECT "+column+" FROM patient ORDER BY "+column);
+    qry.exec();
+    modal->setQuery(qry);
+    return modal;
+}
+
+
+QSqlQueryModel* Patient::search(QSqlQuery qry, QString column, QString text){
+    QSqlQueryModel *modal=new QSqlQueryModel();
+    qry.prepare("SELECT "+column+" FROM patient "
+                 "WHERE "+column+" LIKE '%"+text+"%' ORDER BY "+column);
+    qry.exec();
+    modal->setQuery(qry);
+    return modal;
+}
+
+void Patient::updateMinuscule(){
+    QSqlQuery qery;
+    qery.exec("UPDATE PATIENT SET Nom=LOWER(Nom),Prenom=LOWER(Prenom);");
 }

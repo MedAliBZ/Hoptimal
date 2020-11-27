@@ -67,22 +67,12 @@ void Menu::advancedRDV(){
 
 
 void Menu::advancedPatient(){
-        QSqlQuery *qery=new QSqlQuery(db.getDb());
-        qery->exec("UPDATE PATIENT SET Nom=LOWER(Nom),Prenom=LOWER(Prenom);");
-        delete qery;
+        P.updateMinuscule();
         QString arg1=ui->recherchePatient->text();
         QString column=triPatient();
-
-            QSqlQueryModel *modal=new QSqlQueryModel();
-            QSqlQuery *qry=new QSqlQuery(db.getDb());
-            qry->prepare("SELECT "+column+" FROM PATIENT "
-                         "WHERE CIN LIKE '%"+ui->advanced_cin->text()+"%'"
-                         " AND NOM LIKE '%"+ui->advanced_nom->text()+"%' AND PRENOM LIKE '%"+ui->advanced_prenom->text()+"%'"
-                         " AND NUMCHAMBRE LIKE '%"+ui->advanced_chambre->text()+"%' ORDER BY "+column);
-            qry->exec();
-            modal->setQuery(*qry);
-            ui->listPatient->setModel(modal);
-            qDebug("List patient refreshed.");
+        QSqlQuery qry;
+        ui->listPatient->setModel(P.search(qry,column,ui->advanced_cin->text(),ui->advanced_nom->text(),ui->advanced_prenom->text(),ui->advanced_chambre->text()));
+        qDebug("List patient refreshed.");
 
 }
 
@@ -155,28 +145,16 @@ if (ui->triPatient->currentText()=="Numero de la chambre"){
 
 void Menu::refreshDBPatient()
 {
-    QSqlQuery *qry=new QSqlQuery(db.getDb());
-    qry->exec("UPDATE PATIENT SET Nom=LOWER(Nom),Prenom=LOWER(Prenom);");
-    delete qry;
+    P.updateMinuscule();
     QString arg1=ui->recherchePatient->text();
     QString column=triPatient();
+    QSqlQuery qry;
     if(arg1!=""){
-        QSqlQueryModel *modal=new QSqlQueryModel();
-        QSqlQuery *qry=new QSqlQuery(db.getDb());
-        qry->prepare("SELECT "+column+" FROM patient "
-                     "WHERE "+column+" LIKE '%"+arg1+"%' ORDER BY "+column);
-        qry->exec();
-        modal->setQuery(*qry);
-        ui->listPatient->setModel(modal);
+        ui->listPatient->setModel(P.search(qry,column,arg1));
         qDebug("List patient refreshed.");
     }
-    else{
-        QSqlQueryModel *modal=new QSqlQueryModel();
-        QSqlQuery *qry=new QSqlQuery(db.getDb());
-        qry->prepare("SELECT "+column+" FROM patient ORDER BY "+column);
-        qry->exec();
-        modal->setQuery(*qry);
-        ui->listPatient->setModel(modal);
+    else{ 
+        ui->listPatient->setModel(P.search(qry,column));
         qDebug("List patient refreshed.");
     }
 }

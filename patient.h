@@ -6,7 +6,7 @@
 #include <QDate>
 #include <QVector>
 #include "connectdb.h"
-
+#include <QSqlQueryModel>
 
 
 class Patient
@@ -36,8 +36,13 @@ public:
 
     void printPDF();
 
-    QSqlQuery qryPrep(QString text);
+    QSqlQueryModel* search(QSqlQuery qry,QString column,QString cin,QString nom,QString prenom,QString numChambre);
 
+    QSqlQueryModel* search(QSqlQuery qry,QString column);
+
+    QSqlQueryModel* search(QSqlQuery qry,QString column,QString text);
+
+    void updateMinuscule();
 };
 
 #endif // PATIENT_H
