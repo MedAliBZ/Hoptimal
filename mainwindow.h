@@ -50,7 +50,7 @@ private slots:
 
     void on_pushButton_ajouter_clicked();
 
-    void Ajouter_Medicament();
+    //void Ajouter_Medicament();
 
 
     void on_pushButton_anuuler_clicked();
@@ -59,16 +59,15 @@ private slots:
 
     void on_effacer_equipement_clicked();
 
-    void on_annuler_4_clicked();
-
-    void on_annuler_3_clicked();
-
     void afficher_medicament();
 
     void afficher_equipement();
 
+    void statistique_med();
+
 
     QString get_nom_med(){return nom_medicament_1;}
+
     void set_nom_medicament(QString nom_med){nom_medicament_1=nom_med;}
 
     void on_chercher_med_textChanged(const QString &arg1);
@@ -85,6 +84,17 @@ private slots:
     void on_listWidget_EQUI_itemDoubleClicked(QListWidgetItem *item);
 
     void on_ModifierEquipement_clicked();
+
+
+    void on_trier_med_clicked();
+
+    void on_trier_eq_clicked();
+
+    void on_imprimer_clicked();
+
+    void on_pushButton_clicked();
+
+    void on_pushButton_2_clicked();
 
 private:
     Ui::MainWindow *ui;

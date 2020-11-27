@@ -32,6 +32,7 @@ public:
 
     bool ajouter_equipement();
     bool supprimer_equipement(QString);
+    bool modifier_equipement(QString);
 };
 
 #endif // EQUIPEMENT_H

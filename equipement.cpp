@@ -36,3 +36,15 @@ bool equipement::supprimer_equipement(QString nom)
     query.bindValue(":nom",nom);
     return query.exec();
 }
+
+
+bool equipement::modifier_equipement(QString nom_init)
+{
+    QSqlQuery qry;
+    qry.prepare("UPDATE EQUIPEMENT SET NOM=:nom , DISPO=:disp , ETAT_FONC=:etat  WHERE NOM=:name");
+    qry.bindValue(":nom",nom);
+    qry.bindValue(":disp",dispo);
+    qry.bindValue(":etat",etat_fonctionnement);
+    qry.bindValue(":name",nom_init);
+    return qry.exec();
+}

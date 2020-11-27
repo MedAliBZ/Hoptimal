@@ -14,6 +14,9 @@
 #include <QSqlError>
 #include <QSqlQuery>
 #include <QDateTime>
+#include <QtCharts>
+#include <QChartView>
+#include <QPieSeries>
 
 class medicament
 {
@@ -23,11 +26,12 @@ private:
     QString DF;
     QString DLC;
     QString prix;
+    QString quantite;
 
 
 public:
     medicament();
-    medicament(QString,QString,QString,QString,QString);
+    medicament(QString,QString,QString,QString,QString,QString);
 
 
     QString getNom();
@@ -35,17 +39,19 @@ public:
     QString getDF();
     QString getDLC();
     QString getPrix();
-
+    QString getQuantite();
 
     void setNom (QString );
     void setDescription (QString );
     void setDF (QString);
     void setDLC (QString );
     void setPrix (QString );
+    void setQuantite (QString );
 
 //bool ajouter();
     bool ajouter_medicament();
     bool supprimer_medicaments(QString);
+    bool modifier_medicament(QString);
 
 };
 

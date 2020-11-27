@@ -185,9 +185,15 @@ backfround:white;
            <widget class="QLineEdit" name="chercher_med">
             <property name="minimumSize">
              <size>
-              <width>165</width>
+              <width>200</width>
               <height>25</height>
              </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Quicksand SemiBold</family>
+              <pointsize>11</pointsize>
+             </font>
             </property>
             <property name="text">
              <string/>
@@ -383,7 +389,7 @@ background-color: rgba(170, 218, 255, 100);
             </property>
            </widget>
           </item>
-          <item row="6" column="0" colspan="4">
+          <item row="6" column="0" colspan="3">
            <widget class="QListWidget" name="listWidget_MED">
             <property name="font">
              <font>
@@ -409,23 +415,29 @@ QListView {
 
 
 QListView::item:selected {
-    border: 1px solid rgb(0, 255, 255);
+    border: 1px solid rgb(108, 147, 255);
 }
 
 QListView::item:selected:!active {
-    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                stop: 0 #22F6CF, stop: 1 #8588B2);
+    background: rgba(170, 218, 255, 100);
 }
 
+
+
+
 QListView::item:selected:active {
-    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                stop: 0 #22F6CF, stop: 1 #888dd9);
+    background: rgba(170, 218, 255, 100);
 }
 
 QListView::item:hover {
-    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                stop: 0 #C3CECC, stop: 1 #C3CECC);
+    background: rgba(170, 218, 255, 100);
 }</string>
+            </property>
+            <property name="verticalScrollBarPolicy">
+             <enum>Qt::ScrollBarAlwaysOff</enum>
+            </property>
+            <property name="horizontalScrollBarPolicy">
+             <enum>Qt::ScrollBarAlwaysOff</enum>
             </property>
             <property name="showDropIndicator" stdset="0">
              <bool>false</bool>
@@ -435,6 +447,20 @@ QListView::item:hover {
             </property>
             <property name="spacing">
              <number>5</number>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="1" alignment="Qt::AlignHCenter">
+           <widget class="QPushButton" name="trier_med">
+            <property name="text">
+             <string>Trier</string>
+            </property>
+           </widget>
+          </item>
+          <item row="9" column="0" alignment="Qt::AlignHCenter">
+           <widget class="QPushButton" name="pushButton">
+            <property name="text">
+             <string>Statistique</string>
             </property>
            </widget>
           </item>
@@ -455,8 +481,8 @@ QListView::item:hover {
         </property>
         <item>
          <layout class="QGridLayout" name="gridLayout_2">
-          <item row="8" column="1">
-           <spacer name="horizontalSpacer_7">
+          <item row="8" column="2">
+           <spacer name="horizontalSpacer_8">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
@@ -467,50 +493,6 @@ QListView::item:hover {
              </size>
             </property>
            </spacer>
-          </item>
-          <item row="0" column="0">
-           <widget class="QPushButton" name="Home_3">
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>51</height>
-             </size>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QPushButton{
-width:121px;
-height:30px;
-background:transparent;
-color:#000;
-border:0px solid black;
-border-radius:7px;
-color:white;
-font-weight:400;
-font-size:14px;
-}
-
-QPushButton:hover{
-background-color: rgba(170, 218, 255, 100);
-}
-</string>
-            </property>
-            <property name="text">
-             <string>Home</string>
-            </property>
-           </widget>
-          </item>
-          <item row="5" column="0" colspan="2" alignment="Qt::AlignLeft|Qt::AlignVCenter">
-           <widget class="QLabel" name="label_2">
-            <property name="font">
-             <font>
-              <family>Quicksand SemiBold</family>
-              <pointsize>16</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string>Liste des équipements :</string>
-            </property>
-           </widget>
           </item>
           <item row="0" column="2">
            <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -568,6 +550,68 @@ background-color: rgba(170, 218, 255, 100);
             </item>
            </layout>
           </item>
+          <item row="10" column="1" alignment="Qt::AlignHCenter">
+           <widget class="QPushButton" name="effacer_equipement">
+            <property name="text">
+             <string>Effacer</string>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="1" alignment="Qt::AlignHCenter">
+           <widget class="QPushButton" name="trier_eq">
+            <property name="font">
+             <font>
+              <family>Quicksand SemiBold</family>
+              <pointsize>8</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Trier</string>
+            </property>
+           </widget>
+          </item>
+          <item row="8" column="0">
+           <spacer name="horizontalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="10" column="2" alignment="Qt::AlignHCenter">
+           <widget class="QPushButton" name="ajouter_equi">
+            <property name="text">
+             <string>Ajouter</string>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="2" alignment="Qt::AlignHCenter">
+           <widget class="QLineEdit" name="chercher_equi">
+            <property name="minimumSize">
+             <size>
+              <width>200</width>
+              <height>25</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Quicksand SemiBold</family>
+              <pointsize>11</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="placeholderText">
+             <string>chercher</string>
+            </property>
+           </widget>
+          </item>
           <item row="0" column="1">
            <layout class="QVBoxLayout" name="verticalLayout_4">
             <item>
@@ -603,62 +647,6 @@ background-color: rgba(170, 218, 255, 100);
             </item>
            </layout>
           </item>
-          <item row="8" column="2">
-           <spacer name="horizontalSpacer_8">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item row="8" column="0">
-           <spacer name="horizontalSpacer_2">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item row="6" column="2" alignment="Qt::AlignHCenter">
-           <widget class="QLineEdit" name="chercher_equi">
-            <property name="minimumSize">
-             <size>
-              <width>165</width>
-              <height>25</height>
-             </size>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-            <property name="placeholderText">
-             <string>chercher</string>
-            </property>
-           </widget>
-          </item>
-          <item row="10" column="2" alignment="Qt::AlignHCenter">
-           <widget class="QPushButton" name="ajouter_equi">
-            <property name="text">
-             <string>Ajouter</string>
-            </property>
-           </widget>
-          </item>
-          <item row="10" column="1" alignment="Qt::AlignRight">
-           <widget class="QPushButton" name="effacer_equipement">
-            <property name="text">
-             <string>Effacer</string>
-            </property>
-           </widget>
-          </item>
           <item row="7" column="0" colspan="3">
            <widget class="QListWidget" name="listWidget_EQUI">
             <property name="font">
@@ -691,22 +679,82 @@ QListView::item:selected {
 }
 
 QListView::item:selected:!active {
-    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                stop: 0 #22F6CF, stop: 1 #8588B2);
+    background: rgba(170, 218, 255, 100);
 }
 
 QListView::item:selected:active {
-    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                stop: 0 #22F6CF, stop: 1 #888dd9);
+    background: rgba(170, 218, 255, 100);
 }
 
 QListView::item:hover {
-    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                stop: 0 #C3CECC, stop: 1 #C3CECC);
+    background: rgba(170, 218, 255, 100);
 }</string>
+            </property>
+            <property name="verticalScrollBarPolicy">
+             <enum>Qt::ScrollBarAlwaysOff</enum>
+            </property>
+            <property name="horizontalScrollBarPolicy">
+             <enum>Qt::ScrollBarAlwaysOff</enum>
             </property>
             <property name="spacing">
              <number>5</number>
+            </property>
+           </widget>
+          </item>
+          <item row="8" column="1">
+           <spacer name="horizontalSpacer_7">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="5" column="0" colspan="2" alignment="Qt::AlignLeft|Qt::AlignVCenter">
+           <widget class="QLabel" name="label_2">
+            <property name="font">
+             <font>
+              <family>Quicksand SemiBold</family>
+              <pointsize>16</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Liste des équipements :</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QPushButton" name="Home_3">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>51</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton{
+width:121px;
+height:30px;
+background:transparent;
+color:#000;
+border:0px solid black;
+border-radius:7px;
+color:white;
+font-weight:400;
+font-size:14px;
+}
+
+QPushButton:hover{
+background-color: rgba(170, 218, 255, 100);
+}
+</string>
+            </property>
+            <property name="text">
+             <string>Home</string>
             </property>
            </widget>
           </item>
@@ -729,7 +777,7 @@ QListView::item:hover {
          <layout class="QVBoxLayout" name="verticalLayout_7">
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_10">
-            <item>
+            <item alignment="Qt::AlignHCenter">
              <widget class="QLabel" name="label_13">
               <property name="minimumSize">
                <size>
@@ -747,7 +795,7 @@ QListView::item:hover {
                </font>
               </property>
               <property name="text">
-               <string> Ajouter un médicament</string>
+               <string>Ajouter un médicament</string>
               </property>
              </widget>
             </item>
@@ -767,7 +815,7 @@ QListView::item:hover {
               <property name="font">
                <font>
                 <family>Quicksand SemiBold</family>
-                <pointsize>10</pointsize>
+                <pointsize>11</pointsize>
                </font>
               </property>
               <property name="text">
@@ -783,6 +831,12 @@ QListView::item:hover {
                 <height>0</height>
                </size>
               </property>
+              <property name="font">
+               <font>
+                <family>Quicksand SemiBold</family>
+                <pointsize>11</pointsize>
+               </font>
+              </property>
              </widget>
             </item>
            </layout>
@@ -794,7 +848,7 @@ QListView::item:hover {
               <property name="font">
                <font>
                 <family>Quicksand SemiBold</family>
-                <pointsize>10</pointsize>
+                <pointsize>11</pointsize>
                </font>
               </property>
               <property name="text">
@@ -810,6 +864,12 @@ QListView::item:hover {
                 <height>0</height>
                </size>
               </property>
+              <property name="font">
+               <font>
+                <family>Quicksand SemiBold</family>
+                <pointsize>11</pointsize>
+               </font>
+              </property>
              </widget>
             </item>
            </layout>
@@ -821,7 +881,7 @@ QListView::item:hover {
               <property name="font">
                <font>
                 <family>Quicksand SemiBold</family>
-                <pointsize>10</pointsize>
+                <pointsize>11</pointsize>
                </font>
               </property>
               <property name="text">
@@ -838,7 +898,14 @@ QListView::item:hover {
                </font>
               </property>
               <property name="styleSheet">
-               <string notr="true"/>
+               <string notr="true">  QCalendarWidget QAbstractItemView:enabled 
+  {
+  	font-size:10px;  
+  	color: rgb(180, 180, 180);  
+  	background-color: #00446c;  
+  	selection-background-color:rgb(217, 217, 217); 
+  	selection-color:rgb(0, 0, 0); 
+  }</string>
               </property>
               <property name="maximumDate">
                <date>
@@ -871,7 +938,7 @@ QListView::item:hover {
               <property name="font">
                <font>
                 <family>Quicksand SemiBold</family>
-                <pointsize>10</pointsize>
+                <pointsize>11</pointsize>
                </font>
               </property>
               <property name="text">
@@ -881,6 +948,16 @@ QListView::item:hover {
             </item>
             <item alignment="Qt::AlignHCenter">
              <widget class="QDateEdit" name="dateEdit_DLC">
+              <property name="styleSheet">
+               <string notr="true">  QCalendarWidget QAbstractItemView:enabled 
+  {
+  	font-size:10px;  
+  	color: rgb(180, 180, 180);  
+  	background-color: #00446c;  
+  	selection-background-color:rgb(217, 217, 217); 
+  	selection-color:rgb(0, 0, 0); 
+  }</string>
+              </property>
               <property name="maximumDate">
                <date>
                 <year>2040</year>
@@ -906,9 +983,48 @@ QListView::item:hover {
            </layout>
           </item>
           <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_15">
+            <item>
+             <widget class="QLabel" name="label_18">
+              <property name="font">
+               <font>
+                <family>Quicksand SemiBold</family>
+                <pointsize>11</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>   Quantité :</string>
+              </property>
+             </widget>
+            </item>
+            <item alignment="Qt::AlignHCenter">
+             <widget class="QLineEdit" name="quantite">
+              <property name="minimumSize">
+               <size>
+                <width>100</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Quicksand SemiBold</family>
+                <pointsize>11</pointsize>
+               </font>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
            <layout class="QHBoxLayout" name="horizontalLayout_29">
             <item>
              <widget class="QLabel" name="label_12">
+              <property name="font">
+               <font>
+                <family>Quicksand SemiBold</family>
+                <pointsize>11</pointsize>
+               </font>
+              </property>
               <property name="text">
                <string>   Prix :</string>
               </property>
@@ -921,6 +1037,12 @@ QListView::item:hover {
                 <width>0</width>
                 <height>25</height>
                </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Quicksand SemiBold</family>
+                <pointsize>11</pointsize>
+               </font>
               </property>
              </widget>
             </item>
@@ -1007,7 +1129,7 @@ QListView::item:hover {
               <property name="font">
                <font>
                 <family>Quicksand SemiBold</family>
-                <pointsize>10</pointsize>
+                <pointsize>11</pointsize>
                </font>
               </property>
               <property name="text">
@@ -1045,12 +1167,12 @@ QListView::item:hover {
           </item>
           <item row="2" column="0">
            <layout class="QHBoxLayout" name="horizontalLayout_9">
-            <item>
+            <item alignment="Qt::AlignVCenter">
              <widget class="QLabel" name="label_15">
               <property name="font">
                <font>
                 <family>Quicksand SemiBold</family>
-                <pointsize>10</pointsize>
+                <pointsize>11</pointsize>
                </font>
               </property>
               <property name="text">
@@ -1058,7 +1180,7 @@ QListView::item:hover {
               </property>
              </widget>
             </item>
-            <item alignment="Qt::AlignRight">
+            <item alignment="Qt::AlignRight|Qt::AlignVCenter">
              <widget class="QCheckBox" name="checkBox_dispo">
               <property name="minimumSize">
                <size>
@@ -1071,7 +1193,7 @@ QListView::item:hover {
               </property>
              </widget>
             </item>
-            <item alignment="Qt::AlignHCenter">
+            <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
              <widget class="QCheckBox" name="checkBox_nondispo">
               <property name="minimumSize">
                <size>
@@ -1106,7 +1228,7 @@ QListView::item:hover {
               <property name="minimumSize">
                <size>
                 <width>0</width>
-                <height>0</height>
+                <height>25</height>
                </size>
               </property>
               <property name="maximumSize">
@@ -1122,6 +1244,12 @@ QListView::item:hover {
             </item>
             <item>
              <widget class="QPushButton" name="pushButton_5">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>25</height>
+               </size>
+              </property>
               <property name="text">
                <string>Annuler</string>
               </property>
@@ -1144,12 +1272,12 @@ QListView::item:hover {
           </item>
           <item row="1" column="0">
            <layout class="QHBoxLayout" name="horizontalLayout_13">
-            <item>
+            <item alignment="Qt::AlignLeft|Qt::AlignVCenter">
              <widget class="QLabel" name="label_14">
               <property name="font">
                <font>
                 <family>Quicksand SemiBold</family>
-                <pointsize>10</pointsize>
+                <pointsize>11</pointsize>
                </font>
               </property>
               <property name="text">
@@ -1157,7 +1285,7 @@ QListView::item:hover {
               </property>
              </widget>
             </item>
-            <item alignment="Qt::AlignHCenter">
+            <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
              <widget class="QLineEdit" name="nom_equi">
               <property name="minimumSize">
                <size>
@@ -1165,13 +1293,19 @@ QListView::item:hover {
                 <height>25</height>
                </size>
               </property>
+              <property name="font">
+               <font>
+                <family>Quicksand SemiBold</family>
+                <pointsize>11</pointsize>
+               </font>
+              </property>
              </widget>
             </item>
            </layout>
           </item>
           <item row="0" column="0">
            <layout class="QHBoxLayout" name="horizontalLayout_12">
-            <item>
+            <item alignment="Qt::AlignHCenter">
              <widget class="QLabel" name="label_17">
               <property name="font">
                <font>
@@ -1183,7 +1317,7 @@ QListView::item:hover {
                </font>
               </property>
               <property name="text">
-               <string> Ajouter un équipement </string>
+               <string>Ajouter un équipement </string>
               </property>
              </widget>
             </item>
@@ -1202,158 +1336,9 @@ QListView::item:hover {
       </widget>
       <widget class="QWidget" name="afficher_med">
        <layout class="QGridLayout" name="gridLayout_6">
-        <item row="0" column="0">
+        <item row="0" column="1">
          <layout class="QGridLayout" name="gridLayout_3">
-          <item row="4" column="0">
-           <layout class="QHBoxLayout" name="horizontalLayout_19">
-            <item>
-             <widget class="QLabel" name="label_6">
-              <property name="font">
-               <font>
-                <family>Quicksand SemiBold</family>
-                <pointsize>10</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>   DLC :</string>
-              </property>
-             </widget>
-            </item>
-            <item alignment="Qt::AlignLeft">
-             <widget class="QDateEdit" name="dateEdit_4">
-              <property name="maximumDate">
-               <date>
-                <year>2040</year>
-                <month>12</month>
-                <day>31</day>
-               </date>
-              </property>
-              <property name="minimumDate">
-               <date>
-                <year>2020</year>
-                <month>1</month>
-                <day>1</day>
-               </date>
-              </property>
-              <property name="displayFormat">
-               <string>dd/MM/yyyy</string>
-              </property>
-              <property name="calendarPopup">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item row="0" column="0">
-           <layout class="QHBoxLayout" name="horizontalLayout_24">
-            <item>
-             <widget class="QLabel" name="label_4">
-              <property name="font">
-               <font>
-                <family>Quicksand SemiBold</family>
-                <pointsize>12</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>   Nom du médicament : </string>
-              </property>
-             </widget>
-            </item>
-            <item alignment="Qt::AlignRight">
-             <widget class="QLineEdit" name="lineEdit">
-              <property name="minimumSize">
-               <size>
-                <width>200</width>
-                <height>25</height>
-               </size>
-              </property>
-              <property name="readOnly">
-               <bool>false</bool>
-              </property>
-             </widget>
-            </item>
-            <item alignment="Qt::AlignRight">
-             <widget class="QLabel" name="icon_med_2">
-              <property name="text">
-               <string>TextLabel</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item row="2" column="0">
-           <layout class="QHBoxLayout" name="horizontalLayout_18">
-            <item>
-             <widget class="QLabel" name="label_5">
-              <property name="font">
-               <font>
-                <family>Quicksand SemiBold</family>
-                <pointsize>10</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>   DF :</string>
-              </property>
-             </widget>
-            </item>
-            <item alignment="Qt::AlignLeft">
-             <widget class="QDateEdit" name="dateEdit_DF2">
-              <property name="maximumDate">
-               <date>
-                <year>2020</year>
-                <month>11</month>
-                <day>11</day>
-               </date>
-              </property>
-              <property name="minimumDate">
-               <date>
-                <year>2015</year>
-                <month>9</month>
-                <day>14</day>
-               </date>
-              </property>
-              <property name="displayFormat">
-               <string>dd/MM/yyyy</string>
-              </property>
-              <property name="calendarPopup">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item row="1" column="0">
-           <layout class="QHBoxLayout" name="horizontalLayout_25">
-            <item>
-             <widget class="QLabel" name="label_3">
-              <property name="font">
-               <font>
-                <family>Quicksand SemiBold</family>
-                <pointsize>10</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>   Description : </string>
-              </property>
-             </widget>
-            </item>
-            <item alignment="Qt::AlignLeft">
-             <widget class="QLineEdit" name="lineEdit_3">
-              <property name="minimumSize">
-               <size>
-                <width>200</width>
-                <height>25</height>
-               </size>
-              </property>
-              <property name="readOnly">
-               <bool>false</bool>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item row="7" column="0">
+          <item row="9" column="0">
            <layout class="QHBoxLayout" name="horizontalLayout_14">
             <item>
              <spacer name="horizontalSpacer_14">
@@ -1385,13 +1370,64 @@ QListView::item:hover {
            </layout>
           </item>
           <item row="5" column="0">
+           <layout class="QHBoxLayout" name="horizontalLayout_19">
+            <item>
+             <widget class="QLabel" name="label_6">
+              <property name="font">
+               <font>
+                <family>Quicksand SemiBold</family>
+                <pointsize>11</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>   DLC :</string>
+              </property>
+             </widget>
+            </item>
+            <item alignment="Qt::AlignLeft">
+             <widget class="QDateEdit" name="dateEdit_4">
+              <property name="styleSheet">
+               <string notr="true">  QCalendarWidget QAbstractItemView:enabled 
+  {
+  	font-size:10px;  
+  	color: rgb(180, 180, 180);  
+  	background-color: #00446c;  
+  	selection-background-color:rgb(217, 217, 217); 
+  	selection-color:rgb(0, 0, 0); 
+  }</string>
+              </property>
+              <property name="maximumDate">
+               <date>
+                <year>2040</year>
+                <month>12</month>
+                <day>31</day>
+               </date>
+              </property>
+              <property name="minimumDate">
+               <date>
+                <year>2020</year>
+                <month>1</month>
+                <day>1</day>
+               </date>
+              </property>
+              <property name="displayFormat">
+               <string>dd/MM/yyyy</string>
+              </property>
+              <property name="calendarPopup">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="7" column="0">
            <layout class="QHBoxLayout" name="horizontalLayout_26">
             <item>
              <widget class="QLabel" name="label_7">
               <property name="font">
                <font>
                 <family>Quicksand SemiBold</family>
-                <pointsize>10</pointsize>
+                <pointsize>11</pointsize>
                </font>
               </property>
               <property name="text">
@@ -1401,6 +1437,12 @@ QListView::item:hover {
             </item>
             <item alignment="Qt::AlignLeft">
              <widget class="QLineEdit" name="lineEdit_4">
+              <property name="font">
+               <font>
+                <family>Quicksand SemiBold</family>
+                <pointsize>11</pointsize>
+               </font>
+              </property>
               <property name="readOnly">
                <bool>false</bool>
               </property>
@@ -1408,7 +1450,137 @@ QListView::item:hover {
             </item>
            </layout>
           </item>
-          <item row="6" column="0">
+          <item row="1" column="0">
+           <layout class="QHBoxLayout" name="horizontalLayout_25">
+            <item>
+             <widget class="QLabel" name="label_3">
+              <property name="font">
+               <font>
+                <family>Quicksand SemiBold</family>
+                <pointsize>11</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>   Description : </string>
+              </property>
+             </widget>
+            </item>
+            <item alignment="Qt::AlignLeft">
+             <widget class="QLineEdit" name="lineEdit_3">
+              <property name="minimumSize">
+               <size>
+                <width>200</width>
+                <height>25</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Quicksand SemiBold</family>
+                <pointsize>11</pointsize>
+               </font>
+              </property>
+              <property name="readOnly">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="0" column="0">
+           <layout class="QHBoxLayout" name="horizontalLayout_24">
+            <item>
+             <widget class="QLabel" name="label_4">
+              <property name="font">
+               <font>
+                <family>Quicksand SemiBold</family>
+                <pointsize>12</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>   Nom du médicament : </string>
+              </property>
+             </widget>
+            </item>
+            <item alignment="Qt::AlignRight">
+             <widget class="QLineEdit" name="lineEdit">
+              <property name="minimumSize">
+               <size>
+                <width>200</width>
+                <height>25</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Quicksand SemiBold</family>
+                <pointsize>11</pointsize>
+               </font>
+              </property>
+              <property name="readOnly">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+            <item alignment="Qt::AlignRight">
+             <widget class="QLabel" name="icon_med_2">
+              <property name="text">
+               <string>TextLabel</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="3" column="0">
+           <layout class="QHBoxLayout" name="horizontalLayout_18">
+            <item>
+             <widget class="QLabel" name="label_5">
+              <property name="font">
+               <font>
+                <family>Quicksand SemiBold</family>
+                <pointsize>11</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>   DF :</string>
+              </property>
+             </widget>
+            </item>
+            <item alignment="Qt::AlignLeft">
+             <widget class="QDateEdit" name="dateEdit_DF2">
+              <property name="styleSheet">
+               <string notr="true">  QCalendarWidget QAbstractItemView:enabled 
+  {
+  	font-size:10px;  
+  	color: rgb(180, 180, 180);  
+  	background-color: #00446c;  
+  	selection-background-color:rgb(217, 217, 217); 
+  	selection-color:rgb(0, 0, 0); 
+  }</string>
+              </property>
+              <property name="maximumDate">
+               <date>
+                <year>2020</year>
+                <month>11</month>
+                <day>11</day>
+               </date>
+              </property>
+              <property name="minimumDate">
+               <date>
+                <year>2015</year>
+                <month>9</month>
+                <day>14</day>
+               </date>
+              </property>
+              <property name="displayFormat">
+               <string>dd/MM/yyyy</string>
+              </property>
+              <property name="calendarPopup">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="8" column="0">
            <spacer name="horizontalSpacer_16">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
@@ -1420,6 +1592,45 @@ QListView::item:hover {
              </size>
             </property>
            </spacer>
+          </item>
+          <item row="6" column="0">
+           <layout class="QHBoxLayout" name="horizontalLayout_20">
+            <item>
+             <widget class="QLabel" name="label_22">
+              <property name="font">
+               <font>
+                <family>Quicksand SemiBold</family>
+                <pointsize>11</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>   Quantité : </string>
+              </property>
+             </widget>
+            </item>
+            <item alignment="Qt::AlignLeft">
+             <widget class="QLineEdit" name="lineEdit_2">
+              <property name="minimumSize">
+               <size>
+                <width>100</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="sizeIncrement">
+               <size>
+                <width>0</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Quicksand SemiBold</family>
+                <pointsize>11</pointsize>
+               </font>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
          </layout>
         </item>
@@ -1568,6 +1779,7 @@ QListView::item:hover {
               <property name="font">
                <font>
                 <family>Quicksand SemiBold</family>
+                <pointsize>8</pointsize>
                 <weight>50</weight>
                 <bold>false</bold>
                </font>
@@ -1584,6 +1796,13 @@ QListView::item:hover {
           </item>
           <item row="6" column="0">
            <layout class="QHBoxLayout" name="horizontalLayout_11">
+            <item>
+             <widget class="QPushButton" name="imprimer">
+              <property name="text">
+               <string>Imprimer</string>
+              </property>
+             </widget>
+            </item>
             <item>
              <spacer name="horizontalSpacer_17">
               <property name="orientation">
@@ -1611,24 +1830,37 @@ QListView::item:hover {
               </property>
              </widget>
             </item>
-            <item>
-             <spacer name="horizontalSpacer_15">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
            </layout>
           </item>
          </layout>
         </item>
        </layout>
+      </widget>
+      <widget class="QWidget" name="statistique">
+       <widget class="QPushButton" name="pushButton_2">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>20</y>
+          <width>75</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Retour</string>
+        </property>
+       </widget>
+       <widget class="QFrame" name="horizontalFrame">
+        <property name="geometry">
+         <rect>
+          <x>80</x>
+          <y>0</y>
+          <width>611</width>
+          <height>401</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_21"/>
+       </widget>
       </widget>
      </widget>
     </item>

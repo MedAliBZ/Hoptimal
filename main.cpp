@@ -8,9 +8,10 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    MainWindow w;
+
     connection c;
     bool test=c.createconnect();
+    MainWindow w;
     if(test)
        { qDebug()  <<"Connection reussite";
          w.show();
