@@ -36,6 +36,8 @@ public:
 
     void printPDF();
 
+    QSqlQuery qryPrep(QString text);
+
 };
 
 #endif // PATIENT_H

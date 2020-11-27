@@ -20,7 +20,6 @@ Menu::Menu(QWidget *parent)
     , ui(new Ui::Menu)
 {
     ui->setupUi(this);
-
     refreshDBPatient();
     refreshDBRdv();
 
@@ -773,21 +772,25 @@ void Menu::on_cinPatient_textChanged(const QString &arg1)
 
 void Menu::on_advanced_cin_textChanged(const QString &arg1)
 {
+    Q_UNUSED(arg1);
     advancedPatient();
 }
 
 void Menu::on_advanced_nom_textChanged(const QString &arg1)
 {
+    Q_UNUSED(arg1);
     advancedPatient();
 }
 
 void Menu::on_advanced_prenom_textChanged(const QString &arg1)
 {
+    Q_UNUSED(arg1);
     advancedPatient();
 }
 
 void Menu::on_advanced_chambre_textChanged(const QString &arg1)
 {
+    Q_UNUSED(arg1);
     advancedPatient();
 }
 
@@ -809,21 +812,25 @@ void Menu::on_advanced_button_clicked()
 
 void Menu::on_advanced_cinrdv_textChanged(const QString &arg1)
 {
+    Q_UNUSED(arg1);
     advancedRDV();
 }
 
 void Menu::on_advanced_nomrdv_textChanged(const QString &arg1)
 {
+    Q_UNUSED(arg1);
     advancedRDV();
 }
 
 void Menu::on_advanced_prenomrdv_textChanged(const QString &arg1)
 {
+    Q_UNUSED(arg1);
     advancedRDV();
 }
 
 void Menu::on_advanced_emailrdv_textChanged(const QString &arg1)
 {
+    Q_UNUSED(arg1);
     advancedRDV();
 }
 

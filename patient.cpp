@@ -121,3 +121,9 @@ void Patient::afficher(QString CIN,QString nom,QString prenom,QDate dateNaissanc
     this->dateNaissance=dateNaissance;
     this->numChambre=numChambre;
 }
+
+
+QSqlQuery Patient::qryPrep(QString text){
+    QSqlQuery qry(text);
+    return qry;
+}
