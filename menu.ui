@@ -111,7 +111,7 @@ backfround:white;
        <string notr="true">margin-top:0px;</string>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>4</number>
       </property>
       <widget class="QWidget" name="menu">
        <property name="sizePolicy">
@@ -1816,7 +1816,7 @@ color:white;
           <property name="title">
            <string>Rendez-Vous</string>
           </property>
-          <layout class="QVBoxLayout" name="verticalLayout_9">
+          <layout class="QVBoxLayout" name="verticalLayout_17">
            <item>
             <spacer name="horizontalSpacer_12">
              <property name="orientation">
@@ -1831,37 +1831,50 @@ color:white;
             </spacer>
            </item>
            <item>
-            <layout class="QVBoxLayout" name="verticalLayout_8">
+            <layout class="QHBoxLayout" name="horizontalLayout_16">
              <item>
-              <layout class="QHBoxLayout" name="horizontalLayout_15">
-               <property name="spacing">
-                <number>30</number>
+              <spacer name="horizontalSpacer_19">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
                </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QLabel" name="idRendezVousLabel">
+               <property name="font">
+                <font>
+                 <family>Quicksand SemiBold</family>
+                 <pointsize>12</pointsize>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">margin-bottom:25px;</string>
+               </property>
+               <property name="text">
+                <string>Id</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_9">
                <item>
-                <spacer name="horizontalSpacer_19">
+                <spacer name="verticalSpacer_14">
                  <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
+                  <enum>Qt::Vertical</enum>
                  </property>
                  <property name="sizeHint" stdset="0">
                   <size>
-                   <width>40</width>
-                   <height>20</height>
+                   <width>20</width>
+                   <height>40</height>
                   </size>
                  </property>
                 </spacer>
-               </item>
-               <item>
-                <widget class="QLabel" name="idRendezVousLabel">
-                 <property name="font">
-                  <font>
-                   <family>Quicksand SemiBold</family>
-                   <pointsize>12</pointsize>
-                  </font>
-                 </property>
-                 <property name="text">
-                  <string>Id</string>
-                 </property>
-                </widget>
                </item>
                <item>
                 <widget class="QLineEdit" name="idRendezVous">
@@ -1885,15 +1898,25 @@ color:white;
                  </property>
                 </widget>
                </item>
+               <item alignment="Qt::AlignHCenter">
+                <widget class="QLabel" name="id_error">
+                 <property name="styleSheet">
+                  <string notr="true">color:red;</string>
+                 </property>
+                 <property name="text">
+                  <string>error</string>
+                 </property>
+                </widget>
+               </item>
                <item>
-                <spacer name="horizontalSpacer_20">
+                <spacer name="verticalSpacer_13">
                  <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
+                  <enum>Qt::Vertical</enum>
                  </property>
                  <property name="sizeHint" stdset="0">
                   <size>
-                   <width>40</width>
-                   <height>20</height>
+                   <width>20</width>
+                   <height>40</height>
                   </size>
                  </property>
                 </spacer>
@@ -1901,7 +1924,37 @@ color:white;
               </layout>
              </item>
              <item>
-              <spacer name="horizontalSpacer_14">
+              <spacer name="horizontalSpacer_20">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_14">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>936</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_15">
+             <item>
+              <spacer name="horizontalSpacer_21">
                <property name="orientation">
                 <enum>Qt::Horizontal</enum>
                </property>
@@ -1914,41 +1967,38 @@ color:white;
               </spacer>
              </item>
              <item>
-              <layout class="QHBoxLayout" name="horizontalLayout_16">
-               <property name="spacing">
-                <number>30</number>
+              <widget class="QLabel" name="dateHeureLabel">
+               <property name="maximumSize">
+                <size>
+                 <width>200</width>
+                 <height>16777215</height>
+                </size>
                </property>
+               <property name="font">
+                <font>
+                 <family>Quicksand SemiBold</family>
+                 <pointsize>12</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>Date et Heure</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_8">
                <item>
-                <spacer name="horizontalSpacer_21">
+                <spacer name="verticalSpacer_15">
                  <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
+                  <enum>Qt::Vertical</enum>
                  </property>
                  <property name="sizeHint" stdset="0">
                   <size>
-                   <width>40</width>
-                   <height>20</height>
+                   <width>20</width>
+                   <height>40</height>
                   </size>
                  </property>
                 </spacer>
-               </item>
-               <item>
-                <widget class="QLabel" name="dateHeureLabel">
-                 <property name="maximumSize">
-                  <size>
-                   <width>200</width>
-                   <height>16777215</height>
-                  </size>
-                 </property>
-                 <property name="font">
-                  <font>
-                   <family>Quicksand SemiBold</family>
-                   <pointsize>12</pointsize>
-                  </font>
-                 </property>
-                 <property name="text">
-                  <string>Date et Heure</string>
-                 </property>
-                </widget>
                </item>
                <item>
                 <widget class="QDateTimeEdit" name="dateHeureRendezVous">
@@ -1993,19 +2043,32 @@ color:white;
                 </widget>
                </item>
                <item>
-                <spacer name="horizontalSpacer_22">
+                <spacer name="verticalSpacer_16">
                  <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
+                  <enum>Qt::Vertical</enum>
                  </property>
                  <property name="sizeHint" stdset="0">
                   <size>
-                   <width>40</width>
-                   <height>20</height>
+                   <width>20</width>
+                   <height>40</height>
                   </size>
                  </property>
                 </spacer>
                </item>
               </layout>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer_22">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
              </item>
             </layout>
            </item>
@@ -2023,39 +2086,52 @@ color:white;
           <property name="title">
            <string>Patient</string>
           </property>
-          <layout class="QVBoxLayout" name="verticalLayout_10">
+          <layout class="QVBoxLayout" name="verticalLayout_19">
            <item>
-            <layout class="QVBoxLayout" name="verticalLayout_7">
+            <layout class="QHBoxLayout" name="horizontalLayout_14">
              <item>
-              <layout class="QHBoxLayout" name="horizontalLayout_13">
-               <property name="spacing">
-                <number>30</number>
+              <spacer name="horizontalSpacer_8">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
                </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>13</width>
+                 <height>29</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QLabel" name="nomPatientLabel_5">
+               <property name="font">
+                <font>
+                 <family>Quicksand SemiBold</family>
+                 <pointsize>12</pointsize>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">margin-bottom:25px;</string>
+               </property>
+               <property name="text">
+                <string>Nom</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_7">
                <item>
-                <spacer name="horizontalSpacer_8">
+                <spacer name="verticalSpacer_18">
                  <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
+                  <enum>Qt::Vertical</enum>
                  </property>
                  <property name="sizeHint" stdset="0">
                   <size>
-                   <width>13</width>
-                   <height>29</height>
+                   <width>20</width>
+                   <height>40</height>
                   </size>
                  </property>
                 </spacer>
-               </item>
-               <item>
-                <widget class="QLabel" name="nomPatientLabel_5">
-                 <property name="font">
-                  <font>
-                   <family>Quicksand SemiBold</family>
-                   <pointsize>12</pointsize>
-                  </font>
-                 </property>
-                 <property name="text">
-                  <string>Nom</string>
-                 </property>
-                </widget>
                </item>
                <item>
                 <widget class="QLineEdit" name="nomPatientRendezVous">
@@ -2079,31 +2155,74 @@ color:white;
                  </property>
                 </widget>
                </item>
+               <item alignment="Qt::AlignHCenter">
+                <widget class="QLabel" name="nom_error_rdv">
+                 <property name="styleSheet">
+                  <string notr="true">color:red;</string>
+                 </property>
+                 <property name="text">
+                  <string>error</string>
+                 </property>
+                </widget>
+               </item>
                <item>
-                <spacer name="horizontalSpacer_15">
+                <spacer name="verticalSpacer_17">
                  <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
+                  <enum>Qt::Vertical</enum>
                  </property>
                  <property name="sizeHint" stdset="0">
                   <size>
-                   <width>13</width>
-                   <height>29</height>
+                   <width>20</width>
+                   <height>40</height>
                   </size>
                  </property>
                 </spacer>
                </item>
+              </layout>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer_15">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>13</width>
+                 <height>29</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QLabel" name="prenomPatientLabel_2">
+               <property name="font">
+                <font>
+                 <family>Quicksand SemiBold</family>
+                 <pointsize>12</pointsize>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">margin-bottom:25px;</string>
+               </property>
+               <property name="text">
+                <string>Prenom</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_10">
                <item>
-                <widget class="QLabel" name="prenomPatientLabel_2">
-                 <property name="font">
-                  <font>
-                   <family>Quicksand SemiBold</family>
-                   <pointsize>12</pointsize>
-                  </font>
+                <spacer name="verticalSpacer_20">
+                 <property name="orientation">
+                  <enum>Qt::Vertical</enum>
                  </property>
-                 <property name="text">
-                  <string>Prenom</string>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>20</width>
+                   <height>40</height>
+                  </size>
                  </property>
-                </widget>
+                </spacer>
                </item>
                <item>
                 <widget class="QLineEdit" name="prenomPatientRendezVous">
@@ -2127,15 +2246,25 @@ color:white;
                  </property>
                 </widget>
                </item>
+               <item alignment="Qt::AlignHCenter">
+                <widget class="QLabel" name="prenom_error_rdv">
+                 <property name="styleSheet">
+                  <string notr="true">color:red;</string>
+                 </property>
+                 <property name="text">
+                  <string>error</string>
+                 </property>
+                </widget>
+               </item>
                <item>
-                <spacer name="horizontalSpacer_16">
+                <spacer name="verticalSpacer_19">
                  <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
+                  <enum>Qt::Vertical</enum>
                  </property>
                  <property name="sizeHint" stdset="0">
                   <size>
-                   <width>13</width>
-                   <height>29</height>
+                   <width>20</width>
+                   <height>40</height>
                   </size>
                  </property>
                 </spacer>
@@ -2143,48 +2272,75 @@ color:white;
               </layout>
              </item>
              <item>
-              <spacer name="horizontalSpacer_13">
+              <spacer name="horizontalSpacer_16">
                <property name="orientation">
                 <enum>Qt::Horizontal</enum>
                </property>
                <property name="sizeHint" stdset="0">
                 <size>
-                 <width>40</width>
-                 <height>20</height>
+                 <width>13</width>
+                 <height>29</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_13">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>936</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_13">
+             <item>
+              <spacer name="horizontalSpacer_17">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>13</width>
+                 <height>17</height>
                 </size>
                </property>
               </spacer>
              </item>
              <item>
-              <layout class="QHBoxLayout" name="horizontalLayout_14">
-               <property name="spacing">
-                <number>30</number>
+              <widget class="QLabel" name="emailLabel">
+               <property name="font">
+                <font>
+                 <family>Quicksand SemiBold</family>
+                 <pointsize>12</pointsize>
+                </font>
                </property>
+               <property name="text">
+                <string>E-mail</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_18">
                <item>
-                <spacer name="horizontalSpacer_17">
+                <spacer name="verticalSpacer_22">
                  <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
+                  <enum>Qt::Vertical</enum>
                  </property>
                  <property name="sizeHint" stdset="0">
                   <size>
-                   <width>40</width>
-                   <height>20</height>
+                   <width>20</width>
+                   <height>40</height>
                   </size>
                  </property>
                 </spacer>
-               </item>
-               <item>
-                <widget class="QLabel" name="emailLabel">
-                 <property name="font">
-                  <font>
-                   <family>Quicksand SemiBold</family>
-                   <pointsize>12</pointsize>
-                  </font>
-                 </property>
-                 <property name="text">
-                  <string>E-mail</string>
-                 </property>
-                </widget>
                </item>
                <item>
                 <widget class="QLineEdit" name="emailPatientRendezVous">
@@ -2209,19 +2365,32 @@ color:white;
                 </widget>
                </item>
                <item>
-                <spacer name="horizontalSpacer_18">
+                <spacer name="verticalSpacer_21">
                  <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
+                  <enum>Qt::Vertical</enum>
                  </property>
                  <property name="sizeHint" stdset="0">
                   <size>
-                   <width>40</width>
-                   <height>20</height>
+                   <width>20</width>
+                   <height>40</height>
                   </size>
                  </property>
                 </spacer>
                </item>
               </layout>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer_18">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>13</width>
+                 <height>17</height>
+                </size>
+               </property>
+              </spacer>
              </item>
             </layout>
            </item>

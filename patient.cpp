@@ -84,7 +84,6 @@ void Patient::printPDF(){
         font.setPointSize(font.pointSize() * 2);
         painter.setFont(font);
         painter.setPen(Qt::cyan);
-        QString nom="Ali";
         painter.drawImage(-20,-40,image);
         painter.drawText(330, 20, "Nom: ");
         painter.drawText(330, 65, "Prenom: ");

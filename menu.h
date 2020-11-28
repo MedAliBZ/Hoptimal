@@ -39,6 +39,8 @@ public:
     Menu(QWidget *parent = nullptr);
     ~Menu();
 
+    void initialiserErrorsRDV();
+
     void initialiserErrorsPatient();
 
     void initialiserImages();
@@ -158,6 +160,12 @@ private slots:
     void on_advanced_emailrdv_textChanged(const QString &arg1);
 
     void on_advancedButton_rdv_clicked();
+
+    void on_idRendezVous_textChanged(const QString &arg1);
+
+    void on_nomPatientRendezVous_textChanged(const QString &arg1);
+
+    void on_prenomPatientRendezVous_textChanged(const QString &arg1);
 
 private:
     Ui::Menu *ui;

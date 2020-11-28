@@ -48,11 +48,24 @@ void Menu::advancedPatient(){
 
 }
 
+void Menu::initialiserErrorsRDV(){
+    ui->nom_error_rdv->setText("");
+    ui->prenom_error_rdv->setText("");
+    ui->id_error->setText("");
+    ui->prenomPatientRendezVous->setMaxLength(20);
+    ui->nomPatientRendezVous->setMaxLength(20);
+    ui->idRendezVous->setMaxLength(20);
+}
+
 void Menu::initialiserErrorsPatient(){
     ui->Nom_error->setText("");
     ui->Prenom_error->setText("");
     ui->Cin_error->setText("");
     ui->numChambre_error->setText("");
+    ui->prenomPatient->setMaxLength(20);
+    ui->nomPatient->setMaxLength(20);
+    ui->numChambrePatient->setMaxLength(20);
+    ui->cinPatient->setMaxLength(8);
 }
 
 QString Menu::triRDV()
@@ -256,6 +269,7 @@ void Menu::afficherPatient(QString CIN,QString nom,QString prenom,QDate dateNais
 }
 
 void Menu::initialiserRDV(){
+    initialiserErrorsRDV();
     ui->ajouterRendezVous->setText("Ajouter");
     ui->email_sending->setVisible(false);
     ui->DeleteButton_2->setVisible(false);
@@ -750,10 +764,16 @@ void Menu::on_advanced_button_clicked()
         ui->advanced_2->setVisible(true);
         ui->recherchePatient->setEnabled(false);
         ui->recherchePatient->setText("");
+        ui->recherchePatient->setStyleSheet("background-color:rgba(0, 33, 52, 60);");
     }
     else{
         ui->advanced_2->setVisible(false);
         ui->recherchePatient->setEnabled(true);
+        ui->advanced_cin->setText("");
+        ui->advanced_nom->setText("");
+        ui->advanced_prenom->setText("");
+        ui->advanced_chambre->setText("");
+        ui->recherchePatient->setStyleSheet("background-color:rgba(0, 33, 52, 100);");
     }
 }
 
@@ -788,9 +808,42 @@ void Menu::on_advancedButton_rdv_clicked()
         ui->advanced_rdv->setVisible(true);
         ui->rechercheRendezVous->setEnabled(false);
         ui->rechercheRendezVous->setText("");
+        ui->rechercheRendezVous->setStyleSheet("background-color:rgba(0, 33, 52, 60);");
     }
     else{
         ui->advanced_rdv->setVisible(false);
         ui->rechercheRendezVous->setEnabled(true);
+        ui->advanced_cinrdv->setText("");
+        ui->advanced_nomrdv->setText("");
+        ui->advanced_emailrdv->setText("");
+        ui->advanced_prenomrdv->setText("");
+        ui->rechercheRendezVous->setStyleSheet("background-color:rgba(0, 33, 52, 100);");
     }
+}
+
+void Menu::on_idRendezVous_textChanged(const QString &arg1)
+{
+    if(arg1==""){
+        ui->id_error->setText("Ce champ ne peut pas rester vide!");
+    }
+    else
+        ui->id_error->setText("");
+}
+
+void Menu::on_nomPatientRendezVous_textChanged(const QString &arg1)
+{
+    if(arg1==""){
+        ui->nom_error_rdv->setText("Ce champ ne peut pas rester vide!");
+    }
+    else
+        ui->nom_error_rdv->setText("");
+}
+
+void Menu::on_prenomPatientRendezVous_textChanged(const QString &arg1)
+{
+    if(arg1==""){
+        ui->prenom_error_rdv->setText("Ce champ ne peut pas rester vide!");
+    }
+    else
+        ui->prenom_error_rdv->setText("");
 }
