@@ -267,18 +267,17 @@ void Menu::initialiserPatient()
     qDebug("init patient");
 }
 
-void Menu::afficherPatient(QString CIN,QString nom,QString prenom,QDate dateNaissance,QString numChambre)
+void Menu::afficherPatient()
 {
-    P.afficher(CIN,nom,prenom,dateNaissance,numChambre);
     setWindowTitle("Hoptimal - Modifier un patient");
     ui->pdf_icon->setVisible(true);
     ui->DeleteButton->setVisible(true);
     ui->ajouterPatient->setText("Modifier");
-    ui->cinPatient->setText(CIN);
-    ui->nomPatient->setText(nom);
-    ui->prenomPatient->setText(prenom);
-    ui->DateNaissancePatient->setDate(dateNaissance);
-    ui->numChambrePatient->setText(numChambre);
+    ui->cinPatient->setText(P.getCIN());
+    ui->nomPatient->setText(P.getNom());
+    ui->prenomPatient->setText(P.getPrenom());
+    ui->DateNaissancePatient->setDate(P.getDateNaissance());
+    ui->numChambrePatient->setText(P.getNumChambre());
 }
 
 void Menu::initialiserRDV(){
@@ -295,17 +294,17 @@ void Menu::initialiserRDV(){
     qDebug("init RDV");
 }
 
-void Menu::afficherRDV(QString id,QString nomPatient,QString prenomPatient,QString email,QDateTime dateTime){
-    R.afficher(id,nomPatient,prenomPatient,email,dateTime);
+void Menu::afficherRDV(){
+
     ui->ajouterRendezVous->setText("Modifier");
     setWindowTitle("Hoptimal - Modifier un rendez vous");
     ui->email_sending->setVisible(true);
     ui->DeleteButton_2->setVisible(true);
-    ui->idRendezVous->setText(id);
-    ui->emailPatientRendezVous->setText(email);
-    ui->nomPatientRendezVous->setText(nomPatient);
-    ui->prenomPatientRendezVous->setText(prenomPatient);
-    ui->dateHeureRendezVous->setDateTime(dateTime);
+    ui->idRendezVous->setText(R.getId());
+    ui->emailPatientRendezVous->setText(R.getEmail());
+    ui->nomPatientRendezVous->setText(R.getNom());
+    ui->prenomPatientRendezVous->setText(R.getPrenom());
+    ui->dateHeureRendezVous->setDateTime(R.getDateTime());
 }
 //slots
 
@@ -357,28 +356,16 @@ void Menu::on_Patient_Button_clicked()
     bigLineAnimationPatient();
 }
 
+
+
 void Menu::on_listPatient_doubleClicked(const QModelIndex &index)
 {
-    int occurence=0;
     int row=index.row();
-    QString nom,prenom,numChambre,cin;
-    QDate dateNaissance;
-    QSqlQuery query("SELECT * FROM patient WHERE "+triPatient()+"='"+index.data().toString()+"' ORDER BY "+triPatient());
-
-        while(index.data().toString()==index.sibling(--row,index.column()).data().toString())
-            occurence++;
-
-
-    for(int i=0;i<=occurence;i++)
-        query.next();
-
-    cin =query.value(0).toString();
-    nom = query.value(1).toString();
-    prenom = query.value(2).toString();
-    dateNaissance = query.value(3).toDate();
-    numChambre=query.value(4).toString();
-
-    afficherPatient(cin,nom,prenom,dateNaissance,numChambre);
+    int occurence=0;
+    while(index.data().toString()==index.sibling(--row,index.column()).data().toString())
+         occurence++;
+    P.afficher(triPatient(),index.data().toString(),occurence);
+    afficherPatient();
     ui->stackedWidget->setCurrentIndex(3);
 
 }
@@ -387,25 +374,13 @@ void Menu::on_listRendezVous_doubleClicked(const QModelIndex &index)
 {
     int occurence=0;
     int row=index.row();
-    QString nomPatient,prenomPatient,email,id;
-    QDateTime dateTime;
-
-    QSqlQuery query("SELECT * FROM rdv WHERE "+triRDV()+"='"+index.data().toString()+"' ORDER BY "+triRDV());
 
     while(index.data().toString()==index.sibling(--row,index.column()).data().toString())
         occurence++;
 
-    for(int i=0;i<=occurence;i++)
-        query.next();
 
-            id = query.value(0).toString();
-            nomPatient = query.value(1).toString();
-            prenomPatient = query.value(2).toString();
-            email=query.value(3).toString();
-            dateTime = query.value(4).toDateTime();
-
-
-    afficherRDV(id,nomPatient,prenomPatient,email,dateTime);
+    R.afficher(triRDV(),index.data().toString(),occurence);
+    afficherRDV();
     ui->stackedWidget->setCurrentIndex(4);
 }
 

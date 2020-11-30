@@ -104,12 +104,30 @@ void Patient::printPDF(){
     }
 }
 
-void Patient::afficher(QString CIN,QString nom,QString prenom,QDate dateNaissance,QString numChambre){
-    this->CIN=CIN;
+void Patient::afficher(QString tri,QString data,int occurence){
+
+
+
+    QString nom,prenom,numChambre,cin;
+    QDate dateNaissance;
+    QSqlQuery query("SELECT * FROM patient WHERE "+tri+"='"+data+"' ORDER BY "+tri);
+
+
+    for(int i=0;i<=occurence;i++)
+        query.next();
+
+    cin =query.value(0).toString();
+    nom = query.value(1).toString();
+    prenom = query.value(2).toString();
+    dateNaissance = query.value(3).toDate();
+    numChambre=query.value(4).toString();
+
+    this->CIN=cin;
     this->nom=nom;
     this->prenom=prenom;
     this->dateNaissance=dateNaissance;
     this->numChambre=numChambre;
+
 }
 
 

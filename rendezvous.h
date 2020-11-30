@@ -29,6 +29,8 @@ public:
 
     QString getPrenom(){return prenomPatient;};
 
+    QString getNom(){return nomPatient;};
+
     QDateTime getDateTime(){return dateTime;};
 
     void setID(QString id){this->id=id;};
@@ -39,7 +41,7 @@ public:
 
     void send_email(QString email,QString date,QString heure,QString prenom);
 
-    void afficher(QString,QString,QString,QString,QDateTime);
+    void afficher(QString,QString,int);
 
     void Delete();
 

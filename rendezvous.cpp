@@ -95,7 +95,25 @@ void RendezVous::send_email(QString email,QString date,QString heure,QString pre
     WinExec(command, SW_HIDE);
 }
 
-void RendezVous::afficher(QString id,QString nomPatient,QString prenomPatient,QString email,QDateTime dateTime){
+void RendezVous::afficher(QString tri,QString data,int occurence){
+
+    QString nomPatient,prenomPatient,email,id;
+    QDateTime dateTime;
+
+    QSqlQuery query("SELECT * FROM rdv WHERE "+tri+"='"+data+"' ORDER BY "+tri);
+
+
+
+    for(int i=0;i<=occurence;i++)
+        query.next();
+
+            id = query.value(0).toString();
+            nomPatient = query.value(1).toString();
+            prenomPatient = query.value(2).toString();
+            email=query.value(3).toString();
+            dateTime = query.value(4).toDateTime();
+
+
     this->id=id;
     this->nomPatient=nomPatient;
     this->prenomPatient=prenomPatient;

@@ -16,6 +16,7 @@
 
 
 
+
 class Patient
 {
 private:
@@ -32,9 +33,17 @@ public:
 
     QString getCIN()const{return CIN;};
 
+    QString getNom(){return nom;};
+
+    QString getPrenom(){return prenom;};
+
+    QString getNumChambre(){return numChambre;};
+
+    QDate getDateNaissance(){return dateNaissance;};
+
     bool addValuesToDB(QString nom, QString prenom, QDate dateNaissance,QString Cin,QString numChambre);
 
-    void afficher(QString CIN,QString nom,QString prenom,QDate dateNaissance,QString numChambre);
+    void afficher(QString,QString,int);
 
     bool modifyValues(QString nom, QString prenom, QDate dateNaissance,QString Cin,QString numChambre,QString oldCin);
 

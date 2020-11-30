@@ -20,6 +20,7 @@
 #include <QTextStream>
 
 
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class Menu; }
 QT_END_NAMESPACE
@@ -63,11 +64,11 @@ public:
 
     void initialiserPatient();
 
-    void afficherPatient(QString CIN,QString nom,QString prenom,QDate dateNaissance,QString numChambre);
+    void afficherPatient();
 
     void initialiserRDV();
 
-    void afficherRDV(QString id,QString nomPatient,QString prenomPatient,QString email,QDateTime dateTime);
+    void afficherRDV();
 
     void advancedPatient();
 
