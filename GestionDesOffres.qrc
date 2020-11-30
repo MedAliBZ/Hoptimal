@@ -1,0 +1,18 @@
+<RCC>
+    <qresource prefix="/">
+        <file>fleche.png</file>
+        <file>modifier.png</file>
+        <file>precedent.png</file>
+        <file>print.png</file>
+        <file>Quicksand-SemiBold.ttf</file>
+        <file>search.png</file>
+        <file>sort.png</file>
+        <file>stats.png</file>
+        <file>suivant.png</file>
+        <file>trash.png</file>
+        <file>add.png</file>
+        <file>valider.png</file>
+        <file>chambre.png</file>
+        <file>service.png</file>
+    </qresource>
+</RCC>
