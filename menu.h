@@ -43,7 +43,7 @@ public:
 
     void initialiserErrorsPatient();
 
-    void initialiserImages();
+    void initialiserTout();
 
     void smallLineAnimationPatient();
 

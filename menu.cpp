@@ -11,7 +11,7 @@ Menu::Menu(QWidget *parent)
 
     ui->stackedWidget->setCurrentIndex(0);
 
-    initialiserImages();
+    initialiserTout();
     initialiserPatient();
     initialiserRDV();
     setWindowTitle("Hoptimal");
@@ -132,8 +132,21 @@ void Menu::refreshDBPatient()
     }
 }
 
-void Menu::initialiserImages()
+void Menu::initialiserTout()
 {
+    //validators
+
+    QRegExp letters("[A-Z a-z]{0,20}");
+    QRegExpValidator *validatorL = new QRegExpValidator(letters, this);
+    ui->nomPatient->setValidator(validatorL);
+    ui->prenomPatient->setValidator(validatorL);
+    ui->prenomPatientRendezVous->setValidator(validatorL);
+    ui->nomPatientRendezVous->setValidator(validatorL);
+
+    QRegExp numbers("[0-9]{0,8}");
+    QRegExpValidator *validatorN = new QRegExpValidator(numbers, this);
+    ui->cinPatient->setValidator(validatorN);
+
     ui->rechercheRendezVous->setPlaceholderText("Rechercher par l'ID de la rendez vous");
     ui->recherchePatient->setPlaceholderText("Rechercher par cin");
     ui->advanced_cin->setPlaceholderText("Rechercher par cin");
@@ -429,6 +442,7 @@ void Menu::on_ajouterPatient_clicked()
     QDate dateNaissance=ui->DateNaissancePatient->date();
 
     //empty fields verifications
+
     if(CIN.size()==0 || nom.size()==0 || prenom.size()==0 || numChambre.size()==0){
         QMessageBox msgBox;
         msgBox.setIcon(QMessageBox::Critical);
