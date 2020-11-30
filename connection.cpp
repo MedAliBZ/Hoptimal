@@ -18,7 +18,7 @@ if (db.open())
 test=true;
 
 
-QString medicament = "CREATE TABLE medicament("
+QString medicaments = "CREATE TABLE medicament("
                         "Name VARCHAR(20) NOT NULL PRIMARY KEY,"
                         "Description VARCHAR(50) NOT NULL,"
                         "DF VARCHAR(31) NOT NULL,"
@@ -32,7 +32,7 @@ QString equipement = "CREATE TABLE equipement("
                      "Etat_fonc VARCHAR(20) NOT NULL);";
 
 QSqlQuery querym,querye;
-         querym.exec(medicament);
+         querym.exec(medicaments);
          querye.exec(equipement);
 }
     return  test;

@@ -50,9 +50,13 @@ public:
 
 //bool ajouter();
     bool ajouter_medicament();
-    bool supprimer_medicaments(QString);
-    bool modifier_medicament(QString);
+        bool supprimer_medicaments(QString);
+        bool modifier_medicament(QString);
+        QSqlQuery afficher_med_double_clicked(QString );
 
+        int clear_liste_med();
+        int chercher_nom_exist(QString );
+        int chercher_nomMedicament_a_modifier(QString );
 };
 
 #endif // MEDICAMENT_H

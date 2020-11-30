@@ -2,6 +2,9 @@
 <ui version="4.0">
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
+  <property name="windowModality">
+   <enum>Qt::NonModal</enum>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -9,6 +12,9 @@
     <width>698</width>
     <height>453</height>
    </rect>
+  </property>
+  <property name="cursor">
+   <cursorShape>ArrowCursor</cursorShape>
   </property>
   <property name="windowTitle">
    <string>Hoptimal</string>
@@ -75,8 +81,11 @@ backfround:white;
     </property>
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="Home">
        <property name="styleSheet">
@@ -203,36 +212,6 @@ backfround:white;
             </property>
            </widget>
           </item>
-          <item row="4" column="0" colspan="2">
-           <layout class="QVBoxLayout" name="verticalLayout_6">
-            <item>
-             <widget class="QLabel" name="label">
-              <property name="font">
-               <font>
-                <family>Quicksand SemiBold</family>
-                <pointsize>16</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>Liste des médicaments : </string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item row="9" column="2" alignment="Qt::AlignHCenter">
-           <widget class="QPushButton" name="ajouter_med">
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="text">
-             <string>Ajouter</string>
-            </property>
-           </widget>
-          </item>
           <item row="0" column="1">
            <layout class="QVBoxLayout" name="verticalLayout_5">
             <item>
@@ -281,73 +260,10 @@ background-color: rgba(170, 218, 255, 100);
             </item>
            </layout>
           </item>
-          <item row="7" column="1">
-           <spacer name="horizontalSpacer_3">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item row="7" column="2">
-           <spacer name="horizontalSpacer_4">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item row="7" column="0">
-           <spacer name="horizontalSpacer">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item row="0" column="0">
-           <widget class="QPushButton" name="Home_2">
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>51</height>
-             </size>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QPushButton{
-width:121px;
-height:30px;
-background:transparent;
-color:#000;
-border:0px solid black;
-border-radius:7px;
-color:white;
-font-weight:400;
-font-size:14px;
-}
-
-QPushButton:hover{
-background-color: rgba(170, 218, 255, 100);
-}
-</string>
-            </property>
+          <item row="9" column="1" alignment="Qt::AlignHCenter">
+           <widget class="QPushButton" name="effacer_medicament">
             <property name="text">
-             <string>Home</string>
+             <string>Effacer</string>
             </property>
            </widget>
           </item>
@@ -382,10 +298,49 @@ background-color: rgba(170, 218, 255, 100);
             </property>
            </widget>
           </item>
-          <item row="9" column="1" alignment="Qt::AlignRight">
-           <widget class="QPushButton" name="effacer_medicament">
+          <item row="7" column="1">
+           <spacer name="horizontalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="7" column="0">
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="9" column="0" alignment="Qt::AlignHCenter">
+           <widget class="QPushButton" name="pushButton">
             <property name="text">
-             <string>Effacer</string>
+             <string>Statistique</string>
+            </property>
+           </widget>
+          </item>
+          <item row="9" column="2" alignment="Qt::AlignHCenter">
+           <widget class="QPushButton" name="ajouter_med">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Ajouter</string>
             </property>
            </widget>
           </item>
@@ -450,6 +405,50 @@ QListView::item:hover {
             </property>
            </widget>
           </item>
+          <item row="0" column="0">
+           <widget class="QPushButton" name="Home_2">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>51</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton{
+width:121px;
+height:30px;
+background:transparent;
+color:#000;
+border:0px solid black;
+border-radius:7px;
+color:white;
+font-weight:400;
+font-size:14px;
+}
+
+QPushButton:hover{
+background-color: rgba(170, 218, 255, 100);
+}
+</string>
+            </property>
+            <property name="text">
+             <string>Home</string>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="2">
+           <spacer name="horizontalSpacer_4">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
           <item row="5" column="1" alignment="Qt::AlignHCenter">
            <widget class="QPushButton" name="trier_med">
             <property name="text">
@@ -457,12 +456,32 @@ QListView::item:hover {
             </property>
            </widget>
           </item>
-          <item row="9" column="0" alignment="Qt::AlignHCenter">
-           <widget class="QPushButton" name="pushButton">
-            <property name="text">
-             <string>Statistique</string>
-            </property>
-           </widget>
+          <item row="4" column="0" colspan="3">
+           <layout class="QVBoxLayout" name="verticalLayout_6">
+            <item>
+             <widget class="QLabel" name="label">
+              <property name="font">
+               <font>
+                <family>Quicksand SemiBold</family>
+                <pointsize>16</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>Liste des médicaments : </string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="Line" name="bigline_med">
+              <property name="styleSheet">
+               <string notr="true">background: white;</string>
+              </property>
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
          </layout>
         </item>
@@ -481,8 +500,161 @@ QListView::item:hover {
         </property>
         <item>
          <layout class="QGridLayout" name="gridLayout_2">
-          <item row="8" column="2">
+          <item row="7" column="1">
+           <spacer name="horizontalSpacer_7">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="5" column="1" alignment="Qt::AlignHCenter">
+           <widget class="QPushButton" name="trier_eq">
+            <property name="font">
+             <font>
+              <family>Quicksand SemiBold</family>
+              <pointsize>8</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Trier</string>
+            </property>
+           </widget>
+          </item>
+          <item row="9" column="2" alignment="Qt::AlignHCenter">
+           <widget class="QPushButton" name="ajouter_equi">
+            <property name="text">
+             <string>Ajouter</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QPushButton" name="Home_3">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>51</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton{
+width:121px;
+height:30px;
+background:transparent;
+color:#000;
+border:0px solid black;
+border-radius:7px;
+color:white;
+font-weight:400;
+font-size:14px;
+}
+
+QPushButton:hover{
+background-color: rgba(170, 218, 255, 100);
+}
+</string>
+            </property>
+            <property name="text">
+             <string>Home</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="2" alignment="Qt::AlignHCenter">
+           <widget class="QLineEdit" name="chercher_equi">
+            <property name="minimumSize">
+             <size>
+              <width>200</width>
+              <height>25</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Quicksand SemiBold</family>
+              <pointsize>11</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="placeholderText">
+             <string>chercher</string>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="0" colspan="3">
+           <widget class="QListWidget" name="listWidget_EQUI">
+            <property name="font">
+             <font>
+              <family>Quicksand SemiBold</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QListWidget::item {
+    color:rgb(255, 255, 255);
+    background-color:transparent;
+}
+
+
+
+QListView::item {
+    color:rgb(255, 255, 255);
+    background-color:transparent;
+}
+
+
+QListView {
+    show-decoration-selected: 1; /* make the selection span the entire width of the view */
+}
+
+
+QListView::item:selected {
+    border: 1px solid rgb(0, 255, 255);
+}
+
+QListView::item:selected:!active {
+    background: rgba(170, 218, 255, 100);
+}
+
+QListView::item:selected:active {
+    background: rgba(170, 218, 255, 100);
+}
+
+QListView::item:hover {
+    background: rgba(170, 218, 255, 100);
+}</string>
+            </property>
+            <property name="verticalScrollBarPolicy">
+             <enum>Qt::ScrollBarAlwaysOff</enum>
+            </property>
+            <property name="horizontalScrollBarPolicy">
+             <enum>Qt::ScrollBarAlwaysOff</enum>
+            </property>
+            <property name="spacing">
+             <number>5</number>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="2">
            <spacer name="horizontalSpacer_8">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="7" column="0">
+           <spacer name="horizontalSpacer_2">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
@@ -550,65 +722,10 @@ background-color: rgba(170, 218, 255, 100);
             </item>
            </layout>
           </item>
-          <item row="10" column="1" alignment="Qt::AlignHCenter">
+          <item row="9" column="1" alignment="Qt::AlignHCenter">
            <widget class="QPushButton" name="effacer_equipement">
             <property name="text">
              <string>Effacer</string>
-            </property>
-           </widget>
-          </item>
-          <item row="6" column="1" alignment="Qt::AlignHCenter">
-           <widget class="QPushButton" name="trier_eq">
-            <property name="font">
-             <font>
-              <family>Quicksand SemiBold</family>
-              <pointsize>8</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string>Trier</string>
-            </property>
-           </widget>
-          </item>
-          <item row="8" column="0">
-           <spacer name="horizontalSpacer_2">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item row="10" column="2" alignment="Qt::AlignHCenter">
-           <widget class="QPushButton" name="ajouter_equi">
-            <property name="text">
-             <string>Ajouter</string>
-            </property>
-           </widget>
-          </item>
-          <item row="6" column="2" alignment="Qt::AlignHCenter">
-           <widget class="QLineEdit" name="chercher_equi">
-            <property name="minimumSize">
-             <size>
-              <width>200</width>
-              <height>25</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <family>Quicksand SemiBold</family>
-              <pointsize>11</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-            <property name="placeholderText">
-             <string>chercher</string>
             </property>
            </widget>
           </item>
@@ -647,116 +764,34 @@ background-color: rgba(170, 218, 255, 100);
             </item>
            </layout>
           </item>
-          <item row="7" column="0" colspan="3">
-           <widget class="QListWidget" name="listWidget_EQUI">
-            <property name="font">
-             <font>
-              <family>Quicksand SemiBold</family>
-              <pointsize>12</pointsize>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QListWidget::item {
-    color:rgb(255, 255, 255);
-    background-color:transparent;
-}
-
-
-
-QListView::item {
-    color:rgb(255, 255, 255);
-    background-color:transparent;
-}
-
-
-QListView {
-    show-decoration-selected: 1; /* make the selection span the entire width of the view */
-}
-
-
-QListView::item:selected {
-    border: 1px solid rgb(0, 255, 255);
-}
-
-QListView::item:selected:!active {
-    background: rgba(170, 218, 255, 100);
-}
-
-QListView::item:selected:active {
-    background: rgba(170, 218, 255, 100);
-}
-
-QListView::item:hover {
-    background: rgba(170, 218, 255, 100);
-}</string>
-            </property>
-            <property name="verticalScrollBarPolicy">
-             <enum>Qt::ScrollBarAlwaysOff</enum>
-            </property>
-            <property name="horizontalScrollBarPolicy">
-             <enum>Qt::ScrollBarAlwaysOff</enum>
-            </property>
-            <property name="spacing">
-             <number>5</number>
-            </property>
-           </widget>
-          </item>
-          <item row="8" column="1">
-           <spacer name="horizontalSpacer_7">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item row="5" column="0" colspan="2" alignment="Qt::AlignLeft|Qt::AlignVCenter">
-           <widget class="QLabel" name="label_2">
-            <property name="font">
-             <font>
-              <family>Quicksand SemiBold</family>
-              <pointsize>16</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string>Liste des équipements :</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="0">
-           <widget class="QPushButton" name="Home_3">
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>51</height>
-             </size>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QPushButton{
-width:121px;
-height:30px;
-background:transparent;
-color:#000;
-border:0px solid black;
-border-radius:7px;
-color:white;
-font-weight:400;
-font-size:14px;
-}
-
-QPushButton:hover{
-background-color: rgba(170, 218, 255, 100);
-}
-</string>
-            </property>
-            <property name="text">
-             <string>Home</string>
-            </property>
-           </widget>
+          <item row="1" column="0" colspan="3">
+           <layout class="QVBoxLayout" name="verticalLayout_10">
+            <item>
+             <widget class="QLabel" name="label_2">
+              <property name="font">
+               <font>
+                <family>Quicksand SemiBold</family>
+                <pointsize>16</pointsize>
+                <weight>75</weight>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>Liste des équipements :</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="Line" name="bigline_eq">
+              <property name="styleSheet">
+               <string notr="true">background-color: rgb(255, 255, 255);</string>
+              </property>
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
          </layout>
         </item>

@@ -76,5 +76,74 @@ bool medicament::modifier_medicament(QString nom_init)
 }
 
 
+QSqlQuery medicament::afficher_med_double_clicked(QString nom)
+{
+    QSqlQuery* qry=new QSqlQuery();
+    qry->prepare("SELECT * FROM MEDICAMENTS WHERE NAME = :nom");
+    qry->bindValue(":nom",nom);
+
+    if (qry->exec())
+    {
+        while (qry->next())
+        {
+            return *qry;
+        }
+    }
 
 
+}
+
+int medicament::clear_liste_med()
+{
+    QSqlQuery *qry=new QSqlQuery();
+    int rowCount = 0;
+    if (qry->exec("SELECT * FROM MEDICAMENTS"))
+    {
+
+        while(qry->next())
+        {
+            rowCount++;
+        }
+
+    }
+
+    return rowCount;
+}
+
+int medicament::chercher_nom_exist(QString nom)
+{
+    QSqlQuery query;
+    query.prepare("SELECT * FROM MEDICAMENTS WHERE NAME= :nom");
+    query.bindValue(":nom",nom);
+    int count(0);
+    if(query.exec())
+    {
+
+        while(query.next())
+        {
+            count++;
+        }
+    }
+    return count;
+
+}
+
+int medicament::chercher_nomMedicament_a_modifier(QString nom_init)
+{
+    QSqlQuery qry;
+
+    qry.prepare("SELECT * FROM MEDICAMENTS WHERE NAME = :nom");
+    qry.bindValue(":nom",nom_init);
+    qDebug() << nom_init << endl;
+   int count(0);
+    if ( qry.exec() )
+    {
+
+        while (qry.next())
+        {
+            count++;
+
+        }
+}
+    return count;
+}

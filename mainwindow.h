@@ -17,8 +17,8 @@ public:
     ~MainWindow();
      void smallLineAnimationEquipement();
      void smallLineAnimationMedicament();
-
-
+    void bigLineAnimationMedicament();
+    void bigLineAnimationEquipement();
 
 
 private slots:

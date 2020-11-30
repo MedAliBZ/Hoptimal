@@ -26,6 +26,7 @@
 #include <QChartView>
 #include <QPieSeries>
 
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -46,6 +47,8 @@ MainWindow::MainWindow(QWidget *parent)
     QPixmap equi_icon(":/rec/equipement.png");
     ui->icon_equi->setPixmap(equi_icon.scaled(100,100,Qt::KeepAspectRatio));
     ui->icon_equi_2->setPixmap(equi_icon.scaled(100,100,Qt::KeepAspectRatio));
+
+
 
 
 
@@ -72,6 +75,30 @@ void MainWindow::smallLineAnimationMedicament(){
     animation->setDuration(500);
     animation->setStartValue(QRect(ui->line_med->geometry().x()+(ui->line_med->geometry().width()/2),40,10,3));
     animation->setEndValue(ui->line_med->geometry());
+    animation->start();
+}
+
+void MainWindow::bigLineAnimationMedicament()
+{
+    QPropertyAnimation *animation = new QPropertyAnimation(ui->bigline_med, "geometry");
+    animation->setDuration(2000);
+    animation->setStartValue(QRect(-500,ui->bigline_med->geometry().y(),500,3));
+    animation->setEndValue(ui->bigline_med->geometry());
+    QEasingCurve curve;
+    curve.setType(QEasingCurve::OutBounce);
+    animation->setEasingCurve(curve);
+    animation->start();
+}
+
+void MainWindow::bigLineAnimationEquipement()
+{
+    QPropertyAnimation *animation = new QPropertyAnimation(ui->bigline_eq, "geometry");
+    animation->setDuration(2000);
+    animation->setStartValue(QRect(-500,ui->bigline_eq->geometry().y(),500,3));
+    animation->setEndValue(ui->bigline_eq->geometry());
+    QEasingCurve curve;
+    curve.setType(QEasingCurve::OutBounce);
+    animation->setEasingCurve(curve);
     animation->start();
 }
 
@@ -108,6 +135,7 @@ void MainWindow::on_Medicament_2_clicked()
 {
     ui->stackedWidget->setCurrentIndex(1);
     smallLineAnimationMedicament();
+    bigLineAnimationMedicament();
     afficher_medicament();
 }
 
@@ -121,6 +149,7 @@ void MainWindow::on_Equipement_clicked()
 {
     ui->stackedWidget->setCurrentIndex(2);
     smallLineAnimationEquipement();
+    bigLineAnimationEquipement();
     afficher_equipement();
 }
 
@@ -162,24 +191,17 @@ void MainWindow::on_annuler_clicked()
 //////////////////////////////////////////////////affichage des médicaments
 void MainWindow::afficher_medicament()
 {
-    QSqlQuery *qry=new QSqlQuery();
+    medicament m;
+    int rowCount = m.clear_liste_med();
 
-    if (qry->exec("SELECT * FROM MEDICAMENTS"))
+    for (int i =rowCount ; i>=0 ; i--)
     {
-        int rowCount = 0;
-        while(qry->next())
-        {
-            rowCount++;
-        }
-
-        for (int i =rowCount ; i>=0 ; i--)
-        {
-            QListWidgetItem *name = new QListWidgetItem;
-            name = ui->listWidget_MED->takeItem(i);
-            ui->listWidget_MED->removeItemWidget(name);
-        }
-
+        QListWidgetItem *name = new QListWidgetItem;
+        name = ui->listWidget_MED->takeItem(i);
+        ui->listWidget_MED->removeItemWidget(name);
     }
+
+    QSqlQuery* qry=new QSqlQuery();
 
     if (qry->exec("SELECT NAME FROM MEDICAMENTS"))
     {
@@ -201,19 +223,13 @@ void MainWindow::afficher_medicament()
     }
 }
 
-
 ////////////////////////////////////////////////////////////affichage des équipements
 void MainWindow::afficher_equipement()
 {
-    QSqlQuery *qry=new QSqlQuery();
+    equipement e;
+    int rowCount = e.clear_liste_eq();
 
-    if (qry->exec("SELECT * FROM EQUIPEMENT"))
-    {
-        int rowCount = 0;
-        while(qry->next())
-        {
-            rowCount++;
-        }
+
 
         for (int i =rowCount ; i>=0 ; i--)
         {
@@ -222,7 +238,8 @@ void MainWindow::afficher_equipement()
             ui->listWidget_EQUI->removeItemWidget(name);
         }
 
-    }
+        QSqlQuery* qry=new QSqlQuery();
+
 
     if (qry->exec("SELECT NOM FROM EQUIPEMENT"))
     {
@@ -249,6 +266,9 @@ void MainWindow::on_pushButton_ajouter_clicked()
 {
     QString df,dlc;
     QSqlQuery query;
+
+
+
     df = ui->dateEdit_DF->date().toString("dd-MM-yyyy");
     dlc = ui->dateEdit_DLC->date().toString("dd-MM-yyyy");
 
@@ -279,16 +299,8 @@ void MainWindow::on_pushButton_ajouter_clicked()
     {
 
 
-        query.prepare("SELECT * FROM MEDICAMENTS WHERE NAME= :nom");
-        query.bindValue(":nom",m.getNom());
-        if(query.exec())
-        {
-            int count(0);
-            while(query.next())
-            {
-                count++;
-            }
-            if(count==0)
+
+            if(m.chercher_nom_exist(m.getNom())==0)
             {
                 bool test=m.ajouter_medicament();
                 if(test)
@@ -303,7 +315,7 @@ void MainWindow::on_pushButton_ajouter_clicked()
                                          QObject::tr("medicament deja existant.\n"
                                                      "Click Cancel to exit."), QMessageBox::Cancel);
             }
-        }
+
 
     }
     ui->stackedWidget->setCurrentIndex(1);
@@ -390,53 +402,34 @@ void MainWindow::on_chercher_med_textChanged(const QString &arg1)
 //////////////////////////////////////////////////////////////afficher medicament
 void MainWindow::on_listWidget_MED_itemDoubleClicked(QListWidgetItem *item)
 {
-    ui->stackedWidget->setCurrentIndex(5);
-    QString nom = item->text();
-    MainWindow m_w;
-    m_w.set_nom_medicament(nom);
-    qDebug() << m_w.nom_medicament_1 << endl;
-    QSqlQuery* qry=new QSqlQuery();
-    qry->prepare("SELECT * FROM MEDICAMENTS WHERE NAME = :nom");
-    qry->bindValue(":nom",nom);
+    medicament m;
+        ui->stackedWidget->setCurrentIndex(5);
+        QString nom = item->text();
+        QSqlQuery qry=m.afficher_med_double_clicked(nom);
 
-    if ( qry->exec())
-    {
-        while (qry->next())
-        {
-            QString df = qry->value(2).toString();
-            QString dlc = qry->value(3).toString();
-            QDate df_date = QDate::fromString(df,"dd-MM-yyyy");
-            QDate dlc_date = QDate::fromString(dlc,"dd-MM-yyyy");
-            ui->dateEdit_DF2->setDate(df_date);
-            ui->dateEdit_4->setDate(dlc_date);
-            QString nom,des,prix,quantite;
-            nom= qry->value(0).toString();
-            ui->lineEdit->setText(nom);
-            ui->lineEdit_3->setText(qry->value(1).toString());
-            ui->lineEdit_4->setText(qry->value(4).toString());
-            ui->lineEdit_2->setText(qry->value(5).toString());
-        }
-    }
+        QString df = qry.value(2).toString();
+        QString dlc = qry.value(3).toString();
+        QDate df_date = QDate::fromString(df,"dd-MM-yyyy");
+        QDate dlc_date = QDate::fromString(dlc,"dd-MM-yyyy");
+        ui->dateEdit_DF2->setDate(df_date);
+        ui->dateEdit_4->setDate(dlc_date);
+        QString nom_m,des,prix,quantite;
+        nom_m= qry.value(0).toString();
+        ui->lineEdit->setText(nom_m);
+        ui->lineEdit_3->setText(qry.value(1).toString());
+        ui->lineEdit_4->setText(qry.value(4).toString());
+        ui->lineEdit_2->setText(qry.value(5).toString());
+
 }
 
 
 
 void MainWindow::on_ModifierMedicament_clicked()
 {
-    QSqlQuery qry;
+
+    medicament m;
     QString nom_init = ui->listWidget_MED->currentItem()->text();
-    qry.prepare("SELECT * FROM MEDICAMENTS WHERE NAME = :nom");
-    qry.bindValue(":nom",nom_init);
-    qDebug() << nom_init << endl;
-
-    if ( qry.exec() )
-    {
-        int count(0);
-        while (qry.next())
-        {
-            count++;
-
-        }
+    int count=m.chercher_nomMedicament_a_modifier(nom_init);
         if (count == 1)
         {
             QString df= ui->dateEdit_DF2->date().toString("dd-MM-yyyy") ;
@@ -479,7 +472,7 @@ void MainWindow::on_ModifierMedicament_clicked()
         }
 
 
-    }
+
 
 
     afficher_medicament();
@@ -550,17 +543,9 @@ void MainWindow::on_ajout_equi_clicked()
     {
         qDebug() << etat << name << dispo << endl;
         equipement e(name,etat,dispo);
-        QSqlQuery query;
-        query.prepare("SELECT * FROM EQUIPEMENT WHERE NOM= :nom");
-        query.bindValue(":nom",e.get_nom());
-        if(query.exec())
-        {
-            int count(0);
-            while(query.next())
-            {
-                count++;
-            }
-            if(count==0)
+
+
+            if(e.chercher_nom_exist(e.get_nom())==0)
             {
                 bool test=e.ajouter_equipement();
                 if(test)
@@ -572,12 +557,14 @@ void MainWindow::on_ajout_equi_clicked()
             }
             else
             {
-                qDebug() <<"equipement deja existant"<< endl;
+                QMessageBox::information(nullptr, QObject::tr("ERROR"),
+                                         QObject::tr("equipement deja existant.\n"
+                                                     "Click Cancel to exit."), QMessageBox::Cancel);
             }
         }
         afficher_equipement();
         ui->stackedWidget->setCurrentIndex(2);
-    }
+
 
     ui->nom_equi->setText("");
     ui->checkBox_bon->setChecked(false);
@@ -604,24 +591,21 @@ void MainWindow::on_chercher_equi_textChanged(const QString &arg1)
     }
 }
 
+
+
+
 void MainWindow::on_listWidget_EQUI_itemDoubleClicked(QListWidgetItem *item)
-{
+{   equipement e;
     ui->stackedWidget->setCurrentIndex(6);
     QString nom = item->text();
-    QSqlQuery* qry=new QSqlQuery();
-    qry->prepare("SELECT * FROM EQUIPEMENT WHERE NOM = :nom");
-    qry->bindValue(":nom",nom);
+    QSqlQuery qry=e.afficher_eq_double_clicked(nom);
 
-    if ( qry->exec())
-    {
-        while (qry->next())
-        {
 
-            QString nom,etat,dispo;
-            nom= qry->value(0).toString();
-            ui->lineEdit_5->setText(nom);
+            QString nom_e,etat,dispo;
+            nom_e= qry.value(0).toString();
+            ui->lineEdit_5->setText(nom_e);
 
-            dispo = qry->value(1).toString();
+            dispo = qry.value(1).toString();
 
             if ( dispo == "0")
             {
@@ -632,7 +616,7 @@ void MainWindow::on_listWidget_EQUI_itemDoubleClicked(QListWidgetItem *item)
                 ui->dispo->setChecked(true);
             }
 
-            etat = qry->value(2).toString();
+            etat = qry.value(2).toString();
 
             if ( etat == "0")
             {
@@ -642,25 +626,15 @@ void MainWindow::on_listWidget_EQUI_itemDoubleClicked(QListWidgetItem *item)
             {
                 ui->bon->setChecked(true);
             }
-        }
-    }
+
+
 }
 
 void MainWindow::on_ModifierEquipement_clicked()
 {
-    QSqlQuery qry;
+    equipement e;
     QString nom_init = ui->listWidget_EQUI->currentItem()->text();
-    qry.prepare("SELECT * FROM EQUIPEMENT WHERE NOM = :nom");
-    qry.bindValue(":nom",nom_init);
-
-    if ( qry.exec() )
-    {
-        int count(0);
-        while (qry.next())
-        {
-            count++;
-
-        }
+    int count = e.chercher_nomEquipement_a_modifier(nom_init);
         if (count == 1)
         {
             QString nom="",dispo="",etat="";
@@ -712,7 +686,7 @@ void MainWindow::on_ModifierEquipement_clicked()
             if ( nom == "" || etat == "" || dispo == "")
             {
                 QMessageBox::information(nullptr, QObject::tr("ERROR"),
-                                         QObject::tr("name or dispo or etat is empty.\n"
+                                         QObject::tr("nom or disponibilite ou etat est vide.\n"
                                                      "Click Cancel to exit."), QMessageBox::Cancel);
             }
             else
@@ -741,7 +715,7 @@ void MainWindow::on_ModifierEquipement_clicked()
         }
 
 
-    }
+
 
     ui->lineEdit_5->setText("");
     ui->bon->setChecked(false);
@@ -752,15 +726,25 @@ void MainWindow::on_ModifierEquipement_clicked()
     afficher_equipement();
 }
 
+
+
+
 void MainWindow::on_trier_med_clicked()
 {
     ui->listWidget_MED->sortItems(Qt::AscendingOrder);
 }
 
+
+
+
 void MainWindow::on_trier_eq_clicked()
 {
     ui->listWidget_EQUI->sortItems(Qt::AscendingOrder);
 }
+
+
+
+
 
 void MainWindow::on_imprimer_clicked()
 {
@@ -856,7 +840,7 @@ void MainWindow::statistique_med()
 
 
 
-
+////////////////////////////////button statistique
 void MainWindow::on_pushButton_clicked()
 {
     statistique_med();
@@ -864,6 +848,8 @@ void MainWindow::on_pushButton_clicked()
 
 }
 
+
+/////////////////////////////////button retour
 void MainWindow::on_pushButton_2_clicked()
 {
     ui->stackedWidget->setCurrentIndex(1);

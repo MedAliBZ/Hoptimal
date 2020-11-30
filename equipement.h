@@ -33,6 +33,10 @@ public:
     bool ajouter_equipement();
     bool supprimer_equipement(QString);
     bool modifier_equipement(QString);
+    int clear_liste_eq();
+    QSqlQuery afficher_eq_double_clicked(QString );
+    int chercher_nom_exist(QString);
+    int chercher_nomEquipement_a_modifier(QString );
 };
 
 #endif // EQUIPEMENT_H

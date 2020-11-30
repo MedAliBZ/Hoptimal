@@ -48,3 +48,76 @@ bool equipement::modifier_equipement(QString nom_init)
     qry.bindValue(":name",nom_init);
     return qry.exec();
 }
+
+int equipement::clear_liste_eq()
+{
+    QSqlQuery *qry=new QSqlQuery();
+    int rowCount = 0;
+    if (qry->exec("SELECT * FROM EQUIPEMENT"))
+    {
+
+        while(qry->next())
+        {
+            rowCount++;
+        }
+
+    }
+
+    return rowCount;
+}
+
+QSqlQuery equipement::afficher_eq_double_clicked(QString nom)
+{
+    QSqlQuery* qry=new QSqlQuery();
+    qry->prepare("SELECT * FROM EQUIPEMENT WHERE NOM = :nom");
+    qry->bindValue(":nom",nom);
+
+    if (qry->exec())
+    {
+        while (qry->next())
+        {
+            return *qry;
+        }
+    }
+
+
+}
+
+int equipement::chercher_nom_exist(QString nom)
+{
+    QSqlQuery query;
+    query.prepare("SELECT * FROM EQUIPEMENT WHERE NOM= :nom");
+    query.bindValue(":nom",nom);
+    int count(0);
+    if(query.exec())
+    {
+
+        while(query.next())
+        {
+            count++;
+        }
+    }
+    return count;
+
+}
+
+
+int equipement::chercher_nomEquipement_a_modifier(QString nom_init)
+{
+    QSqlQuery qry;
+
+    qry.prepare("SELECT * FROM EQUIPEMENT WHERE NOM = :nom");
+    qry.bindValue(":nom",nom_init);
+    qDebug() << nom_init << endl;
+   int count(0);
+    if ( qry.exec() )
+    {
+
+        while (qry.next())
+        {
+            count++;
+
+        }
+}
+    return count;
+}
