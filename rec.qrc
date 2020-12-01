@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/recource">
+        <file>image/city-map.png</file>
+        <file>image/id.png</file>
+        <file>image/license-plate.png</file>
+        <file>image/staff.png</file>
+    </qresource>
+</RCC>
