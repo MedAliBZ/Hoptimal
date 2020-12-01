@@ -45,6 +45,9 @@ public:
 
     void afficher(QString,QString,int);
 
+    void afficher(QString tri,int occurence,QString cin1,QString nom1,QString prenom1,QString numChambre1);
+
+
     bool modifyValues(QString nom, QString prenom, QDate dateNaissance,QString Cin,QString numChambre,QString oldCin);
 
     void Delete();

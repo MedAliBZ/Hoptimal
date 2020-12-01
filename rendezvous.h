@@ -43,6 +43,8 @@ public:
 
     void afficher(QString,QString,int);
 
+    void afficher(QString tri,int occurence,QString id1,QString nomPatient1,QString prenomPatient1,QString email1);
+
     void Delete();
 
     QSqlQueryModel* search(QSqlQuery qry,QString column,QString id,QString nomPatient,QString prenomPatient,QString email);

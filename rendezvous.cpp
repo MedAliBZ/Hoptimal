@@ -121,6 +121,37 @@ void RendezVous::afficher(QString tri,QString data,int occurence){
     this->dateTime=dateTime;
 }
 
+void RendezVous::afficher(QString tri,int occurence,QString id1,QString nomPatient1,QString prenomPatient1,QString email1){
+
+    QString nomPatient,prenomPatient,email,id;
+    QDateTime dateTime;
+
+    QSqlQuery query("SELECT * FROM rdv "
+                    "WHERE id LIKE '%"+id1+"%'"
+                    " AND nomPatient LIKE '%"+nomPatient1+"%'"
+                    " AND prenomPatient LIKE '%"+prenomPatient1+"%'"
+                    " AND email LIKE '%"+email1+"%'"
+                    " ORDER BY "+tri);;
+
+
+
+    for(int i=0;i<=occurence;i++)
+        query.next();
+
+            id = query.value(0).toString();
+            nomPatient = query.value(1).toString();
+            prenomPatient = query.value(2).toString();
+            email=query.value(3).toString();
+            dateTime = query.value(4).toDateTime();
+
+
+    this->id=id;
+    this->nomPatient=nomPatient;
+    this->prenomPatient=prenomPatient;
+    this->email=email;
+    this->dateTime=dateTime;
+}
+
 void RendezVous::Delete(){
     QSqlQuery qry;
     qry.prepare("DELETE FROM rdv WHERE id='"+this->id+"';");

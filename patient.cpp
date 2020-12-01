@@ -105,9 +105,6 @@ void Patient::printPDF(){
 }
 
 void Patient::afficher(QString tri,QString data,int occurence){
-
-
-
     QString nom,prenom,numChambre,cin;
     QDate dateNaissance;
     QSqlQuery query("SELECT * FROM patient WHERE "+tri+"='"+data+"' ORDER BY "+tri);
@@ -129,6 +126,34 @@ void Patient::afficher(QString tri,QString data,int occurence){
     this->numChambre=numChambre;
 
 }
+
+void Patient::afficher(QString tri,int occurence,QString cin1,QString nom1,QString prenom1,QString numChambre1){
+
+    QString nom,prenom,numChambre,cin;
+    QDate dateNaissance;
+    QSqlQuery query("SELECT * FROM PATIENT "
+                    "WHERE CIN LIKE '%"+cin1+"%'"
+                    " AND NOM LIKE '%"+nom1+"%' AND PRENOM LIKE '%"+prenom1+"%'"
+                    " AND NUMCHAMBRE LIKE '%"+numChambre1+"%' ORDER BY "+tri);
+
+
+    for(int i=0;i<=occurence;i++)
+        query.next();
+
+    cin =query.value(0).toString();
+    nom = query.value(1).toString();
+    prenom = query.value(2).toString();
+    dateNaissance = query.value(3).toDate();
+    numChambre=query.value(4).toString();
+
+    this->CIN=cin;
+    this->nom=nom;
+    this->prenom=prenom;
+    this->dateNaissance=dateNaissance;
+    this->numChambre=numChambre;
+
+}
+
 
 
 QSqlQueryModel* Patient::search(QSqlQuery qry,QString column,QString cin,QString nom,QString prenom,QString numChambre){

@@ -295,7 +295,6 @@ void Menu::initialiserRDV(){
 }
 
 void Menu::afficherRDV(){
-
     ui->ajouterRendezVous->setText("Modifier");
     setWindowTitle("Hoptimal - Modifier un rendez vous");
     ui->email_sending->setVisible(true);
@@ -364,7 +363,8 @@ void Menu::on_listPatient_doubleClicked(const QModelIndex &index)
     int occurence=0;
     while(index.data().toString()==index.sibling(--row,index.column()).data().toString())
          occurence++;
-    P.afficher(triPatient(),index.data().toString(),occurence);
+
+    ui->recherchePatient->isEnabled() ? P.afficher(triPatient(),index.data().toString(),occurence) : P.afficher(triPatient(),occurence,ui->advanced_cin->text(),ui->advanced_nom->text(),ui->advanced_prenom->text(),ui->advanced_chambre->text());
     afficherPatient();
     ui->stackedWidget->setCurrentIndex(3);
 
@@ -378,8 +378,10 @@ void Menu::on_listRendezVous_doubleClicked(const QModelIndex &index)
     while(index.data().toString()==index.sibling(--row,index.column()).data().toString())
         occurence++;
 
+    ui->recherchePatient->isEnabled() ? R.afficher(triRDV(),index.data().toString(),occurence) : R.afficher(triRDV(),occurence,ui->advanced_cinrdv->text(),ui->advanced_nomrdv->text(),ui->advanced_prenomrdv->text(),ui->advanced_emailrdv->text());
 
-    R.afficher(triRDV(),index.data().toString(),occurence);
+
+
     afficherRDV();
     ui->stackedWidget->setCurrentIndex(4);
 }
