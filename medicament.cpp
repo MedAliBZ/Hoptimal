@@ -90,8 +90,18 @@ QSqlQuery medicament::afficher_med_double_clicked(QString nom)
         }
     }
 
-
 }
+
+
+
+QSqlQuery* medicament::afficherMedicamentList()
+{
+    QSqlQuery* qry=new QSqlQuery();
+    qry->exec("SELECT * FROM MEDICAMENTS");
+    return qry;
+}
+
+
 
 int medicament::clear_liste_med()
 {
@@ -146,4 +156,13 @@ int medicament::chercher_nomMedicament_a_modifier(QString nom_init)
         }
 }
     return count;
+}
+
+QSqlQuery* medicament::trier_liste_med()
+{
+    QSqlQuery* qry= new QSqlQuery() ;
+
+    qry->exec("SELECT * FROM MEDICAMENTS ORDER BY NAME ASC");
+
+    return qry;
 }

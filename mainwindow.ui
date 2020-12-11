@@ -9,9 +9,17 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>698</width>
-    <height>453</height>
+    <width>690</width>
+    <height>490</height>
    </rect>
+  </property>
+  <property name="font">
+   <font>
+    <family>Quicksand SemiBold</family>
+    <pointsize>12</pointsize>
+    <weight>75</weight>
+    <bold>true</bold>
+   </font>
   </property>
   <property name="cursor">
    <cursorShape>ArrowCursor</cursorShape>
@@ -20,7 +28,7 @@
    <string>Hoptimal</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QMainWindow,QWidget,QMessageBox{
+   <string notr="true">QMainWindow,QWidget,QMessageBox,QCheckBox{
 background: qlineargradient(spread:pad, x1:0.472, y1:0, x2:0.502, y2:1, stop:0 rgba(0, 53, 84, 255), stop:1 rgba(0, 70, 111, 255));
 font-family:&quot;Quicksand SemiBold&quot;;
 }
@@ -71,13 +79,13 @@ backfround:white;
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout_3">
     <property name="leftMargin">
-     <number>0</number>
+     <number>2</number>
     </property>
     <property name="topMargin">
      <number>0</number>
     </property>
     <property name="rightMargin">
-     <number>0</number>
+     <number>2</number>
     </property>
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
@@ -85,7 +93,7 @@ backfround:white;
        <enum>QFrame::NoFrame</enum>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="Home">
        <property name="styleSheet">
@@ -110,7 +118,7 @@ backfround:white;
           <property name="minimumSize">
            <size>
             <width>0</width>
-            <height>69</height>
+            <height>90</height>
            </size>
           </property>
           <property name="maximumSize">
@@ -128,6 +136,16 @@ backfround:white;
           <property name="text">
            <string>Liste des médicaments</string>
           </property>
+          <property name="icon">
+           <iconset resource="resources.qrc">
+            <normaloff>:/rec/list.png</normaloff>:/rec/list.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>25</width>
+            <height>25</height>
+           </size>
+          </property>
          </widget>
         </item>
         <item>
@@ -144,11 +162,24 @@ backfround:white;
          </spacer>
         </item>
         <item>
+         <spacer name="horizontalSpacer_15">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
          <widget class="QPushButton" name="list_eq">
           <property name="minimumSize">
            <size>
             <width>0</width>
-            <height>69</height>
+            <height>90</height>
            </size>
           </property>
           <property name="font">
@@ -159,6 +190,16 @@ backfround:white;
           </property>
           <property name="text">
            <string>Liste des équipements</string>
+          </property>
+          <property name="icon">
+           <iconset resource="resources.qrc">
+            <normaloff>:/rec/list.png</normaloff>:/rec/list.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>25</width>
+            <height>25</height>
+           </size>
           </property>
          </widget>
         </item>
@@ -204,6 +245,9 @@ backfround:white;
               <pointsize>11</pointsize>
              </font>
             </property>
+            <property name="styleSheet">
+             <string notr="true">color :rgb(255, 255, 255)</string>
+            </property>
             <property name="text">
              <string/>
             </property>
@@ -246,6 +290,16 @@ background-color: rgba(170, 218, 255, 100);
               <property name="text">
                <string>Médicament</string>
               </property>
+              <property name="icon">
+               <iconset resource="resources.qrc">
+                <normaloff>:/rec/med.png</normaloff>:/rec/med.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>20</width>
+                <height>20</height>
+               </size>
+              </property>
              </widget>
             </item>
             <item>
@@ -264,6 +318,10 @@ background-color: rgba(170, 218, 255, 100);
            <widget class="QPushButton" name="effacer_medicament">
             <property name="text">
              <string>Effacer</string>
+            </property>
+            <property name="icon">
+             <iconset resource="resources.qrc">
+              <normaloff>:/rec/trash.png</normaloff>:/rec/trash.png</iconset>
             </property>
            </widget>
           </item>
@@ -295,6 +353,16 @@ background-color: rgba(170, 218, 255, 100);
             </property>
             <property name="text">
              <string>Equipement</string>
+            </property>
+            <property name="icon">
+             <iconset resource="resources.qrc">
+              <normaloff>:/rec/equipement.png</normaloff>:/rec/equipement.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>20</width>
+              <height>20</height>
+             </size>
             </property>
            </widget>
           </item>
@@ -329,6 +397,16 @@ background-color: rgba(170, 218, 255, 100);
             <property name="text">
              <string>Statistique</string>
             </property>
+            <property name="icon">
+             <iconset resource="resources.qrc">
+              <normaloff>:/rec/images-removebg-preview (1).png</normaloff>:/rec/images-removebg-preview (1).png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>25</width>
+              <height>25</height>
+             </size>
+            </property>
            </widget>
           </item>
           <item row="9" column="2" alignment="Qt::AlignHCenter">
@@ -339,8 +417,25 @@ background-color: rgba(170, 218, 255, 100);
               <height>0</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <family>Quicksand SemiBold</family>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
             <property name="text">
              <string>Ajouter</string>
+            </property>
+            <property name="icon">
+             <iconset resource="resources.qrc">
+              <normaloff>:/rec/Downloads/depositphotos_232809032-stock-illustration-notification-cloud-sign-add-reminder-removebg-preview (1).png</normaloff>:/rec/Downloads/depositphotos_232809032-stock-illustration-notification-cloud-sign-add-reminder-removebg-preview (1).png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>25</width>
+              <height>25</height>
+             </size>
             </property>
            </widget>
           </item>
@@ -434,6 +529,16 @@ background-color: rgba(170, 218, 255, 100);
             <property name="text">
              <string>Home</string>
             </property>
+            <property name="icon">
+             <iconset resource="resources.qrc">
+              <normaloff>:/rec/Home.png</normaloff>:/rec/Home.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>20</width>
+              <height>20</height>
+             </size>
+            </property>
            </widget>
           </item>
           <item row="7" column="2">
@@ -458,7 +563,7 @@ background-color: rgba(170, 218, 255, 100);
           </item>
           <item row="4" column="0" colspan="3">
            <layout class="QVBoxLayout" name="verticalLayout_6">
-            <item>
+            <item alignment="Qt::AlignVCenter">
              <widget class="QLabel" name="label">
               <property name="font">
                <font>
@@ -531,6 +636,16 @@ background-color: rgba(170, 218, 255, 100);
             <property name="text">
              <string>Ajouter</string>
             </property>
+            <property name="icon">
+             <iconset resource="resources.qrc">
+              <normaloff>:/rec/Downloads/depositphotos_232809032-stock-illustration-notification-cloud-sign-add-reminder-removebg-preview (1).png</normaloff>:/rec/Downloads/depositphotos_232809032-stock-illustration-notification-cloud-sign-add-reminder-removebg-preview (1).png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>25</width>
+              <height>25</height>
+             </size>
+            </property>
            </widget>
           </item>
           <item row="0" column="0">
@@ -562,6 +677,16 @@ background-color: rgba(170, 218, 255, 100);
             <property name="text">
              <string>Home</string>
             </property>
+            <property name="icon">
+             <iconset resource="resources.qrc">
+              <normaloff>:/rec/Home.png</normaloff>:/rec/Home.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>20</width>
+              <height>20</height>
+             </size>
+            </property>
            </widget>
           </item>
           <item row="5" column="2" alignment="Qt::AlignHCenter">
@@ -577,6 +702,9 @@ background-color: rgba(170, 218, 255, 100);
               <family>Quicksand SemiBold</family>
               <pointsize>11</pointsize>
              </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color :rgb(255, 255, 255)</string>
             </property>
             <property name="text">
              <string/>
@@ -708,6 +836,16 @@ background-color: rgba(170, 218, 255, 100);
               <property name="text">
                <string>Equipement</string>
               </property>
+              <property name="icon">
+               <iconset resource="resources.qrc">
+                <normaloff>:/rec/equipement.png</normaloff>:/rec/equipement.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>20</width>
+                <height>20</height>
+               </size>
+              </property>
              </widget>
             </item>
             <item>
@@ -726,6 +864,10 @@ background-color: rgba(170, 218, 255, 100);
            <widget class="QPushButton" name="effacer_equipement">
             <property name="text">
              <string>Effacer</string>
+            </property>
+            <property name="icon">
+             <iconset resource="resources.qrc">
+              <normaloff>:/rec/trash.png</normaloff>:/rec/trash.png</iconset>
             </property>
            </widget>
           </item>
@@ -759,6 +901,16 @@ background-color: rgba(170, 218, 255, 100);
               </property>
               <property name="text">
                <string>Médicament</string>
+              </property>
+              <property name="icon">
+               <iconset resource="resources.qrc">
+                <normaloff>:/rec/med.png</normaloff>:/rec/med.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>20</width>
+                <height>20</height>
+               </size>
               </property>
              </widget>
             </item>
@@ -1180,6 +1332,15 @@ background-color: rgba(170, 218, 255, 100);
                 <height>25</height>
                </size>
               </property>
+              <property name="font">
+               <font>
+                <family>Quicksand SemiBold</family>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color :rgb(255, 255, 255)</string>
+              </property>
               <property name="text">
                <string>Bon</string>
               </property>
@@ -1193,8 +1354,17 @@ background-color: rgba(170, 218, 255, 100);
                 <height>25</height>
                </size>
               </property>
+              <property name="font">
+               <font>
+                <family>Quicksand SemiBold</family>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color :rgb(255, 255, 255)</string>
+              </property>
               <property name="text">
-               <string>Mauivais</string>
+               <string>Mauvais</string>
               </property>
              </widget>
             </item>
@@ -1223,6 +1393,15 @@ background-color: rgba(170, 218, 255, 100);
                 <height>25</height>
                </size>
               </property>
+              <property name="font">
+               <font>
+                <family>Quicksand SemiBold</family>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color :rgb(255, 255, 255)</string>
+              </property>
               <property name="text">
                <string>Disponible</string>
               </property>
@@ -1235,6 +1414,17 @@ background-color: rgba(170, 218, 255, 100);
                 <width>0</width>
                 <height>25</height>
                </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Quicksand SemiBold</family>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">
+color: rgb(255, 255, 255)
+</string>
               </property>
               <property name="text">
                <string>Non disponible</string>
@@ -1471,7 +1661,7 @@ background-color: rgba(170, 218, 255, 100);
              </widget>
             </item>
             <item alignment="Qt::AlignLeft">
-             <widget class="QLineEdit" name="lineEdit_4">
+             <widget class="QLineEdit" name="lineEdit_prix">
               <property name="font">
                <font>
                 <family>Quicksand SemiBold</family>
@@ -1501,7 +1691,7 @@ background-color: rgba(170, 218, 255, 100);
              </widget>
             </item>
             <item alignment="Qt::AlignLeft">
-             <widget class="QLineEdit" name="lineEdit_3">
+             <widget class="QLineEdit" name="lineEdit_description">
               <property name="minimumSize">
                <size>
                 <width>200</width>
@@ -1537,7 +1727,7 @@ background-color: rgba(170, 218, 255, 100);
              </widget>
             </item>
             <item alignment="Qt::AlignRight">
-             <widget class="QLineEdit" name="lineEdit">
+             <widget class="QLineEdit" name="lineEdit_nomMed">
               <property name="minimumSize">
                <size>
                 <width>200</width>
@@ -1644,7 +1834,7 @@ background-color: rgba(170, 218, 255, 100);
              </widget>
             </item>
             <item alignment="Qt::AlignLeft">
-             <widget class="QLineEdit" name="lineEdit_2">
+             <widget class="QLineEdit" name="lineEdit_quantite">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -1751,7 +1941,7 @@ background-color: rgba(170, 218, 255, 100);
              </widget>
             </item>
             <item alignment="Qt::AlignHCenter">
-             <widget class="QLineEdit" name="lineEdit_5">
+             <widget class="QLineEdit" name="lineEdit_nomEqui">
               <property name="minimumSize">
                <size>
                 <width>200</width>
@@ -1836,6 +2026,16 @@ background-color: rgba(170, 218, 255, 100);
               <property name="text">
                <string>Imprimer</string>
               </property>
+              <property name="icon">
+               <iconset resource="resources.qrc">
+                <normaloff>:/rec/print.png</normaloff>:/rec/print.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>25</width>
+                <height>25</height>
+               </size>
+              </property>
              </widget>
             </item>
             <item>
@@ -1872,30 +2072,32 @@ background-color: rgba(170, 218, 255, 100);
        </layout>
       </widget>
       <widget class="QWidget" name="statistique">
-       <widget class="QPushButton" name="pushButton_2">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>20</y>
-          <width>75</width>
-          <height>23</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Retour</string>
-        </property>
-       </widget>
-       <widget class="QFrame" name="horizontalFrame">
-        <property name="geometry">
-         <rect>
-          <x>80</x>
-          <y>0</y>
-          <width>611</width>
-          <height>401</height>
-         </rect>
-        </property>
-        <layout class="QHBoxLayout" name="horizontalLayout_21"/>
-       </widget>
+       <layout class="QVBoxLayout" name="verticalLayout_11">
+        <item>
+         <widget class="QFrame" name="horizontalFrame">
+          <layout class="QHBoxLayout" name="horizontalLayout_21"/>
+         </widget>
+        </item>
+        <item alignment="Qt::AlignLeft">
+         <widget class="QPushButton" name="pushButton_2">
+          <property name="minimumSize">
+           <size>
+            <width>131</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>Quicksand SemiBold</family>
+            <pointsize>8</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>Retour</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </widget>
      </widget>
     </item>
@@ -1907,12 +2109,14 @@ background-color: rgba(170, 218, 255, 100);
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>698</width>
+     <width>690</width>
      <height>21</height>
     </rect>
    </property>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

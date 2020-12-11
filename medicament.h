@@ -57,6 +57,8 @@ public:
         int clear_liste_med();
         int chercher_nom_exist(QString );
         int chercher_nomMedicament_a_modifier(QString );
+        QSqlQuery *afficherMedicamentList();
+        QSqlQuery *trier_liste_med();
 };
 
 #endif // MEDICAMENT_H

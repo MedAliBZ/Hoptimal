@@ -106,6 +106,7 @@ void MainWindow::on_list_med_clicked()
 {
     ui->stackedWidget->setCurrentIndex(1);
     afficher_medicament();
+
 }
 
 void MainWindow::on_list_eq_clicked()
@@ -167,6 +168,13 @@ void MainWindow::on_ajouter_med_clicked()
 void MainWindow::on_pushButton_3_clicked()
 {
     ui->stackedWidget->setCurrentIndex(1);
+    ui->nom_med->setText("");
+    ui->prix->setText("");
+    ui->quantite->setText("");
+    ui->description->setText("");
+    QString df_1="01-01-2015",dlc_1="01-01-2020";
+    ui->dateEdit_DF->date().toString(df_1);
+    ui->dateEdit_DLC->date().toString(dlc_1);
 }
 
 void MainWindow::on_ajouter_equi_clicked()
@@ -178,6 +186,11 @@ void MainWindow::on_ajouter_equi_clicked()
 void MainWindow::on_pushButton_5_clicked()
 {
     ui->stackedWidget->setCurrentIndex(2);
+    ui->nom_equi->setText("");
+    ui->checkBox_bon->setChecked(false);
+    ui->checkBox_mauvais->setChecked(false);
+    ui->checkBox_dispo->setChecked(false);
+    ui->checkBox_nondispo->setChecked(false);
 }
 
 
@@ -201,11 +214,10 @@ void MainWindow::afficher_medicament()
         ui->listWidget_MED->removeItemWidget(name);
     }
 
-    QSqlQuery* qry=new QSqlQuery();
+    QSqlQuery* qry=m.afficherMedicamentList();
 
-    if (qry->exec("SELECT NAME FROM MEDICAMENTS"))
-    {
-        int rowCount = 0;
+
+        rowCount = 0;
         while(qry->next())
         {
 
@@ -220,7 +232,6 @@ void MainWindow::afficher_medicament()
 
         }
 
-    }
 }
 
 ////////////////////////////////////////////////////////////affichage des équipements
@@ -238,12 +249,11 @@ void MainWindow::afficher_equipement()
             ui->listWidget_EQUI->removeItemWidget(name);
         }
 
-        QSqlQuery* qry=new QSqlQuery();
+        QSqlQuery* qry=e.afficherEquipementListe();
 
 
-    if (qry->exec("SELECT NOM FROM EQUIPEMENT"))
-    {
-        int rowCount = 0;
+
+        rowCount = 0;
         while(qry->next())
         {
 
@@ -258,7 +268,7 @@ void MainWindow::afficher_equipement()
 
         }
 
-    }
+
 }
 
 ///////////////////////////////////ajouter medicament
@@ -411,14 +421,16 @@ void MainWindow::on_listWidget_MED_itemDoubleClicked(QListWidgetItem *item)
         QString dlc = qry.value(3).toString();
         QDate df_date = QDate::fromString(df,"dd-MM-yyyy");
         QDate dlc_date = QDate::fromString(dlc,"dd-MM-yyyy");
+
+
         ui->dateEdit_DF2->setDate(df_date);
         ui->dateEdit_4->setDate(dlc_date);
         QString nom_m,des,prix,quantite;
         nom_m= qry.value(0).toString();
-        ui->lineEdit->setText(nom_m);
-        ui->lineEdit_3->setText(qry.value(1).toString());
-        ui->lineEdit_4->setText(qry.value(4).toString());
-        ui->lineEdit_2->setText(qry.value(5).toString());
+        ui->lineEdit_nomMed->setText(nom_m);
+        ui->lineEdit_description->setText(qry.value(1).toString());
+        ui->lineEdit_prix->setText(qry.value(4).toString());
+        ui->lineEdit_quantite->setText(qry.value(5).toString());
 
 }
 
@@ -435,10 +447,10 @@ void MainWindow::on_ModifierMedicament_clicked()
             QString df= ui->dateEdit_DF2->date().toString("dd-MM-yyyy") ;
             QString dlc= ui->dateEdit_4->date().toString("dd-MM-yyyy") ;
             QString nom,desc,prix,quantite;
-            nom= ui->lineEdit->text();
-            desc = ui->lineEdit_3->text();
-            prix = ui->lineEdit_4->text();
-            quantite = ui->lineEdit_2->text();
+            nom= ui->lineEdit_nomMed->text();
+            desc = ui->lineEdit_description->text();
+            prix = ui->lineEdit_prix->text();
+            quantite = ui->lineEdit_quantite->text();
             medicament m(nom,desc,df,dlc,prix,quantite);
 
             if ( nom == "" || desc == "" || prix == ""|| quantite == "")
@@ -603,7 +615,7 @@ void MainWindow::on_listWidget_EQUI_itemDoubleClicked(QListWidgetItem *item)
 
             QString nom_e,etat,dispo;
             nom_e= qry.value(0).toString();
-            ui->lineEdit_5->setText(nom_e);
+            ui->lineEdit_nomEqui->setText(nom_e);
 
             dispo = qry.value(1).toString();
 
@@ -638,7 +650,7 @@ void MainWindow::on_ModifierEquipement_clicked()
         if (count == 1)
         {
             QString nom="",dispo="",etat="";
-            nom= ui->lineEdit_5->text();
+            nom= ui->lineEdit_nomEqui->text();
 
             if ( !ui->dispo->isChecked() && !ui->non_dispo->isChecked() )
             {
@@ -717,7 +729,7 @@ void MainWindow::on_ModifierEquipement_clicked()
 
 
 
-    ui->lineEdit_5->setText("");
+    ui->lineEdit_nomEqui->setText("");
     ui->bon->setChecked(false);
     ui->mauvais->setChecked(false);
     ui->dispo->setChecked(false);
@@ -731,7 +743,33 @@ void MainWindow::on_ModifierEquipement_clicked()
 
 void MainWindow::on_trier_med_clicked()
 {
-    ui->listWidget_MED->sortItems(Qt::AscendingOrder);
+    medicament m;
+
+
+        int rowCount = m.clear_liste_med();
+
+        for (int i =rowCount ; i>=0 ; i--)
+        {
+            QListWidgetItem *name = new QListWidgetItem;
+            name = ui->listWidget_MED->takeItem(i);
+            ui->listWidget_MED->removeItemWidget(name);
+        }
+
+        QSqlQuery* qry = m.trier_liste_med();
+        rowCount = 0;
+        while(qry->next())
+        {
+
+            QListWidgetItem *Name = new QListWidgetItem;
+
+
+            Name->setText(qry->value(0).toString());
+            ui->listWidget_MED->insertItem(rowCount,Name);
+            rowCount++;
+
+
+
+        }
 }
 
 
@@ -739,7 +777,31 @@ void MainWindow::on_trier_med_clicked()
 
 void MainWindow::on_trier_eq_clicked()
 {
-    ui->listWidget_EQUI->sortItems(Qt::AscendingOrder);
+    equipement e;
+    int rowCount = e.clear_liste_eq();
+
+        for (int i =rowCount ; i>=0 ; i--)
+        {
+            QListWidgetItem *name = new QListWidgetItem;
+            name = ui->listWidget_EQUI->takeItem(i);
+            ui->listWidget_EQUI->removeItemWidget(name);
+        }
+
+        QSqlQuery* qry=e.trier_liste_equi();
+        rowCount = 0;
+        while(qry->next())
+        {
+
+            QListWidgetItem *Name = new QListWidgetItem;
+
+
+            Name->setText(qry->value(0).toString());
+            ui->listWidget_EQUI->insertItem(rowCount,Name);
+            rowCount++;
+
+
+
+        }
 }
 
 
@@ -755,7 +817,7 @@ void MainWindow::on_imprimer_clicked()
 
     QString etat,dispo,nom;
 
-    nom = ui->lineEdit_5->text();
+    nom = ui->lineEdit_nomEqui->text();
 
     if ( !ui->dispo->isChecked() && !ui->non_dispo->isChecked() )
     {

@@ -37,6 +37,8 @@ public:
     QSqlQuery afficher_eq_double_clicked(QString );
     int chercher_nom_exist(QString);
     int chercher_nomEquipement_a_modifier(QString );
+    QSqlQuery *afficherEquipementListe();
+    QSqlQuery *trier_liste_equi();
 };
 
 #endif // EQUIPEMENT_H

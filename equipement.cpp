@@ -83,6 +83,18 @@ QSqlQuery equipement::afficher_eq_double_clicked(QString nom)
 
 }
 
+QSqlQuery* equipement::afficherEquipementListe()
+{
+    QSqlQuery* qry = new QSqlQuery();
+
+    qry->exec("SELECT * FROM EQUIPEMENT");
+
+    return qry;
+
+}
+
+
+
 int equipement::chercher_nom_exist(QString nom)
 {
     QSqlQuery query;
@@ -120,4 +132,13 @@ int equipement::chercher_nomEquipement_a_modifier(QString nom_init)
         }
 }
     return count;
+}
+
+QSqlQuery* equipement::trier_liste_equi()
+{
+    QSqlQuery* qry= new QSqlQuery() ;
+
+    qry->exec("SELECT * FROM EQUIPEMENT ORDER BY NOM ASC");
+
+    return qry;
 }
