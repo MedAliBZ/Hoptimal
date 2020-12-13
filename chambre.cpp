@@ -55,7 +55,7 @@ QSqlQueryModel* chambre::afficher_ListeChambre()
 QSqlQuery* chambre::afficher_chambre(QString val)
 {
     QSqlQuery* query=new QSqlQuery();
-    query->prepare("select * from CHAMBRE where NUMERO='"+val+"'");
+    query->prepare("select * from CHAMBRE where EMPLACEMENT='"+val+"'");
     return  query;
 }
 bool chambre::modifier_chambre(QString old_num)
@@ -105,22 +105,4 @@ bool chambre::controle_saisieChambre(chambre cham)
       return false;
 }
 
-bool chambre::controle_saisie_lits_ChGarde(chambre cham)
-{
-    bool test=false;
-    if((cham.get_emplacement()=="Chambre de garde")&&(cham.get_nombre_lits()>3))
-      {
-       test= true;
-      }
-    return  test;
-}
-bool chambre::controle_saisie_lits_ChPatient(chambre cham)
-{
-    bool test=false;
-    if((cham.get_emplacement()=="Chambre du patient")&&(cham.get_nombre_lits()>4))
-    {
-        test= true;
-    }
-    return test;
-}
 

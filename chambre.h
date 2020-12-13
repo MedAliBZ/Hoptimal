@@ -43,8 +43,7 @@ public:
 
 
     bool controle_saisieChambre(chambre cham);
-    bool controle_saisie_lits_ChGarde(chambre cham);
-    bool controle_saisie_lits_ChPatient(chambre cham);
+
 
 
 

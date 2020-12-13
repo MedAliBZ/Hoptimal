@@ -20,8 +20,6 @@ public:
 private slots:
     void on_pushButton_AjouterService_clicked();
 
-    void on_pushButton_SupprimerService_clicked();
-
     void on_pushButton_menuChambres_clicked();
 
     void on_pushButton_menuServices_clicked();
@@ -48,17 +46,11 @@ private slots:
 
     void on_pushButton_AnnulerAjoutService_clicked();
 
-    void on_pushButton_annulerSuppService_clicked();
-
     void on_pushButton_AnnulerModifService_clicked();
 
     void on_pushButton_AjoutChambre_clicked();
 
     void on_pushButton_AnnulerAjoutChambre_clicked();
-
-    void on_pushButton_AnnulerSuppChambre_clicked();
-
-    void on_pushButton_SupprimerChambre_clicked();
 
     void on_pushButton_modifService_clicked();
 
@@ -82,7 +74,6 @@ private slots:
 
     void on_pushButton_imprimerService_clicked();
 
-
     void on_pushButton_rechercherChambre_clicked();
 
     void on_pushButton_triChambre_clicked();
@@ -91,8 +82,12 @@ private slots:
 
     void on_pushButton_StatService_clicked();
 
-    void statistiques();
     void on_pushButton_backstat_clicked();
+
+    void statistiques();
+
+
+    void on_lineEdit_ajoutNomService_textEdited(const QString &arg1);
 
 private:
     Ui::MainWindow *ui;

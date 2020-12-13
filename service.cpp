@@ -1,6 +1,7 @@
 #include "service.h"
 #include "connection.h"
 #include "qpainter.h"
+#include "mainwindow.h"
 #include <QString>
 #include <QSqlQuery>
 #include <QSqlQueryModel>
@@ -12,22 +13,24 @@ service::service()
 {
 
 }
-service::service(QString nom,QString staff1,QString staff2,QString staff3)
+service::service(QString nom,QString staff1,QString staff2,QString staff3,QString nom_equipement)
 {
     this->nom=nom;
     this->staff1=staff1;
     this->staff2=staff2;
     this->staff3=staff3;
+    this->nom_equipement=nom_equipement;
 }
  bool service::ajouter_service()
  {
      QSqlQuery query;
-     query.prepare("INSERT INTO SERVICES(nom,staff1,staff2,staff3)"
-                   "VALUES(:nom,:staff1,:staff2,:staff3)");
+     query.prepare("INSERT INTO SERVICES(nom,staff1,staff2,staff3,nom_equipement)"
+                   "VALUES(:nom,:staff1,:staff2,:staff3,:nom_equipement)");
      query.bindValue(":nom",nom);
      query.bindValue(":staff1",staff1);
      query.bindValue(":staff2",staff2);
      query.bindValue(":staff3",staff3);
+     query.bindValue(":nom_equipement",nom_equipement);
      return query.exec();
  }
 
@@ -40,12 +43,14 @@ service::service(QString nom,QString staff1,QString staff2,QString staff3)
  }
  QSqlQueryModel* service::afficher_ListeService()
  {
+     void statistiques();
      QSqlQueryModel *model=new QSqlQueryModel();
      model->setQuery("SELECT * FROM SERVICES");
-     model->setHeaderData(0,Qt::Horizontal,QObject::tr("nom"));
-     model->setHeaderData(1,Qt::Horizontal,QObject::tr("staff1"));
-     model->setHeaderData(2,Qt::Horizontal,QObject::tr("staff2"));
-     model->setHeaderData(3,Qt::Horizontal,QObject::tr("staff3"));
+     model->setHeaderData(0,Qt::Horizontal,QObject::tr("Nom"));
+     model->setHeaderData(1,Qt::Horizontal,QObject::tr("Staff1"));
+     model->setHeaderData(2,Qt::Horizontal,QObject::tr("Staff2"));
+     model->setHeaderData(3,Qt::Horizontal,QObject::tr("Staff3"));
+     model->setHeaderData(4,Qt::Horizontal,QObject::tr("Nom equipement"));
 
      return model;
 
@@ -53,11 +58,12 @@ service::service(QString nom,QString staff1,QString staff2,QString staff3)
  bool service::modifier_service(QString old_name)
  {
      QSqlQuery query;
-     query.prepare("UPDATE SERVICES SET NOM=:nom,STAFF1=:staff1,STAFF2=:staff2,STAFF3=:staff3 WHERE NOM='"+old_name+"'");
+     query.prepare("UPDATE SERVICES SET NOM=:nom,STAFF1=:staff1,STAFF2=:staff2,STAFF3=:staff3,NOM_EQUIPEMENT=:nom_equipement WHERE NOM='"+old_name+"'");
      query.bindValue(":nom",nom);
      query.bindValue(":staff1",staff1);
      query.bindValue(":staff2",staff2);
      query.bindValue(":staff3",staff3);
+     query.bindValue(":nom_equipement",nom_equipement);
      ////////////////////////
      return query.exec();
 
@@ -74,11 +80,13 @@ service::service(QString nom,QString staff1,QString staff2,QString staff3)
  {
      QSqlQueryModel * model= new QSqlQueryModel();
 
-             model->setQuery("SELECT * FROM SERVICES WHERE( NOM =  '"+nom+"' OR STAFF1='"+nom+"'OR STAFF2='"+nom+"'OR STAFF3='"+nom+"')");
-             model->setHeaderData(0, Qt::Horizontal, QObject::tr("nom"));
-             model->setHeaderData(1, Qt::Horizontal, QObject::tr("staff1"));
-             model->setHeaderData(2, Qt::Horizontal, QObject::tr("staff2"));
-             model->setHeaderData(3, Qt::Horizontal, QObject::tr("staff3"));
+             model->setQuery("SELECT * FROM SERVICES WHERE( NOM =  '"+nom+"' OR STAFF1='"+nom+"'OR STAFF2='"+nom+"'OR STAFF3='"+nom+"' OR NOM_EQUIPEMENT='"+nom+"')");
+             model->setHeaderData(0, Qt::Horizontal, QObject::tr("Nom"));
+             model->setHeaderData(1, Qt::Horizontal, QObject::tr("Staff1"));
+             model->setHeaderData(2, Qt::Horizontal, QObject::tr("Staff2"));
+             model->setHeaderData(3, Qt::Horizontal, QObject::tr("Staff3"));
+             model->setHeaderData(4, Qt::Horizontal, QObject::tr("Nom equipement"));
+
 
          return model ;
  }
@@ -88,15 +96,17 @@ service::service(QString nom,QString staff1,QString staff2,QString staff3)
 
      model->setQuery("SELECT * FROM SERVICES ORDER BY NOM ;");
 
-     model->setHeaderData(0, Qt::Horizontal, QObject::tr("nom"));
-     model->setHeaderData(1, Qt::Horizontal, QObject::tr("staff1"));
-     model->setHeaderData(2, Qt::Horizontal, QObject::tr("staff2"));
-     model->setHeaderData(3, Qt::Horizontal, QObject::tr("staff3"));
+     model->setHeaderData(0, Qt::Horizontal, QObject::tr("Nom"));
+     model->setHeaderData(1, Qt::Horizontal, QObject::tr("Staff1"));
+     model->setHeaderData(2, Qt::Horizontal, QObject::tr("Staff2"));
+     model->setHeaderData(3, Qt::Horizontal, QObject::tr("Staff3"));
+     model->setHeaderData(4, Qt::Horizontal, QObject::tr("Nom equipement"));
+
      return model;
  }
  bool service::controle_saisie_serviceAjout(service s)
  {
-     if((s.get_nom_service()=="")||(s.get_staff1()=="")||(s.get_staff2()=="")||(s.get_staff3()==""))
+     if((s.get_nom_service()=="")||(s.get_staff1()=="")||(s.get_staff2()=="")||(s.get_staff3()=="")||(s.get_equipement()==""))
         return true;
      else
          return false;
@@ -107,6 +117,7 @@ service::service(QString nom,QString staff1,QString staff2,QString staff3)
      QPdfWriter pdf("C:/Users/WIKI/Documents/validation_indiv/printService.pdf");
      QPainter painter(&pdf);
      QFont font=painter.font();
+     QMessageBox msgBox;
         font.setPointSize(font.pointSize() * 2);
         painter.setFont(font);
         painter.setPen(Qt::black);
@@ -114,16 +125,19 @@ service::service(QString nom,QString staff1,QString staff2,QString staff3)
         painter.drawText(300,1600, "Staff1: ");
         painter.drawText(300, 2400, "Staff2: ");
         painter.drawText(300, 3200, "Staff3: ");
+        painter.drawText(300,4000,"Nom equipement: ");
         painter.setPen(Qt::darkGray);
         painter.drawText(700, 800, this->nom);
         painter.drawText(700, 1600, this->staff1);
         painter.drawText(700, 2400, this->staff2);
         painter.drawText(700, 3200, this->staff3);
+        painter.drawText(700,4000,this->nom_equipement);
         painter.end();
-        QMessageBox msgBox;
-                 msgBox.setIcon(QMessageBox::Information);
-                 msgBox.setText("A pdf has been created.");
-                 msgBox.exec();
+        msgBox.setIcon(QMessageBox::Information);
+        msgBox.setText("A pdf has been created.");
+        msgBox.exec();
 
 
  }
+
+
