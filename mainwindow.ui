@@ -93,7 +93,7 @@ backfround:white;
        <enum>QFrame::NoFrame</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="Home">
        <property name="styleSheet">
@@ -137,7 +137,7 @@ backfround:white;
            <string>Liste des médicaments</string>
           </property>
           <property name="icon">
-           <iconset resource="resources.qrc">
+           <iconset>
             <normaloff>:/rec/list.png</normaloff>:/rec/list.png</iconset>
           </property>
           <property name="iconSize">
@@ -192,7 +192,7 @@ backfround:white;
            <string>Liste des équipements</string>
           </property>
           <property name="icon">
-           <iconset resource="resources.qrc">
+           <iconset>
             <normaloff>:/rec/list.png</normaloff>:/rec/list.png</iconset>
           </property>
           <property name="iconSize">
@@ -291,7 +291,7 @@ background-color: rgba(170, 218, 255, 100);
                <string>Médicament</string>
               </property>
               <property name="icon">
-               <iconset resource="resources.qrc">
+               <iconset>
                 <normaloff>:/rec/med.png</normaloff>:/rec/med.png</iconset>
               </property>
               <property name="iconSize">
@@ -320,7 +320,7 @@ background-color: rgba(170, 218, 255, 100);
              <string>Effacer</string>
             </property>
             <property name="icon">
-             <iconset resource="resources.qrc">
+             <iconset>
               <normaloff>:/rec/trash.png</normaloff>:/rec/trash.png</iconset>
             </property>
            </widget>
@@ -355,7 +355,7 @@ background-color: rgba(170, 218, 255, 100);
              <string>Equipement</string>
             </property>
             <property name="icon">
-             <iconset resource="resources.qrc">
+             <iconset>
               <normaloff>:/rec/equipement.png</normaloff>:/rec/equipement.png</iconset>
             </property>
             <property name="iconSize">
@@ -398,7 +398,7 @@ background-color: rgba(170, 218, 255, 100);
              <string>Statistique</string>
             </property>
             <property name="icon">
-             <iconset resource="resources.qrc">
+             <iconset>
               <normaloff>:/rec/images-removebg-preview (1).png</normaloff>:/rec/images-removebg-preview (1).png</iconset>
             </property>
             <property name="iconSize">
@@ -428,7 +428,7 @@ background-color: rgba(170, 218, 255, 100);
              <string>Ajouter</string>
             </property>
             <property name="icon">
-             <iconset resource="resources.qrc">
+             <iconset>
               <normaloff>:/rec/Downloads/depositphotos_232809032-stock-illustration-notification-cloud-sign-add-reminder-removebg-preview (1).png</normaloff>:/rec/Downloads/depositphotos_232809032-stock-illustration-notification-cloud-sign-add-reminder-removebg-preview (1).png</iconset>
             </property>
             <property name="iconSize">
@@ -530,7 +530,7 @@ background-color: rgba(170, 218, 255, 100);
              <string>Home</string>
             </property>
             <property name="icon">
-             <iconset resource="resources.qrc">
+             <iconset>
               <normaloff>:/rec/Home.png</normaloff>:/rec/Home.png</iconset>
             </property>
             <property name="iconSize">
@@ -588,6 +588,13 @@ background-color: rgba(170, 218, 255, 100);
             </item>
            </layout>
           </item>
+          <item row="5" column="0">
+           <widget class="QPushButton" name="pushButton_4">
+            <property name="text">
+             <string>tri par quantite</string>
+            </property>
+           </widget>
+          </item>
          </layout>
         </item>
        </layout>
@@ -637,7 +644,7 @@ background-color: rgba(170, 218, 255, 100);
              <string>Ajouter</string>
             </property>
             <property name="icon">
-             <iconset resource="resources.qrc">
+             <iconset>
               <normaloff>:/rec/Downloads/depositphotos_232809032-stock-illustration-notification-cloud-sign-add-reminder-removebg-preview (1).png</normaloff>:/rec/Downloads/depositphotos_232809032-stock-illustration-notification-cloud-sign-add-reminder-removebg-preview (1).png</iconset>
             </property>
             <property name="iconSize">
@@ -678,7 +685,7 @@ background-color: rgba(170, 218, 255, 100);
              <string>Home</string>
             </property>
             <property name="icon">
-             <iconset resource="resources.qrc">
+             <iconset>
               <normaloff>:/rec/Home.png</normaloff>:/rec/Home.png</iconset>
             </property>
             <property name="iconSize">
@@ -837,7 +844,7 @@ background-color: rgba(170, 218, 255, 100);
                <string>Equipement</string>
               </property>
               <property name="icon">
-               <iconset resource="resources.qrc">
+               <iconset>
                 <normaloff>:/rec/equipement.png</normaloff>:/rec/equipement.png</iconset>
               </property>
               <property name="iconSize">
@@ -866,7 +873,7 @@ background-color: rgba(170, 218, 255, 100);
              <string>Effacer</string>
             </property>
             <property name="icon">
-             <iconset resource="resources.qrc">
+             <iconset>
               <normaloff>:/rec/trash.png</normaloff>:/rec/trash.png</iconset>
             </property>
            </widget>
@@ -903,7 +910,7 @@ background-color: rgba(170, 218, 255, 100);
                <string>Médicament</string>
               </property>
               <property name="icon">
-               <iconset resource="resources.qrc">
+               <iconset>
                 <normaloff>:/rec/med.png</normaloff>:/rec/med.png</iconset>
               </property>
               <property name="iconSize">
@@ -2027,7 +2034,7 @@ color: rgb(255, 255, 255)
                <string>Imprimer</string>
               </property>
               <property name="icon">
-               <iconset resource="resources.qrc">
+               <iconset>
                 <normaloff>:/rec/print.png</normaloff>:/rec/print.png</iconset>
               </property>
               <property name="iconSize">
@@ -2115,8 +2122,6 @@ color: rgb(255, 255, 255)
    </property>
   </widget>
  </widget>
- <resources>
-  <include location="resources.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

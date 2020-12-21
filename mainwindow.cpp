@@ -201,7 +201,7 @@ void MainWindow::on_annuler_clicked()
 }
 
 
-//////////////////////////////////////////////////affichage des médicaments
+/////affichage liste des médicaments
 void MainWindow::afficher_medicament()
 {
     medicament m;
@@ -234,7 +234,7 @@ void MainWindow::afficher_medicament()
 
 }
 
-////////////////////////////////////////////////////////////affichage des équipements
+//////affichage liste des équipements
 void MainWindow::afficher_equipement()
 {
     equipement e;
@@ -875,6 +875,7 @@ void MainWindow::on_imprimer_clicked()
 
     y.print(&printer);
 
+    // add picture
 
 }
 

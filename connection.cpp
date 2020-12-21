@@ -18,22 +18,7 @@ if (db.open())
 test=true;
 
 
-QString medicaments = "CREATE TABLE medicament("
-                        "Name VARCHAR(20) NOT NULL PRIMARY KEY,"
-                        "Description VARCHAR(50) NOT NULL,"
-                        "DF VARCHAR(31) NOT NULL,"
-                        "DLC VARCHAR(31) NOT NULL,"
-                        "Prix VARCHAR(20) NOT NULL,"
-                        "Quantite VARCHAR(20) NOT NULL);";
 
-QString equipement = "CREATE TABLE equipement("
-                     "Nom VARCHAR(50) NOT NULL PRIMARY KEY ,"
-                     "Dispo VARCHAR(20) NOT NULL,"
-                     "Etat_fonc VARCHAR(20) NOT NULL);";
-
-QSqlQuery querym,querye;
-         querym.exec(medicaments);
-         querye.exec(equipement);
 }
     return  test;
 }
