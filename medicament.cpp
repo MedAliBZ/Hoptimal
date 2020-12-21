@@ -21,6 +21,7 @@ medicament::medicament(QString nom,QString description,QString DF,QString DLC,QS
     this->quantite=quantite;
 
 }
+//test
 
 QString medicament::getNom(){return nom;}
 QString medicament::getDescription(){return description;}
