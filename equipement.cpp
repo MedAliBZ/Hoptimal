@@ -144,4 +144,4 @@ QSqlQuery* equipement::trier_liste_equi()
 }
 
 
-//pdf ameliorer
+//pdf a amelioree
