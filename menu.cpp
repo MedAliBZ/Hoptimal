@@ -10,6 +10,14 @@
 #include <QtCharts>
 #include <QChartView>
 #include <QPieSeries>
+#include <QPixmap>
+#include <QMessageBox>
+#include "ambulance.h"
+#include "mission.h"
+#include <QPrinter>
+#include <QWidget>
+#include <QPrintDialog>
+#include <QtPrintSupport>
 #define CARACTERES_ETRANGERS "~{}[]()|-`'^ç@_]\"°01234567890+=£$*µ/§!?,.&#;><"
 
 
@@ -39,21 +47,8 @@ Menu::Menu(QWidget *parent)
     stat_sahar();
     ui->tableView_services->setModel(ser.afficher_ListeService());
     ui->tableView_chambres->setModel(cham.afficher_ListeChambre());
-
-    //init arduino
-//    int res=Ar.connnectArduino();
-//    switch(res)
-//    {
-//       case(0): qDebug()<<"arduino sahar is available and connected to: "<<Ar.get_arduino_port_name();
-//        break;
-//    case(1): qDebug()<<"arduino sahar is available but not connected to: "<<Ar.get_arduino_port_name();
-//        break;
-//    case(-1): qDebug()<<"arduino sahar is not available!!!";
-//    }
-//    QObject::connect(Ar.getserial(),SIGNAL(readyRead()),this,SLOT(update_label()));
-
-
-
+    ui->tabambulance->setModel(tmpambulance.Afficher_ambulance());
+     ui->tabmission->setModel(tmpmission.afficher_mission());
 
 
 }
@@ -409,7 +404,6 @@ void Menu::initialiserRDV(){
     ui->emailPatientRendezVous->setText("");
     ui->nomPatientRendezVous->setText("");
     ui->prenomPatientRendezVous->setText("");
-    ui->dateHeureRendezVous->setMinimumDate(QDate::currentDate());
     ui->dateHeureRendezVous->setDateTime(QDateTime::currentDateTime());
     qDebug("init RDV");
     if(rank==1)
@@ -1814,6 +1808,12 @@ void Menu::on_pushButton_menu_clicked()
 
 void Menu::on_list_med_clicked()
 {
+    if(rank==1)
+    {
+        ui->ajouter_med->setVisible(false);
+        ui->effacer_medicament->setVisible(false);
+
+    }
     ui->stackedWidget->setCurrentIndex(14);
     smallLineAnimationMedicament();
     bigLineAnimationMedicament();
@@ -1823,6 +1823,12 @@ void Menu::on_list_med_clicked()
 
 void Menu::on_list_eq_clicked()
 {
+    if(rank==1)
+    {
+        ui->ajouter_equi->setVisible(false);
+        ui->effacer_equipement->setVisible(false);
+
+    }
     ui->stackedWidget->setCurrentIndex(15);
     smallLineAnimationEquipement();
     bigLineAnimationEquipement();
@@ -1837,6 +1843,12 @@ void Menu::on_Home_2_clicked()
 
 void Menu::on_Equipement_clicked()
 {
+    if(rank==1)
+    {
+        ui->ajouter_equi->setVisible(false);
+        ui->effacer_equipement->setVisible(false);
+
+    }
      ui->stackedWidget->setCurrentIndex(15);
      smallLineAnimationEquipement();
      bigLineAnimationEquipement();
@@ -1851,6 +1863,12 @@ void Menu::on_Home_3_clicked()
 
 void Menu::on_Medicament_5_clicked()
 {
+    if(rank==1)
+    {
+        ui->ajouter_med->setVisible(false);
+        ui->effacer_medicament->setVisible(false);
+
+    }
      ui->stackedWidget->setCurrentIndex(14);
      smallLineAnimationMedicament();
      bigLineAnimationMedicament();
@@ -1915,6 +1933,12 @@ void Menu::on_retour_clicked()
 /////affichage liste des médicaments
 void Menu::afficher_medicament()
 {
+    if (rank==1)
+   {
+              ui->ModifierMedicament->setVisible(false);
+
+
+    }
     medicament m;
     int rowCount = m.clear_liste_med();
 
@@ -1948,6 +1972,12 @@ void Menu::afficher_medicament()
 //////affichage liste des équipements
 void Menu::afficher_equipement()
 {
+
+            if(rank==1)
+            {
+                ui->ModifierEquipement->setVisible(false);
+
+            }
     equipement e;
     int rowCount = e.clear_liste_eq();
 
@@ -2129,6 +2159,17 @@ void Menu::on_chercher_med_textChanged(const QString &arg1)
 ///////afficher un médicament
 void Menu::on_listWidget_MED_itemDoubleClicked(QListWidgetItem *item)
 {
+            if(rank==1)
+            {
+                ui->ModifierMedicament->setVisible(false);
+                ui->lineEdit_nomMed->setEnabled(false);
+                ui->lineEdit_description->setEnabled(false);
+                ui->dateEdit_DF2->setEnabled(false);
+                ui->dateEdit_4->setEnabled(false);
+                ui->lineEdit_quantite->setEnabled(false);
+                ui->lineEdit_prix->setEnabled(false);
+
+            }
     medicament m;
         ui->stackedWidget->setCurrentIndex(18);
         QString nom = item->text();
@@ -2207,7 +2248,7 @@ void Menu::on_ajout_equi_2_clicked()
 
     name= ui->nom_equi->text();
 
-    if ( !ui->checkBox_dispo->isChecked() && !ui->checkBox_nondispo->isChecked() )
+    if ( (!ui->checkBox_dispo->isChecked()) && (!ui->checkBox_nondispo->isChecked()) )
     {
         QMessageBox::information(nullptr, QObject::tr("ERROR"),
                                  QObject::tr("choisir option de disponibilites.\n"
@@ -2228,7 +2269,7 @@ void Menu::on_ajout_equi_2_clicked()
         dispo = "0";
 
     }
-    if ( !ui->checkBox_bon->isChecked() && !ui->checkBox_mauvais->isChecked() )
+    if ( (!ui->checkBox_bon->isChecked()) && (!ui->checkBox_mauvais->isChecked()) )
     {
         QMessageBox::information(nullptr, QObject::tr("ERROR"),
                                  QObject::tr("choisir un etat d'equipement.\n"
@@ -2312,7 +2353,23 @@ void Menu::on_chercher_equi_textChanged(const QString &arg1)
 
 void Menu::on_listWidget_EQUI_itemDoubleClicked(QListWidgetItem *item)
 {
-    equipement e;
+
+            if(rank==1)
+            {
+                ui->ModifierEquipement->setVisible(false);
+                if(rank==1)
+                {
+                    ui->lineEdit_nomEqui->setVisible(false);
+                    ui->dispo->setEnabled(false);
+                    ui->non_dispo->setEnabled(false);
+                    ui->bon->setEnabled(false);
+                    ui->mauvais->setEnabled(false);
+
+                }
+
+            }
+
+         equipement e;
         ui->stackedWidget->setCurrentIndex(19);
         QString nom = item->text();
         QSqlQuery qry=e.afficher_eq_double_clicked(nom);
@@ -2355,7 +2412,7 @@ void Menu::on_ModifierEquipement_clicked()
             QString nom="",dispo="",etat="";
             nom= ui->lineEdit_nomEqui->text();
 
-            if ( !ui->dispo->isChecked() && !ui->non_dispo->isChecked() )
+            if ( (!ui->dispo->isChecked()) && (!ui->non_dispo->isChecked()) )
             {
                 QMessageBox::information(nullptr, QObject::tr("ERROR"),
                                          QObject::tr("choisir option de disponibilites.\n"
@@ -2377,7 +2434,7 @@ void Menu::on_ModifierEquipement_clicked()
             }
 
 
-            if ( !ui->bon->isChecked() && !ui->mauvais->isChecked() )
+            if ( (!ui->bon->isChecked()) && (!ui->mauvais->isChecked()) )
             {
                 QMessageBox::information(nullptr, QObject::tr("ERROR"),
                                          QObject::tr("choisir un etat d'equipement.\n"
@@ -2499,66 +2556,90 @@ void Menu::on_trier_eq_clicked()
 void Menu::on_imprimer_clicked()
 {
     QPrinter printer;
-    printer.setPrinterName("my_printer_machine");
-    QPrintDialog dialog(&printer,this);
-    if ( dialog.exec()== QDialog::Rejected) return ;
+       printer.setPrinterName("my_printer_machine");
+        QPrintDialog dialog(&printer,this);
+        dialog.setWindowTitle("Print Document");
 
-    QString etat,dispo,nom;
+        if ( dialog.exec()== QDialog::Rejected)
+        {
+            QMessageBox msg;
+            msg.setText("ERROR");
+            msg.show();
+        };
+     QPainter painter(this);
+     painter.begin(&printer);
 
-    nom = ui->lineEdit_nomEqui->text();
+    QString nom,dispo,etat;
+     nom = ui->lineEdit_nomEqui->text();
+     if ( (!ui->dispo->isChecked()) && (!ui->non_dispo->isChecked()) )
+     {
+         QMessageBox::information(nullptr, QObject::tr("ERROR"),
+                                  QObject::tr("choisir option de disponibilites.\n"
+                                              "Click Cancel to exit."), QMessageBox::Cancel);
+     }
+     else if ( ui->dispo->isChecked() && ui->non_dispo->isChecked() )
+     {
+         QMessageBox::information(nullptr, QObject::tr("ERROR"),
+                                  QObject::tr("dispo et non dispo ne peuvent pas etre cocher en meme temps.\n"
+                                              "Click Cancel to exit."), QMessageBox::Cancel);
+     }
+     else if ( ui->dispo->isChecked() )
+     {
+         dispo = "disponible";
+     }
+     else  if ( ui->non_dispo->isChecked() )
+     {
+         dispo = "non disponible";
+     }
 
-    if ( !ui->dispo->isChecked() && !ui->non_dispo->isChecked() )
-    {
-        QMessageBox::information(nullptr, QObject::tr("ERROR"),
-                                 QObject::tr("choisir option de disponibilites.\n"
-                                             "Click Cancel to exit."), QMessageBox::Cancel);
-    }
-    else if ( ui->dispo->isChecked() && ui->non_dispo->isChecked() )
-    {
-        QMessageBox::information(nullptr, QObject::tr("ERROR"),
-                                 QObject::tr("dispo et non dispo ne peuvent pas etre cocher en meme temps.\n"
-                                             "Click Cancel to exit."), QMessageBox::Cancel);
-    }
-    else if ( ui->dispo->isChecked() )
-    {
-        dispo = "disponible";
-    }
-    else  if ( ui->non_dispo->isChecked() )
-    {
-        dispo = "non disponible";
-    }
 
+     if ( (!ui->bon->isChecked()) && (!ui->mauvais->isChecked()) )
+     {
+         QMessageBox::information(nullptr, QObject::tr("ERROR"),
+                                  QObject::tr("choisir un etat d'equipement.\n"
+                                              "Click Cancel to exit."), QMessageBox::Cancel);
+     }
+     else if ( ui->bon->isChecked() && ui->mauvais->isChecked() )
+     {
+         QMessageBox::information(nullptr, QObject::tr("ERROR"),
+                                  QObject::tr("bon et mauvais ne peuvent pas etre cocher en meme temps.\n"
+                                              "Click Cancel to exit."), QMessageBox::Cancel);
+     }
+     else if ( ui->bon->isChecked() )
+     {
+         etat = "bon";
+     }
+     else if ( ui->mauvais->isChecked() )
+     {
+         etat = "mauvais";
+     }
+     QFont font = painter.font();
+     font.setPointSize(font.pointSize() * 2);
+     painter.setFont(font);
+    QImage image(":/pics/pics/pdf_image.jpg");
+    painter.setPen(Qt::cyan);
+     painter.drawImage(-20,-40,image);
+    painter.drawText(300,90,"Equipement : ");
 
-    if ( !ui->bon->isChecked() && !ui->mauvais->isChecked() )
-    {
-        QMessageBox::information(nullptr, QObject::tr("ERROR"),
-                                 QObject::tr("choisir un etat d'equipement.\n"
-                                             "Click Cancel to exit."), QMessageBox::Cancel);
-    }
-    else if ( ui->bon->isChecked() && ui->mauvais->isChecked() )
-    {
-        QMessageBox::information(nullptr, QObject::tr("ERROR"),
-                                 QObject::tr("bon et mauvais ne peuvent pas etre cocher en meme temps.\n"
-                                             "Click Cancel to exit."), QMessageBox::Cancel);
-    }
-    else if ( ui->bon->isChecked() )
-    {
-        etat = "bon";
-    }
-    else if ( ui->mauvais->isChecked() )
-    {
-        etat = "mauvais";
-    }
+    painter.setPen(Qt::darkGray);
 
-    equipement e1(nom,etat,dispo);
+    painter.drawText(230,160,"Nom : ");
+    painter.drawText(230,185,"Etat de fonctionnement : ");
+    painter.drawText(230,210,"Disponibilité : ");
 
-    QString text = "Nom Equipement :" + nom + "\n"
-                        + " Son Etat de fonctionnement est : " + etat + "\n"
-                        + " Son disponibilite est : " + dispo ;
+    painter.setPen(Qt::white);
 
-    QTextEdit y;
-    y.setPlainText(text);
-    y.print(&printer);
+    painter.drawText(300,160,nom);
+    painter.drawText(470,185,etat);
+    painter.drawText(370,210,dispo);
+
+    //painter.drawText(QRect(100,2600,2000,300),QPixmap("/Desktop/Equipement/file.pdf"));
+
+        painter.end();
+
+      //  QTextEdit y;
+
+       // y.print(&printer);
 
 }
 
@@ -2868,16 +2949,10 @@ void Menu::on_pushButton_AjoutChambre_clicked()
                                         QObject::tr("Champs non remplis.\n Taper CANCEL pour les remplir"),
                                         QMessageBox::Cancel);
    }
-   else if(ch.get_nombre_lits()=="0")
+   if(ch.get_nombre_lits()=="0")
    {
        QMessageBox::critical(nullptr,QObject::tr("attention"),
                                         QObject::tr("Nombre de lits ne doit pas etre égal à 0.\n Taper CANCEL pour changer "),
-                                        QMessageBox::Cancel);
-   }
-   else if(ch.get_nombre_lits().toInt()>=9)
-   {
-       QMessageBox::critical(nullptr,QObject::tr("attention"),
-                                        QObject::tr("Nombre de lits ne doit pas etre superieur à 9.\n Taper CANCEL pour changer "),
                                         QMessageBox::Cancel);
    }
    else
@@ -2966,16 +3041,11 @@ void Menu::on_tableView_chambres_activated(const QModelIndex &index)
                                   QObject::tr("Affichage de la chambre non effectué.\n Taper CANCEL pour quitter"),
                                   QMessageBox::Cancel  );
     delete query;
-    QByteArray lits=ui->lineEdit_AffNombreLits->text().toLocal8Bit();
-    qDebug() << lits << endl;
-    Ar.write_toArduino(lits);
 }
 
 void Menu::on_pushButton_RetourAffChambre_clicked()
 {
     ui->stackedWidget->setCurrentIndex(26);
-    Ar.write_toArduino("0");
-
 
 }
 
@@ -3198,9 +3268,338 @@ void Menu::on_pushButton_retourGestionoffres_clicked()
     ui->stackedWidget->setCurrentIndex(1);
 
 }
-void Menu::update_label2()
+
+//////////////////////integration walid
+
+
+
+void Menu::on_pushButtonaj_clicked()
 {
-    data=Ar.read_fromArduino();
-    //////////
+    ui->stackedWidget->setCurrentIndex(34);
 }
 
+void Menu::on_pushButton_12aj_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(35);
+}
+
+void Menu::on_pushButton_14AN_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(32);
+}
+
+void Menu::on_pushButton_16AN_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(33);
+}
+
+void Menu::on_pushButton_13OK_clicked()
+{
+
+
+    int immatricule= ui->lineEdit_3imm->text().toInt();
+    QString etat= ui->lineEdit_6et->text();
+    QString ambulancier= ui->lineEdit_4am->text();
+    QString materiel_medical= ui->lineEdit_5mm->text();
+
+
+
+        ambulance a (immatricule,etat,ambulancier,materiel_medical);
+
+        if(immatricule<10000){ QMessageBox::information(nullptr,QObject::tr("OK"),QObject::tr(" Erreur immatricule necessite 5 chiffres.\n"
+                                                                                        "click cancel to exit."),QMessageBox::Cancel);}
+               else{  bool test=a.ajouter();
+
+        if (test)
+
+    {
+        ui->tabambulance->setModel(tmpambulance.Afficher_ambulance());
+
+        QMessageBox::information(nullptr,QObject::tr("ajouter une ambulance"),QObject::tr("ambulance ajouté.\n"
+                                                                                       "click cancel to exit."),QMessageBox::Cancel);
+
+   }
+}}
+
+
+
+void Menu::on_pushButton_15oK_clicked()
+{
+    int id=ui->lineEdit_9ID->text().toInt();
+    QString destination=ui->lineEdit_7DES->text();
+    QString heure=ui->lineEdit_8HE->text();
+
+    mission m(id,destination,heure);
+    if(id<100000){ QMessageBox::information(nullptr,QObject::tr("OK"),QObject::tr(" Erreur ID necessite 6 chiffres.\n"
+                                                                                    "click cancel to exit."),QMessageBox::Cancel);}
+   else{ bool test=m.ajouter();
+
+    if (test)
+    {
+        ui->tabmission->setModel(tmpmission.afficher_mission());
+
+        QMessageBox::information(nullptr,QObject::tr("ajouter une mission"),QObject::tr("mission ajouté.\n"
+                                                                                       "click cancel to exit."),QMessageBox::Cancel);
+
+    }
+}}
+
+void Menu::on_pushButton_18supp_clicked()
+{
+    int immatricule=ui->lineEdit_10_im->text().toInt();
+    bool test=tmpambulance.Supprimer_ambulance(immatricule);
+    if(test)
+    {
+        ui->tabambulance->setModel(tmpambulance.Afficher_ambulance());
+        QMessageBox::information(nullptr,QObject::tr("supprimer une ambulance"),QObject::tr("ambulance supprimé.\n"
+                                                                                       "click cancel to exit."),QMessageBox::Cancel);
+    }
+}
+
+void Menu::on_pushButton_20supp_clicked()
+{
+    int id=ui->lineEdit_10_id->text().toInt();
+    bool test=tmpmission.supprimer_mission(id);
+    if(test)
+    {
+        ui->tabmission->setModel(tmpmission.afficher_mission());
+        QMessageBox::information(nullptr,QObject::tr("supprimer une mission"),QObject::tr("mission supprimé.\n"
+                                                                                       "click cancel to exit."),QMessageBox::Cancel);
+    }
+}
+
+void Menu::on_pushButton_9ok_clicked()
+{
+    QString text;
+
+     text=ui->lineEditSRCH->text();
+
+     if(text == "")
+
+     {
+         ui->tabambulance->setModel(tmpambulance.Afficher_ambulance());
+
+     }
+
+     else
+
+     {
+         ui->tabambulance->setModel(tmpambulance.CHERCHERa(text));
+
+     }
+}
+
+void Menu::on_pushButton_11ok_clicked()
+{
+    QString text;
+
+     text=ui->lineEdit_2SRCH->text();
+
+     if(text == "")
+
+     {
+
+         ui->tabmission->setModel(tmpmission.afficher_mission());
+
+     }
+
+     else
+
+     {
+
+         ui->tabmission->setModel(tmpmission.CHERCHERm(text));
+
+     }
+}
+
+void Menu::on_pushButton_21tr_clicked()
+{
+     ui->tabambulance->setModel(tmpambulance.TRIER_ambulance());
+}
+
+void Menu::on_pushButton_22tr_clicked()
+{
+    ui->tabmission->setModel(tmpmission.TRIERm());
+}
+
+
+
+
+void Menu::on_pushButton_print_clicked()
+{
+
+    QPrinter printer;
+        printer.setPrinterName("diserter printer name");
+        QPrintDialog dialog(&printer,this);
+        if(dialog.exec()==QDialog::Rejected)return;
+        ui->tabambulance->render(&printer);
+
+}
+
+
+
+void Menu::on_pushButton_17mod_clicked()
+{
+    QSqlQuery query;
+            int immatricule= ui->lineEdit_10_im->text().toInt();
+            QString etat= ui->lineEdit_6et->text();
+            QString ambulancier= ui->lineEdit_4am->text();
+            QString materiel_medical= ui->lineEdit_5mm->text();
+
+
+
+                ambulance a(immatricule,etat,ambulancier,materiel_medical);
+
+
+        bool test=a.Modifier_ambulance(immatricule,etat,ambulancier,materiel_medical);
+
+            if(test)
+            {ui->tabambulance->setModel(a.Afficher_ambulance());
+                QMessageBox::information(nullptr, QObject::tr("modifier ambulance"),
+                                         QObject::tr("ambulance modifié.\n"
+                                                     "Click Cancel to exit."), QMessageBox::Cancel);
+
+            }
+            else
+                       {
+                           QMessageBox ::critical(nullptr,QObject::tr("modifier ambulance"),
+                                                             QObject::tr("Erreur.\n"
+                                                                 "click cancel to exit"),QMessageBox::Cancel);
+
+                       }
+}
+
+
+
+void Menu::on_pushButton_19mod_clicked()
+{
+    QSqlQuery query;
+            int id= ui->lineEdit_10_id->text().toInt();
+            QString destination= ui->lineEdit_7DES->text();
+            QString heure= ui->lineEdit_8HE->text();
+
+
+
+                mission m(id,destination,heure);
+
+
+        bool test=m.Modifier_mission(id,destination,heure);
+
+            if(test)
+            {ui->tabmission->setModel(m.afficher_mission());
+                QMessageBox::information(nullptr, QObject::tr("modifier mission"),
+                                         QObject::tr("mission modifié.\n"
+                                                     "Click Cancel to exit."), QMessageBox::Cancel);
+
+            }
+            else
+                       {
+                           QMessageBox ::critical(nullptr,QObject::tr("modifier mission"),
+                                                             QObject::tr("Erreur.\n"
+                                                                 "click cancel to exit"),QMessageBox::Cancel);
+
+                       }
+}
+
+
+void Menu::on_gestionSecoursMG_2_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(31);
+}
+
+void Menu::on_pushButtonGDA_clicked()
+{
+     ui->stackedWidget->setCurrentIndex(32);
+}
+
+void Menu::on_pushButtonGDM_clicked()
+{
+     ui->stackedWidget->setCurrentIndex(33);
+}
+
+void Menu::on_pushButton_9_clicked()
+{
+   ui->stackedWidget->setCurrentIndex(1);
+}
+
+void Menu::on_pushButton_17_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(1);
+}
+
+void Menu::on_pushButton_10_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(33);
+}
+
+void Menu::on_pushButton_18_clicked()
+{
+     ui->stackedWidget->setCurrentIndex(32);
+}
+
+void Menu::on_trier_med_Prix_clicked()
+{
+    medicament m;
+
+
+        int rowCount = m.clear_liste_med();
+
+        for (int i =rowCount ; i>=0 ; i--)
+        {
+            QListWidgetItem *name = new QListWidgetItem;
+            name = ui->listWidget_MED->takeItem(i);
+            ui->listWidget_MED->removeItemWidget(name);
+        }
+
+        QSqlQuery* qry = m.trierPrix_liste_med();
+        rowCount = 0;
+        while(qry->next())
+        {
+
+            QListWidgetItem *Name = new QListWidgetItem;
+
+
+            Name->setText(qry->value(0).toString());
+            ui->listWidget_MED->insertItem(rowCount,Name);
+            rowCount++;
+
+
+
+        }
+}
+
+void Menu::on_trier_med_Quantite_clicked()
+{
+    medicament m;
+
+
+        int rowCount = m.clear_liste_med();
+
+        for (int i =rowCount ; i>=0 ; i--)
+        {
+            QListWidgetItem *name = new QListWidgetItem;
+            name = ui->listWidget_MED->takeItem(i);
+            ui->listWidget_MED->removeItemWidget(name);
+        }
+
+        QSqlQuery* qry = m.trierQuantite_liste_med();
+        rowCount = 0;
+        while(qry->next())
+        {
+
+            QListWidgetItem *Name = new QListWidgetItem;
+
+
+            Name->setText(qry->value(0).toString());
+            ui->listWidget_MED->insertItem(rowCount,Name);
+            rowCount++;
+
+
+
+        }
+}
+
+void Menu::on_pushButton_menu_2_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(1);
+}

@@ -18,7 +18,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     alarmearduino.cpp \
     alarmeui.cpp \
-    arduinosaharetjasser.cpp \
+    ambulance.cpp \
     chambre.cpp \
     connectdb.cpp \
     employe.cpp \
@@ -26,25 +26,30 @@ SOURCES += \
     main.cpp \
     medicament.cpp \
     menu.cpp \
+    mission.cpp \
     patient.cpp \
     rendezvous.cpp \
     reunion.cpp \
-    service.cpp
+    service.cpp \
+    arduinosaharetjasser.cpp
 
 HEADERS += \
     alarmearduino.h \
     alarmeui.h \
-    arduinosaharetjasser.h \
+    ambulance.h \
     chambre.h \
     connectdb.h \
+    connection.h \
     employe.h \
     equipement.h \
     medicament.h \
     menu.h \
+    mission.h \
     patient.h \
     rendezvous.h \
     reunion.h \
-    service.h
+    service.h \
+    arduinosaharetjasser.h
 
 FORMS += \
     alarmeui.ui \

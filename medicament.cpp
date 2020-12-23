@@ -21,7 +21,6 @@ medicament::medicament(QString nom,QString description,QString DF,QString DLC,QS
     this->quantite=quantite;
 
 }
-//test
 
 QString medicament::getNom(){return nom;}
 QString medicament::getDescription(){return description;}
@@ -166,6 +165,24 @@ QSqlQuery* medicament::trier_liste_med()
     QSqlQuery* qry= new QSqlQuery() ;
 
     qry->exec("SELECT * FROM MEDICAMENTS ORDER BY NAME ASC");
+
+    return qry;
+}
+
+QSqlQuery* medicament::trierQuantite_liste_med()
+{
+    QSqlQuery* qry= new QSqlQuery() ;
+
+    qry->exec("SELECT * FROM MEDICAMENTS ORDER BY QUANTITE DESC");
+
+    return qry;
+}
+
+QSqlQuery* medicament::trierPrix_liste_med()
+{
+    QSqlQuery* qry= new QSqlQuery() ;
+
+    qry->exec("SELECT * FROM MEDICAMENTS ORDER BY PRIX DESC");
 
     return qry;
 }

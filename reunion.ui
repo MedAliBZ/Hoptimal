@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Reunion</string>
   </property>
   <property name="styleSheet">
    <string notr="true">QMainWindow,QWidget,QMessageBox{
@@ -87,6 +87,9 @@ backfround:white;
      </item>
      <item>
       <widget class="QTextEdit" name="textEdit">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="font">
         <font>
          <family>Quicksand SemiBold</family>

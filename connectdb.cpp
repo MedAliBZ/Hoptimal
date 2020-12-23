@@ -1,4 +1,5 @@
 #include "connectdb.h"
+#include "connection.h"
 
 void ConnectDB::Connect()
 {
@@ -12,4 +13,9 @@ void ConnectDB::Connect()
     }
     else
         qDebug("DataBase failed.");
+}
+
+Connection::Connection()
+{
+
 }

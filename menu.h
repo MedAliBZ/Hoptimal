@@ -27,8 +27,11 @@
 #include "alarmearduino.h"
 #include "service.h"
 #include "chambre.h"
-#include "arduinosaharetjasser.h"
-
+#include <QMainWindow>
+#include "ambulance.h"
+#include "mission.h"
+#include <QPrinter>
+#include <QPainter>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Menu; }
@@ -51,9 +54,6 @@ private:
     service ser;
     chambre cham;
     QString aux_ser,aux_cham;
-    QByteArray data2;
-    arduinoSaharETJasser Ar;
-
 
     void arduinoInit();
 
@@ -395,7 +395,6 @@ private slots:
     void stat_sahar();
     void on_pushButton_StatService_clicked();
     void on_pushButton_backstat_clicked();
-    void update_label2();
 
 
 
@@ -404,6 +403,70 @@ private slots:
 
     void on_pushButton_retourGestionoffres_clicked();
 
+
+
+    void on_pushButtonaj_clicked();
+
+    void on_pushButton_12aj_clicked();
+
+    void on_pushButton_14AN_clicked();
+
+    void on_pushButton_16AN_clicked();
+
+    void on_pushButton_13OK_clicked();
+
+
+
+
+
+    void on_pushButton_15oK_clicked();
+
+    void on_pushButton_18supp_clicked();
+
+    void on_pushButton_20supp_clicked();
+
+    void on_pushButton_9ok_clicked();
+
+
+    void on_pushButton_11ok_clicked();
+
+    void on_pushButton_21tr_clicked();
+
+    void on_pushButton_22tr_clicked();
+
+
+
+    void on_pushButton_print_clicked();
+
+    void on_pushButton_19mod_clicked();
+
+    void on_pushButton_17mod_clicked();
+
+
+
+    void on_pushButtonGDA_clicked();
+
+    void on_pushButtonGDM_clicked();
+
+
+
+
+
+    void on_gestionSecoursMG_2_clicked();
+
+    void on_pushButton_9_clicked();
+
+    void on_pushButton_17_clicked();
+
+    void on_pushButton_10_clicked();
+
+    void on_pushButton_18_clicked();
+
+    void on_trier_med_Prix_clicked();
+
+    void on_trier_med_Quantite_clicked();
+
+    void on_pushButton_menu_2_clicked();
 
 private:
     Ui::Menu *ui;
@@ -415,5 +478,7 @@ private:
     Employe Etmp;
     Employe E;
     QList<Employe*> mesEmploye;
+     ambulance tmpambulance;
+     mission tmpmission;
 };
 #endif // MENU_H
