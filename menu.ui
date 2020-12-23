@@ -169,7 +169,7 @@ backfround:white;
 }</string>
         </property>
         <property name="currentIndex">
-         <number>2</number>
+         <number>15</number>
         </property>
         <widget class="QWidget" name="loginPage">
          <property name="maximumSize">
@@ -9239,67 +9239,6 @@ background-color: rgba(170, 218, 255, 100);
             </property>
            </widget>
           </item>
-          <item row="4" column="1" colspan="4">
-           <widget class="QListWidget" name="listWidget_MED">
-            <property name="font">
-             <font>
-              <family>Quicksand SemiBold</family>
-              <pointsize>12</pointsize>
-             </font>
-            </property>
-            <property name="autoFillBackground">
-             <bool>true</bool>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">
-
-QListView::item {
-    color:rgb(255, 255, 255);
-    background-color:transparent;
-}
-
-
-QListView {
-    show-decoration-selected: 1; /* make the selection span the entire width of the view */
-}
-
-
-QListView::item:selected {
-    border: 1px solid rgb(108, 147, 255);
-}
-
-QListView::item:selected:!active {
-    background: rgba(170, 218, 255, 100);
-}
-
-
-
-
-QListView::item:selected:active {
-    background: rgba(170, 218, 255, 100);
-}
-
-QListView::item:hover {
-    background: rgba(170, 218, 255, 100);
-}</string>
-            </property>
-            <property name="verticalScrollBarPolicy">
-             <enum>Qt::ScrollBarAlwaysOff</enum>
-            </property>
-            <property name="horizontalScrollBarPolicy">
-             <enum>Qt::ScrollBarAlwaysOff</enum>
-            </property>
-            <property name="showDropIndicator" stdset="0">
-             <bool>false</bool>
-            </property>
-            <property name="selectionBehavior">
-             <enum>QAbstractItemView::SelectRows</enum>
-            </property>
-            <property name="spacing">
-             <number>5</number>
-            </property>
-           </widget>
-          </item>
           <item row="6" column="2" alignment="Qt::AlignHCenter">
            <widget class="QPushButton" name="effacer_medicament">
             <property name="font">
@@ -9645,6 +9584,78 @@ color :rgb(255, 255, 255)</string>
             </item>
            </layout>
           </item>
+          <item row="4" column="1" colspan="3">
+           <widget class="QListWidget" name="listWidget_MED">
+            <property name="font">
+             <font>
+              <family>Quicksand SemiBold</family>
+              <pointsize>20</pointsize>
+             </font>
+            </property>
+            <property name="autoFillBackground">
+             <bool>true</bool>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">border:0px solid white;
+color:white;
+background: transparent;
+margin:0 40px 0 40px;
+
+
+QListView::item {
+    color:rgb(255, 255, 255);
+    background-color:transparent;
+}
+
+
+QListView {
+    show-decoration-selected: 1; /* make the selection span the entire width of the view */
+}
+
+
+QListView::item:selected {
+    border: 1px solid rgb(108, 147, 255);
+}
+
+QListView::item:selected:!active {
+    background: rgba(170, 218, 255, 100);
+}
+
+
+
+
+QListView::item:selected:active {
+    background: rgba(170, 218, 255, 100);
+}
+
+QListView::item:hover {
+    background: rgba(170, 218, 255, 100);
+}</string>
+            </property>
+            <property name="verticalScrollBarPolicy">
+             <enum>Qt::ScrollBarAlwaysOff</enum>
+            </property>
+            <property name="horizontalScrollBarPolicy">
+             <enum>Qt::ScrollBarAlwaysOff</enum>
+            </property>
+            <property name="showDropIndicator" stdset="0">
+             <bool>false</bool>
+            </property>
+            <property name="selectionBehavior">
+             <enum>QAbstractItemView::SelectRows</enum>
+            </property>
+            <property name="spacing">
+             <number>5</number>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="4">
+           <widget class="QLabel" name="listmedlogo">
+            <property name="text">
+             <string>TextLabel</string>
+            </property>
+           </widget>
+          </item>
          </layout>
         </widget>
         <widget class="QWidget" name="listEqui">
@@ -9901,60 +9912,6 @@ background-color: rgba(170, 218, 255, 100);
             </property>
            </widget>
           </item>
-          <item row="6" column="0" colspan="3">
-           <widget class="QListWidget" name="listWidget_EQUI">
-            <property name="font">
-             <font>
-              <family>Quicksand SemiBold</family>
-              <pointsize>12</pointsize>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QListWidget::item {
-    color:rgb(255, 255, 255);
-    background-color:transparent;
-}
-
-
-
-QListView::item {
-    color:rgb(255, 255, 255);
-    background-color:transparent;
-}
-
-
-QListView {
-    show-decoration-selected: 1; /* make the selection span the entire width of the view */
-}
-
-
-QListView::item:selected {
-    border: 1px solid rgb(0, 255, 255);
-}
-
-QListView::item:selected:!active {
-    background: rgba(170, 218, 255, 100);
-}
-
-QListView::item:selected:active {
-    background: rgba(170, 218, 255, 100);
-}
-
-QListView::item:hover {
-    background: rgba(170, 218, 255, 100);
-}</string>
-            </property>
-            <property name="verticalScrollBarPolicy">
-             <enum>Qt::ScrollBarAlwaysOff</enum>
-            </property>
-            <property name="horizontalScrollBarPolicy">
-             <enum>Qt::ScrollBarAlwaysOff</enum>
-            </property>
-            <property name="spacing">
-             <number>5</number>
-            </property>
-           </widget>
-          </item>
           <item row="2" column="1">
            <widget class="QPushButton" name="Medicament_5">
             <property name="minimumSize">
@@ -10027,6 +9984,73 @@ background-color: rgba(170, 218, 255, 100);
              </widget>
             </item>
            </layout>
+          </item>
+          <item row="6" column="0" colspan="2">
+           <widget class="QListWidget" name="listWidget_EQUI">
+            <property name="font">
+             <font>
+              <family>Quicksand SemiBold</family>
+              <pointsize>20</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">border:0px solid white;
+color:white;
+background: transparent;
+margin:0 40px 0 40px;
+
+
+QListWidget::item {
+    color:rgb(255, 255, 255);
+    background-color:transparent;
+}
+
+
+
+QListView::item {
+    color:rgb(255, 255, 255);
+    background-color:transparent;
+}
+
+
+QListView {
+    show-decoration-selected: 1; /* make the selection span the entire width of the view */
+}
+
+
+QListView::item:selected {
+    border: 1px solid rgb(0, 255, 255);
+}
+
+QListView::item:selected:!active {
+    background: rgba(170, 218, 255, 100);
+}
+
+QListView::item:selected:active {
+    background: rgba(170, 218, 255, 100);
+}
+
+QListView::item:hover {
+    background: rgba(170, 218, 255, 100);
+}</string>
+            </property>
+            <property name="verticalScrollBarPolicy">
+             <enum>Qt::ScrollBarAlwaysOff</enum>
+            </property>
+            <property name="horizontalScrollBarPolicy">
+             <enum>Qt::ScrollBarAlwaysOff</enum>
+            </property>
+            <property name="spacing">
+             <number>5</number>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="2">
+           <widget class="QLabel" name="listeqlogo">
+            <property name="text">
+             <string>TextLabel</string>
+            </property>
+           </widget>
           </item>
          </layout>
         </widget>

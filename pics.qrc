@@ -36,5 +36,6 @@
         <file>pics/trashSahar.png</file>
         <file>pics/valider.png</file>
         <file>pics/sort.png</file>
+        <file>pics/infrastructure.png</file>
     </qresource>
 </RCC>

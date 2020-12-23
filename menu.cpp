@@ -35,6 +35,13 @@ Menu::Menu(QWidget *parent)
     ui->icon_equi->setPixmap(equi_icon.scaled(100,100,Qt::KeepAspectRatio));
     ui->icon_equi_2->setPixmap(equi_icon.scaled(100,100,Qt::KeepAspectRatio));
 
+    QPixmap listmedlogo(":/pics/pics/infrastructure.png");
+    ui->listmedlogo->setPixmap(listmedlogo.scaled(400,400,Qt::KeepAspectRatio));
+    ui->listmedlogo->setPixmap(listmedlogo.scaled(400,400,Qt::KeepAspectRatio));
+
+    QPixmap listeqlogo(":/pics/pics/infrastructure.png");
+    ui->listeqlogo->setPixmap(listmedlogo.scaled(400,400,Qt::KeepAspectRatio));
+    ui->listeqlogo->setPixmap(listmedlogo.scaled(400,400,Qt::KeepAspectRatio));
 
     ui->stackedWidget->setCurrentIndex(0);
 
