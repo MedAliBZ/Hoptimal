@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/pics">
+        <file>LogSys.pro.user</file>
+        <file>grgr.png</file>
+    </qresource>
+    <qresource prefix="/jasser"/>
+</RCC>
