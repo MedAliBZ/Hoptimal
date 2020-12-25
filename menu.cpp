@@ -2168,7 +2168,7 @@ void Menu::on_listWidget_MED_itemDoubleClicked(QListWidgetItem *item)
 {
             if(rank==1)
             {
-                ui->ModifierMedicament->setVisible(false);
+                ui->ModifierMedicament->setEnabled(false);
                 ui->lineEdit_nomMed->setEnabled(false);
                 ui->lineEdit_description->setEnabled(false);
                 ui->dateEdit_DF2->setEnabled(false);
@@ -2366,7 +2366,7 @@ void Menu::on_listWidget_EQUI_itemDoubleClicked(QListWidgetItem *item)
                 ui->ModifierEquipement->setVisible(false);
                 if(rank==1)
                 {
-                    ui->lineEdit_nomEqui->setVisible(false);
+                    ui->lineEdit_nomEqui->setEnabled(false);
                     ui->dispo->setEnabled(false);
                     ui->non_dispo->setEnabled(false);
                     ui->bon->setEnabled(false);
