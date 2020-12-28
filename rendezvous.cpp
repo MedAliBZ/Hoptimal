@@ -6,13 +6,12 @@
 bool RendezVous::modifyValues(QString nomPatient, QString prenomPatient,QString id,QString email,QDateTime dateTime){
    QSqlQuery qry;
    qry.prepare("UPDATE rdv "
-               "SET id = :id, "
+               "SET "
                "nomPatient= :nomPatient, "
                "prenomPatient= :prenomPatient, "
                "email=:email, "
                "dateTime = :dateTime " //TO_TIMESTAMP('"+dateTime.toString("yyyy.MM.dd hh:mm:ss")+"', 'YYYY.MM.DD HH24:MI:SS')
                "WHERE id = :oldId ;");
-   qry.addBindValue(id);
    qry.addBindValue(nomPatient);
    qry.addBindValue(prenomPatient);
    qry.addBindValue(email);
@@ -34,13 +33,11 @@ bool RendezVous::modifyValues(QString nomPatient, QString prenomPatient,QString 
 bool RendezVous::addValuesToDB(QString nomPatient, QString prenomPatient,QString id,QString email,QDateTime dateTime){
     QSqlQuery qry;
     qry.prepare("INSERT INTO rdv("
-                "id,"
                 "nomPatient,"
                 "prenomPatient,"
                 "email,"
                 "dateTime)"
-                "VALUES (?,?,?,?,?);");
-    qry.addBindValue(id);
+                "VALUES (?,?,?,?);");
     qry.addBindValue(nomPatient);
     qry.addBindValue(prenomPatient);
     qry.addBindValue(email);

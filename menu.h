@@ -200,8 +200,6 @@ private slots:
 
     void on_advancedButton_rdv_clicked();
 
-    void on_idRendezVous_textChanged(const QString &arg1);
-
     void on_nomPatientRendezVous_textChanged(const QString &arg1);
 
     void on_prenomPatientRendezVous_textChanged(const QString &arg1);

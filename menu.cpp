@@ -139,7 +139,6 @@ void Menu::advancedPatient(){
 void Menu::initialiserErrorsRDV(){
     ui->nom_error_rdv->setText("");
     ui->prenom_error_rdv->setText("");
-    ui->id_error->setText("");
     ui->prenomPatientRendezVous->setMaxLength(20);
     ui->nomPatientRendezVous->setMaxLength(20);
     ui->idRendezVous->setMaxLength(20);
@@ -418,7 +417,6 @@ void Menu::initialiserRDV(){
     else{
         ui->newRDV_button->setVisible(true);
         ui->ajouterRendezVous->setVisible(true);
-        ui->idRendezVous->setReadOnly(false);
         ui->emailPatientRendezVous->setReadOnly(false);
         ui->nomPatientRendezVous->setReadOnly(false);
         ui->prenomPatientRendezVous->setReadOnly(false);
@@ -441,7 +439,6 @@ void Menu::afficherRDV(){
         ui->ajouterRendezVous->setText("Modifier");
         ui->ajouterRendezVous->setVisible(true);
         ui->DeleteButton_2->setVisible(true);
-        ui->idRendezVous->setReadOnly(false);
         ui->emailPatientRendezVous->setReadOnly(false);
         ui->nomPatientRendezVous->setReadOnly(false);
         ui->prenomPatientRendezVous->setReadOnly(false);
@@ -450,7 +447,6 @@ void Menu::afficherRDV(){
     else if (rank==1){
         ui->ajouterRendezVous->setVisible(false);
         ui->DeleteButton_2->setVisible(false);
-        ui->idRendezVous->setReadOnly(true);
         ui->emailPatientRendezVous->setReadOnly(true);
         ui->nomPatientRendezVous->setReadOnly(true);
         ui->prenomPatientRendezVous->setReadOnly(true);
@@ -695,7 +691,7 @@ void Menu::on_DeleteButton_clicked()
 void Menu::on_ajouterRendezVous_clicked()
 {
     //empty fields verification
-    if(ui->idRendezVous->text().size()==0 || ui->emailPatientRendezVous->text().size()==0 || ui->nomPatientRendezVous->text().size()==0 || ui->prenomPatientRendezVous->text().size()==0){
+    if(ui->emailPatientRendezVous->text().size()==0 || ui->nomPatientRendezVous->text().size()==0 || ui->prenomPatientRendezVous->text().size()==0){
         QMessageBox msgBox;
         msgBox.setIcon(QMessageBox::Critical);
         msgBox.setText("Impossible de laisser des champs vides.");
@@ -1022,14 +1018,6 @@ void Menu::on_advancedButton_rdv_clicked()
     }
 }
 
-void Menu::on_idRendezVous_textChanged(const QString &arg1)
-{
-    if(arg1==""){
-        ui->id_error->setText("Ce champ ne peut pas rester vide!");
-    }
-    else
-        ui->id_error->setText("");
-}
 
 void Menu::on_nomPatientRendezVous_textChanged(const QString &arg1)
 {
