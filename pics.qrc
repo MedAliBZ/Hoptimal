@@ -37,5 +37,8 @@
         <file>pics/valider.png</file>
         <file>pics/sort.png</file>
         <file>pics/infrastructure.png</file>
+        <file>pics/download.png</file>
+        <file>pics/QRpic.png</file>
+        <file>pics/Back.png</file>
     </qresource>
 </RCC>

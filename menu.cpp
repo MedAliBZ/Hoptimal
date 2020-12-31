@@ -404,6 +404,7 @@ void Menu::initialiserRDV(){
     initialiserErrorsRDV();
     ui->ajouterRendezVous->setText("Ajouter");
     ui->email_sending->setVisible(false);
+    ui->QrButton->setVisible(false);
     ui->DeleteButton_2->setVisible(false);
     setWindowTitle("Hoptimal - Liste des rendez vous");
     ui->idRendezVous->setText("");
@@ -428,6 +429,7 @@ void Menu::afficherRDV(){
 
     setWindowTitle("Hoptimal - Modifier un rendez vous");
     ui->email_sending->setVisible(true);
+    ui->QrButton->setVisible(true);
     ui->DeleteButton_2->setVisible(true);
     ui->ajouterRendezVous->setVisible(true);
     ui->idRendezVous->setText(R.getId());
@@ -3597,4 +3599,46 @@ void Menu::on_trier_med_Quantite_clicked()
 void Menu::on_pushButton_menu_2_clicked()
 {
     ui->stackedWidget->setCurrentIndex(1);
+}
+
+void Menu::downloadFinished(QNetworkReply* reply){
+    QPixmap pix;
+    pix.loadFromData(reply->readAll());
+    ui->QR_code->setPixmap(pix.scaled(300,300,Qt::KeepAspectRatio));
+    QR=pix;
+    ui->stackedWidget->setCurrentIndex(36);
+}
+
+void Menu::on_QrButton_clicked()
+{
+    QString myURL="http://api.qrserver.com/v1/create-qr-code/?data=id: "+R.getId()+"%0ADate et heure: "+R.getDateTime().toString("dd/MM/yyyy hh:mm")+"%0ANom et prenom: "+R.getNom()+" "+R.getPrenom();
+    ui->id_QR->setText(R.getId());
+    ui->dateTime_QR->setText(R.getDateTime().toString("dd/MM/yyyy hh:mm"));
+    ui->nomPrenom_QR->setText(R.getNom()+" "+R.getPrenom());
+    QNetworkAccessManager *man= new QNetworkAccessManager(this);
+    connect(man,&QNetworkAccessManager::finished,this,&Menu::downloadFinished);
+    const QUrl url=QUrl(myURL);
+    QNetworkRequest request(url);
+    man->get(request);
+}
+
+void Menu::on_pushButton_menu_4_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(6);
+}
+
+void Menu::on_pushButton_menu_3_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(1);
+}
+
+void Menu::on_downlaod_buttonqrcode_clicked()
+{
+    QImage originalPixmap=QR.toImage();
+    if(originalPixmap.save("C:\\temp\\QRcode.png"))
+        QMessageBox::information(this, "Téléchargement", "Téléchargement terminé!",
+                                            QMessageBox::Ok);
+    else
+        QMessageBox::warning(this, "Téléchargement", "Erreur lors du téléchargement!",
+                                            QMessageBox::Ok);
 }

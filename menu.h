@@ -32,6 +32,9 @@
 #include "mission.h"
 #include <QPrinter>
 #include <QPainter>
+#include <QNetworkAccessManager>
+#include <QNetworkReply>
+#include <QPixmap>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Menu; }
@@ -43,6 +46,7 @@ class Menu : public QMainWindow
     int id ;
 
 private:
+    QPixmap QR;
     Reunion R1;
     Patient P;
     RendezVous R;
@@ -109,6 +113,7 @@ public:
     void bigLineAnimationEquipement();
 
 private slots:
+    void downloadFinished(QNetworkReply*);
 
     void myfunction();
 
@@ -465,6 +470,14 @@ private slots:
     void on_trier_med_Quantite_clicked();
 
     void on_pushButton_menu_2_clicked();
+
+    void on_QrButton_clicked();
+
+    void on_pushButton_menu_4_clicked();
+
+    void on_pushButton_menu_3_clicked();
+
+    void on_downlaod_buttonqrcode_clicked();
 
 private:
     Ui::Menu *ui;
