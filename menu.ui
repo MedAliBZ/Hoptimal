@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1048</width>
+    <width>973</width>
     <height>765</height>
    </rect>
   </property>
@@ -176,7 +176,7 @@ backfround:white;
 }</string>
       </property>
       <property name="currentIndex">
-       <number>36</number>
+       <number>26</number>
       </property>
       <widget class="QWidget" name="loginPage">
        <property name="maximumSize">
@@ -11779,9 +11779,14 @@ background-repeat: none;
          <rect>
           <x>10</x>
           <y>160</y>
-          <width>551</width>
+          <width>531</width>
           <height>311</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QTableView{
+background:rgb(231, 231, 231);
+}</string>
         </property>
        </widget>
        <widget class="QWidget" name="horizontalLayoutWidget_2">
@@ -11789,7 +11794,7 @@ background-repeat: none;
          <rect>
           <x>10</x>
           <y>20</y>
-          <width>821</width>
+          <width>961</width>
           <height>51</height>
          </rect>
         </property>
@@ -11962,9 +11967,9 @@ background-repeat: none;
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>20</y>
-          <width>831</width>
-          <height>609</height>
+          <y>10</y>
+          <width>951</width>
+          <height>741</height>
          </rect>
         </property>
         <property name="font">
@@ -11976,87 +11981,11 @@ background-repeat: none;
         <property name="title">
          <string>Ajouter un service</string>
         </property>
-        <widget class="QLabel" name="nom_service">
-         <property name="geometry">
-          <rect>
-           <x>80</x>
-           <y>170</y>
-           <width>241</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <family>Quicksand SemiBold</family>
-           <pointsize>20</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Nom du service</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="staff1">
-         <property name="geometry">
-          <rect>
-           <x>80</x>
-           <y>310</y>
-           <width>111</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <family>Quicksand SemiBold</family>
-           <pointsize>20</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Staff1</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="staff2">
-         <property name="geometry">
-          <rect>
-           <x>80</x>
-           <y>380</y>
-           <width>81</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <family>Quicksand SemiBold</family>
-           <pointsize>20</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Staff2</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="staff3">
-         <property name="geometry">
-          <rect>
-           <x>80</x>
-           <y>440</y>
-           <width>81</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <family>Quicksand SemiBold</family>
-           <pointsize>20</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Staff3</string>
-         </property>
-        </widget>
         <widget class="QPushButton" name="pushButton_AjouterService">
          <property name="geometry">
           <rect>
-           <x>770</x>
-           <y>560</y>
+           <x>890</x>
+           <y>690</y>
            <width>51</width>
            <height>41</height>
           </rect>
@@ -12078,7 +12007,7 @@ background-repeat: none;
          <property name="geometry">
           <rect>
            <x>10</x>
-           <y>570</y>
+           <y>700</y>
            <width>51</width>
            <height>31</height>
           </rect>
@@ -12096,74 +12025,97 @@ background-repeat: none;
           <string/>
          </property>
         </widget>
-        <widget class="QLineEdit" name="lineEdit_ajoutNomService">
-         <property name="geometry">
-          <rect>
-           <x>450</x>
-           <y>169</y>
-           <width>271</width>
-           <height>31</height>
-          </rect>
-         </property>
-        </widget>
-        <widget class="QComboBox" name="comboBox_AjoutStaff1">
-         <property name="geometry">
-          <rect>
-           <x>450</x>
-           <y>311</y>
-           <width>271</width>
-           <height>31</height>
-          </rect>
-         </property>
-        </widget>
-        <widget class="QComboBox" name="comboBox_AjoutStaff2">
-         <property name="geometry">
-          <rect>
-           <x>450</x>
-           <y>379</y>
-           <width>271</width>
-           <height>31</height>
-          </rect>
-         </property>
-        </widget>
-        <widget class="QComboBox" name="comboBox_AjoutStaff3">
-         <property name="geometry">
-          <rect>
-           <x>450</x>
-           <y>441</y>
-           <width>271</width>
-           <height>31</height>
-          </rect>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_18">
+        <widget class="QWidget" name="layoutWidget">
          <property name="geometry">
           <rect>
            <x>80</x>
-           <y>230</y>
-           <width>221</width>
-           <height>31</height>
+           <y>150</y>
+           <width>711</width>
+           <height>381</height>
           </rect>
          </property>
-         <property name="font">
-          <font>
-           <family>Quicksand SemiBold</family>
-           <pointsize>20</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Nom equipement</string>
-         </property>
-        </widget>
-        <widget class="QComboBox" name="comboBox_AjoutEquip">
-         <property name="geometry">
-          <rect>
-           <x>450</x>
-           <y>241</y>
-           <width>271</width>
-           <height>31</height>
-          </rect>
-         </property>
+         <layout class="QGridLayout" name="gridLayout_11">
+          <item row="0" column="0">
+           <widget class="QLabel" name="nom_service">
+            <property name="font">
+             <font>
+              <family>Quicksand SemiBold</family>
+              <pointsize>20</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Nom du service</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLineEdit" name="lineEdit_ajoutNomService"/>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="staff1">
+            <property name="font">
+             <font>
+              <family>Quicksand SemiBold</family>
+              <pointsize>20</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Staff1</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QComboBox" name="comboBox_AjoutStaff1"/>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="staff2">
+            <property name="font">
+             <font>
+              <family>Quicksand SemiBold</family>
+              <pointsize>20</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Staff2</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QComboBox" name="comboBox_AjoutStaff2"/>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="staff3">
+            <property name="font">
+             <font>
+              <family>Quicksand SemiBold</family>
+              <pointsize>20</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Staff3</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QComboBox" name="comboBox_AjoutStaff3"/>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="label_18">
+            <property name="font">
+             <font>
+              <family>Quicksand SemiBold</family>
+              <pointsize>20</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Nom equipement</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QComboBox" name="comboBox_AjoutEquip"/>
+          </item>
+         </layout>
         </widget>
        </widget>
       </widget>
@@ -12173,8 +12125,8 @@ background-repeat: none;
          <rect>
           <x>10</x>
           <y>10</y>
-          <width>829</width>
-          <height>619</height>
+          <width>951</width>
+          <height>751</height>
          </rect>
         </property>
         <property name="font">
@@ -12186,100 +12138,11 @@ background-repeat: none;
         <property name="title">
          <string>Modifier un service</string>
         </property>
-        <widget class="QLabel" name="nom_service_3">
-         <property name="geometry">
-          <rect>
-           <x>80</x>
-           <y>170</y>
-           <width>201</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <family>Quicksand SemiBold</family>
-           <pointsize>20</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Nom du service</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="staff2_3">
-         <property name="geometry">
-          <rect>
-           <x>80</x>
-           <y>370</y>
-           <width>101</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <family>Quicksand SemiBold</family>
-           <pointsize>20</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Staff2</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="staff1_3">
-         <property name="geometry">
-          <rect>
-           <x>80</x>
-           <y>320</y>
-           <width>101</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <family>Quicksand SemiBold</family>
-           <pointsize>20</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Staff1</string>
-         </property>
-        </widget>
-        <widget class="QLineEdit" name="lineEdit_ModifNomService">
-         <property name="geometry">
-          <rect>
-           <x>450</x>
-           <y>180</y>
-           <width>271</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="readOnly">
-          <bool>false</bool>
-         </property>
-        </widget>
-        <widget class="QLabel" name="staff3_3">
-         <property name="geometry">
-          <rect>
-           <x>80</x>
-           <y>440</y>
-           <width>101</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <family>Quicksand SemiBold</family>
-           <pointsize>20</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Staff3</string>
-         </property>
-        </widget>
         <widget class="QPushButton" name="pushButton_modifService">
          <property name="geometry">
           <rect>
-           <x>770</x>
-           <y>570</y>
+           <x>890</x>
+           <y>700</y>
            <width>51</width>
            <height>41</height>
           </rect>
@@ -12301,7 +12164,7 @@ background-repeat: none;
          <property name="geometry">
           <rect>
            <x>10</x>
-           <y>580</y>
+           <y>710</y>
            <width>51</width>
            <height>31</height>
           </rect>
@@ -12319,64 +12182,101 @@ background-repeat: none;
           <string/>
          </property>
         </widget>
-        <widget class="QComboBox" name="comboBox_ModifStaf1">
-         <property name="geometry">
-          <rect>
-           <x>450</x>
-           <y>311</y>
-           <width>271</width>
-           <height>31</height>
-          </rect>
-         </property>
-        </widget>
-        <widget class="QComboBox" name="comboBox_ModifStaf2">
-         <property name="geometry">
-          <rect>
-           <x>450</x>
-           <y>379</y>
-           <width>271</width>
-           <height>31</height>
-          </rect>
-         </property>
-        </widget>
-        <widget class="QComboBox" name="comboBox_ModifStaf3">
-         <property name="geometry">
-          <rect>
-           <x>450</x>
-           <y>441</y>
-           <width>271</width>
-           <height>31</height>
-          </rect>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_47">
+        <widget class="QWidget" name="layoutWidget">
          <property name="geometry">
           <rect>
            <x>80</x>
-           <y>230</y>
-           <width>211</width>
-           <height>31</height>
+           <y>170</y>
+           <width>691</width>
+           <height>321</height>
           </rect>
          </property>
-         <property name="font">
-          <font>
-           <family>Quicksand SemiBold</family>
-           <pointsize>20</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Nom equipement</string>
-         </property>
-        </widget>
-        <widget class="QComboBox" name="comboBox_ModifEquip">
-         <property name="geometry">
-          <rect>
-           <x>450</x>
-           <y>241</y>
-           <width>271</width>
-           <height>31</height>
-          </rect>
-         </property>
+         <layout class="QGridLayout" name="gridLayout_10">
+          <item row="0" column="0">
+           <widget class="QLabel" name="nom_service_3">
+            <property name="font">
+             <font>
+              <family>Quicksand SemiBold</family>
+              <pointsize>20</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Nom du service</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLineEdit" name="lineEdit_ModifNomService">
+            <property name="readOnly">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="staff1_3">
+            <property name="font">
+             <font>
+              <family>Quicksand SemiBold</family>
+              <pointsize>20</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Staff1</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QComboBox" name="comboBox_ModifStaf1"/>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="staff2_3">
+            <property name="font">
+             <font>
+              <family>Quicksand SemiBold</family>
+              <pointsize>20</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Staff2</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QComboBox" name="comboBox_ModifStaf2"/>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="staff3_3">
+            <property name="font">
+             <font>
+              <family>Quicksand SemiBold</family>
+              <pointsize>20</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Staff3</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QComboBox" name="comboBox_ModifStaf3"/>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="label_47">
+            <property name="font">
+             <font>
+              <family>Quicksand SemiBold</family>
+              <pointsize>20</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Nom equipement</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QComboBox" name="comboBox_ModifEquip"/>
+          </item>
+         </layout>
         </widget>
        </widget>
       </widget>
@@ -12386,8 +12286,8 @@ background-repeat: none;
          <rect>
           <x>10</x>
           <y>10</y>
-          <width>831</width>
-          <height>621</height>
+          <width>951</width>
+          <height>751</height>
          </rect>
         </property>
         <property name="font">
@@ -12399,30 +12299,11 @@ background-repeat: none;
         <property name="title">
          <string>Afficher un service</string>
         </property>
-        <widget class="QLabel" name="nom_service_4">
-         <property name="geometry">
-          <rect>
-           <x>80</x>
-           <y>170</y>
-           <width>211</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <family>Quicksand SemiBold</family>
-           <pointsize>20</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Nom du service</string>
-         </property>
-        </widget>
         <widget class="QPushButton" name="pushButton_RetourAffService">
          <property name="geometry">
           <rect>
            <x>10</x>
-           <y>580</y>
+           <y>710</y>
            <width>61</width>
            <height>31</height>
           </rect>
@@ -12440,120 +12321,11 @@ background-repeat: none;
           <string/>
          </property>
         </widget>
-        <widget class="QLabel" name="staff2_4">
-         <property name="geometry">
-          <rect>
-           <x>80</x>
-           <y>380</y>
-           <width>71</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <family>Quicksand SemiBold</family>
-           <pointsize>20</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Staff2</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="staff3_4">
-         <property name="geometry">
-          <rect>
-           <x>80</x>
-           <y>440</y>
-           <width>81</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <family>Quicksand SemiBold</family>
-           <pointsize>20</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Staff3</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="staff1_4">
-         <property name="geometry">
-          <rect>
-           <x>80</x>
-           <y>310</y>
-           <width>91</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <family>Quicksand SemiBold</family>
-           <pointsize>20</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Staff1</string>
-         </property>
-        </widget>
-        <widget class="QLineEdit" name="lineEdit_AffNomService">
-         <property name="geometry">
-          <rect>
-           <x>450</x>
-           <y>169</y>
-           <width>271</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="readOnly">
-          <bool>true</bool>
-         </property>
-        </widget>
-        <widget class="QLineEdit" name="lineEdit_AffStaff1">
-         <property name="geometry">
-          <rect>
-           <x>450</x>
-           <y>311</y>
-           <width>271</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="readOnly">
-          <bool>true</bool>
-         </property>
-        </widget>
-        <widget class="QLineEdit" name="lineEdit_AffStaff2">
-         <property name="geometry">
-          <rect>
-           <x>450</x>
-           <y>379</y>
-           <width>271</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="readOnly">
-          <bool>true</bool>
-         </property>
-        </widget>
-        <widget class="QLineEdit" name="lineEdit_AffStaff3">
-         <property name="geometry">
-          <rect>
-           <x>450</x>
-           <y>441</y>
-           <width>271</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="readOnly">
-          <bool>true</bool>
-         </property>
-        </widget>
         <widget class="QPushButton" name="pushButton_modifierServiceAff">
          <property name="geometry">
           <rect>
-           <x>770</x>
-           <y>560</y>
+           <x>890</x>
+           <y>690</y>
            <width>51</width>
            <height>51</height>
           </rect>
@@ -12574,8 +12346,8 @@ background-repeat: none;
         <widget class="QPushButton" name="pushButton_imprimerService">
          <property name="geometry">
           <rect>
-           <x>770</x>
-           <y>20</y>
+           <x>890</x>
+           <y>10</y>
            <width>41</width>
            <height>41</height>
           </rect>
@@ -12593,34 +12365,113 @@ background-repeat: none;
           <string/>
          </property>
         </widget>
-        <widget class="QLabel" name="label_48">
+        <widget class="QWidget" name="layoutWidget">
          <property name="geometry">
           <rect>
            <x>80</x>
-           <y>230</y>
-           <width>221</width>
-           <height>31</height>
+           <y>169</y>
+           <width>731</width>
+           <height>351</height>
           </rect>
          </property>
-         <property name="font">
-          <font>
-           <family>Quicksand SemiBold</family>
-           <pointsize>20</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Nom equipement</string>
-         </property>
-        </widget>
-        <widget class="QLineEdit" name="lineEdit_AffEquipement">
-         <property name="geometry">
-          <rect>
-           <x>450</x>
-           <y>241</y>
-           <width>271</width>
-           <height>31</height>
-          </rect>
-         </property>
+         <layout class="QGridLayout" name="gridLayout_12">
+          <item row="0" column="0">
+           <widget class="QLabel" name="nom_service_4">
+            <property name="font">
+             <font>
+              <family>Quicksand SemiBold</family>
+              <pointsize>20</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Nom du service</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLineEdit" name="lineEdit_AffNomService">
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="staff1_4">
+            <property name="font">
+             <font>
+              <family>Quicksand SemiBold</family>
+              <pointsize>20</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Staff1</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="lineEdit_AffStaff1">
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="staff2_4">
+            <property name="font">
+             <font>
+              <family>Quicksand SemiBold</family>
+              <pointsize>20</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Staff2</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QLineEdit" name="lineEdit_AffStaff2">
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="staff3_4">
+            <property name="font">
+             <font>
+              <family>Quicksand SemiBold</family>
+              <pointsize>20</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Staff3</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QLineEdit" name="lineEdit_AffStaff3">
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="label_48">
+            <property name="font">
+             <font>
+              <family>Quicksand SemiBold</family>
+              <pointsize>20</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Nom equipement</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QLineEdit" name="lineEdit_AffEquipement"/>
+          </item>
+         </layout>
         </widget>
        </widget>
       </widget>
@@ -12630,9 +12481,14 @@ background-repeat: none;
          <rect>
           <x>10</x>
           <y>160</y>
-          <width>551</width>
+          <width>531</width>
           <height>311</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QTableView{
+background:rgb(231, 231, 231);
+}</string>
         </property>
        </widget>
        <widget class="QPushButton" name="ajouter_chambre">
@@ -12694,7 +12550,7 @@ background-repeat: none;
          <rect>
           <x>10</x>
           <y>20</y>
-          <width>821</width>
+          <width>951</width>
           <height>51</height>
          </rect>
         </property>
@@ -12852,7 +12708,7 @@ background-repeat: none;
          </rect>
         </property>
         <property name="text">
-         <string>TextLabel</string>
+         <string/>
         </property>
        </widget>
       </widget>
@@ -12862,8 +12718,8 @@ background-repeat: none;
          <rect>
           <x>10</x>
           <y>10</y>
-          <width>831</width>
-          <height>621</height>
+          <width>951</width>
+          <height>751</height>
          </rect>
         </property>
         <property name="font">
@@ -12875,151 +12731,11 @@ background-repeat: none;
         <property name="title">
          <string>Ajouter une chambre</string>
         </property>
-        <widget class="QComboBox" name="comboBox_AjoutType">
-         <property name="geometry">
-          <rect>
-           <x>410</x>
-           <y>230</y>
-           <width>331</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <item>
-          <property name="text">
-           <string/>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Chambre de garde</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Chambre du patient</string>
-          </property>
-         </item>
-        </widget>
-        <widget class="QLabel" name="emplacement">
-         <property name="geometry">
-          <rect>
-           <x>80</x>
-           <y>300</y>
-           <width>191</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <family>Quicksand SemiBold</family>
-           <pointsize>20</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Emplacement</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="type">
-         <property name="geometry">
-          <rect>
-           <x>80</x>
-           <y>230</y>
-           <width>101</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <family>Quicksand SemiBold</family>
-           <pointsize>20</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Type</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="numero">
-         <property name="geometry">
-          <rect>
-           <x>80</x>
-           <y>170</y>
-           <width>121</width>
-           <height>20</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <family>Quicksand SemiBold</family>
-           <pointsize>20</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Numero</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="nombredelits">
-         <property name="geometry">
-          <rect>
-           <x>80</x>
-           <y>370</y>
-           <width>191</width>
-           <height>20</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <family>Quicksand SemiBold</family>
-           <pointsize>20</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Nombre de lits</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="nomduSurveillant">
-         <property name="geometry">
-          <rect>
-           <x>80</x>
-           <y>430</y>
-           <width>241</width>
-           <height>20</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <family>Quicksand SemiBold</family>
-           <pointsize>20</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Nom du surveillant</string>
-         </property>
-        </widget>
-        <widget class="QLineEdit" name="lineEdit_AjoutNumero">
-         <property name="geometry">
-          <rect>
-           <x>410</x>
-           <y>170</y>
-           <width>331</width>
-           <height>31</height>
-          </rect>
-         </property>
-        </widget>
-        <widget class="QSpinBox" name="spinBox_AjoutLits">
-         <property name="geometry">
-          <rect>
-           <x>410</x>
-           <y>360</y>
-           <width>71</width>
-           <height>31</height>
-          </rect>
-         </property>
-        </widget>
         <widget class="QPushButton" name="pushButton_AjoutChambre">
          <property name="geometry">
           <rect>
-           <x>770</x>
-           <y>570</y>
+           <x>890</x>
+           <y>700</y>
            <width>51</width>
            <height>41</height>
           </rect>
@@ -13041,7 +12757,7 @@ background-repeat: none;
          <property name="geometry">
           <rect>
            <x>10</x>
-           <y>580</y>
+           <y>710</y>
            <width>61</width>
            <height>31</height>
           </rect>
@@ -13059,25 +12775,113 @@ background-repeat: none;
           <string/>
          </property>
         </widget>
-        <widget class="QComboBox" name="comboBox_AjoutEmplacement">
+        <widget class="QWidget" name="layoutWidget">
          <property name="geometry">
           <rect>
-           <x>410</x>
-           <y>300</y>
-           <width>331</width>
-           <height>31</height>
+           <x>80</x>
+           <y>170</y>
+           <width>781</width>
+           <height>411</height>
           </rect>
          </property>
-        </widget>
-        <widget class="QComboBox" name="comboBox_AjoutSurveillant">
-         <property name="geometry">
-          <rect>
-           <x>410</x>
-           <y>420</y>
-           <width>331</width>
-           <height>31</height>
-          </rect>
-         </property>
+         <layout class="QGridLayout" name="gridLayout_13">
+          <item row="3" column="0">
+           <widget class="QLabel" name="nombredelits">
+            <property name="font">
+             <font>
+              <family>Quicksand SemiBold</family>
+              <pointsize>20</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Nombre de lits</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QComboBox" name="comboBox_AjoutEmplacement"/>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLineEdit" name="lineEdit_AjoutNumero"/>
+          </item>
+          <item row="3" column="1">
+           <widget class="QSpinBox" name="spinBox_AjoutLits"/>
+          </item>
+          <item row="1" column="1">
+           <widget class="QComboBox" name="comboBox_AjoutType">
+            <item>
+             <property name="text">
+              <string/>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Chambre de garde</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Chambre du patient</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="nomduSurveillant">
+            <property name="font">
+             <font>
+              <family>Quicksand SemiBold</family>
+              <pointsize>20</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Nom du surveillant</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="emplacement">
+            <property name="font">
+             <font>
+              <family>Quicksand SemiBold</family>
+              <pointsize>20</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Emplacement</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QComboBox" name="comboBox_AjoutSurveillant"/>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLabel" name="numero">
+            <property name="font">
+             <font>
+              <family>Quicksand SemiBold</family>
+              <pointsize>20</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Numero</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="type">
+            <property name="font">
+             <font>
+              <family>Quicksand SemiBold</family>
+              <pointsize>20</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Type</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </widget>
       </widget>
@@ -13087,8 +12891,8 @@ background-repeat: none;
          <rect>
           <x>10</x>
           <y>10</y>
-          <width>831</width>
-          <height>621</height>
+          <width>951</width>
+          <height>741</height>
          </rect>
         </property>
         <property name="font">
@@ -13100,132 +12904,11 @@ background-repeat: none;
         <property name="title">
          <string>Afficher une chambre</string>
         </property>
-        <widget class="QLineEdit" name="lineEdit_AffNumero">
-         <property name="geometry">
-          <rect>
-           <x>410</x>
-           <y>169</y>
-           <width>331</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="readOnly">
-          <bool>true</bool>
-         </property>
-        </widget>
-        <widget class="QLabel" name="type_2">
-         <property name="geometry">
-          <rect>
-           <x>80</x>
-           <y>230</y>
-           <width>101</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <family>Quicksand SemiBold</family>
-           <pointsize>20</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Type</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="nombredelits_2">
-         <property name="geometry">
-          <rect>
-           <x>80</x>
-           <y>380</y>
-           <width>211</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <family>Quicksand SemiBold</family>
-           <pointsize>20</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Nombre de lits</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="nomduSurveillant_2">
-         <property name="geometry">
-          <rect>
-           <x>80</x>
-           <y>430</y>
-           <width>261</width>
-           <height>41</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <family>Quicksand SemiBold</family>
-           <pointsize>20</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Nom du surveillant</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="emplacement_2">
-         <property name="geometry">
-          <rect>
-           <x>80</x>
-           <y>310</y>
-           <width>221</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <family>Quicksand SemiBold</family>
-           <pointsize>20</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Emplacement</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="numero_2">
-         <property name="geometry">
-          <rect>
-           <x>80</x>
-           <y>170</y>
-           <width>141</width>
-           <height>20</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <family>Quicksand SemiBold</family>
-           <pointsize>20</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Numero</string>
-         </property>
-        </widget>
-        <widget class="QLineEdit" name="lineEdit_AffSurveillant">
-         <property name="geometry">
-          <rect>
-           <x>410</x>
-           <y>431</y>
-           <width>331</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="readOnly">
-          <bool>true</bool>
-         </property>
-        </widget>
         <widget class="QPushButton" name="pushButton_RetourAffChambre">
          <property name="geometry">
           <rect>
            <x>10</x>
-           <y>580</y>
+           <y>690</y>
            <width>61</width>
            <height>31</height>
           </rect>
@@ -13243,39 +12926,13 @@ background-repeat: none;
           <string/>
          </property>
         </widget>
-        <widget class="QLineEdit" name="lineEdit_AffType">
-         <property name="geometry">
-          <rect>
-           <x>410</x>
-           <y>241</y>
-           <width>331</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="readOnly">
-          <bool>true</bool>
-         </property>
-        </widget>
-        <widget class="QLineEdit" name="lineEdit_AffNombreLits">
-         <property name="geometry">
-          <rect>
-           <x>410</x>
-           <y>379</y>
-           <width>71</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="readOnly">
-          <bool>true</bool>
-         </property>
-        </widget>
         <widget class="QPushButton" name="pushButton_ModifChambre">
          <property name="geometry">
           <rect>
-           <x>740</x>
-           <y>560</y>
-           <width>81</width>
-           <height>51</height>
+           <x>880</x>
+           <y>690</y>
+           <width>61</width>
+           <height>41</height>
           </rect>
          </property>
          <property name="styleSheet">
@@ -13291,18 +12948,117 @@ background-repeat: none;
           <string/>
          </property>
         </widget>
-        <widget class="QLineEdit" name="lineEdit_AffEmplacement">
+        <widget class="QWidget" name="layoutWidget">
          <property name="geometry">
           <rect>
-           <x>410</x>
-           <y>311</y>
-           <width>331</width>
-           <height>31</height>
+           <x>80</x>
+           <y>169</y>
+           <width>751</width>
+           <height>431</height>
           </rect>
          </property>
-         <property name="readOnly">
-          <bool>true</bool>
-         </property>
+         <layout class="QGridLayout" name="gridLayout_14">
+          <item row="0" column="0">
+           <widget class="QLabel" name="numero_2">
+            <property name="font">
+             <font>
+              <family>Quicksand SemiBold</family>
+              <pointsize>20</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Numero</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLineEdit" name="lineEdit_AffNumero">
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="type_2">
+            <property name="font">
+             <font>
+              <family>Quicksand SemiBold</family>
+              <pointsize>20</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Type</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="lineEdit_AffType">
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="emplacement_2">
+            <property name="font">
+             <font>
+              <family>Quicksand SemiBold</family>
+              <pointsize>20</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Emplacement</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QLineEdit" name="lineEdit_AffEmplacement">
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="nombredelits_2">
+            <property name="font">
+             <font>
+              <family>Quicksand SemiBold</family>
+              <pointsize>20</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Nombre de lits</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QLineEdit" name="lineEdit_AffNombreLits">
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="nomduSurveillant_2">
+            <property name="font">
+             <font>
+              <family>Quicksand SemiBold</family>
+              <pointsize>20</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Nom du surveillant</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QLineEdit" name="lineEdit_AffSurveillant">
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </widget>
       </widget>
@@ -13312,8 +13068,8 @@ background-repeat: none;
          <rect>
           <x>20</x>
           <y>20</y>
-          <width>811</width>
-          <height>611</height>
+          <width>941</width>
+          <height>741</height>
          </rect>
         </property>
         <property name="font">
@@ -13325,119 +13081,11 @@ background-repeat: none;
         <property name="title">
          <string>Modifier une chambre</string>
         </property>
-        <widget class="QLineEdit" name="lineEdit_ModifNumero">
-         <property name="geometry">
-          <rect>
-           <x>410</x>
-           <y>169</y>
-           <width>331</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="readOnly">
-          <bool>false</bool>
-         </property>
-        </widget>
-        <widget class="QLabel" name="nombredelits_3">
-         <property name="geometry">
-          <rect>
-           <x>80</x>
-           <y>380</y>
-           <width>211</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <family>Quicksand SemiBold</family>
-           <pointsize>20</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Nombre de lits</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="type_3">
-         <property name="geometry">
-          <rect>
-           <x>80</x>
-           <y>230</y>
-           <width>111</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <family>Quicksand SemiBold</family>
-           <pointsize>20</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Type</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="nomduSurveillant_3">
-         <property name="geometry">
-          <rect>
-           <x>80</x>
-           <y>440</y>
-           <width>261</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <family>Quicksand SemiBold</family>
-           <pointsize>20</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Nom du surveillant</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="emplacement_3">
-         <property name="geometry">
-          <rect>
-           <x>80</x>
-           <y>310</y>
-           <width>191</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <family>Quicksand SemiBold</family>
-           <pointsize>20</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Emplacement</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="numero_3">
-         <property name="geometry">
-          <rect>
-           <x>80</x>
-           <y>170</y>
-           <width>131</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <family>Quicksand SemiBold</family>
-           <pointsize>20</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Numero</string>
-         </property>
-        </widget>
         <widget class="QPushButton" name="pushButton_ModifierChambre">
          <property name="geometry">
           <rect>
-           <x>760</x>
-           <y>560</y>
+           <x>890</x>
+           <y>690</y>
            <width>41</width>
            <height>41</height>
           </rect>
@@ -13459,7 +13107,7 @@ background-repeat: none;
          <property name="geometry">
           <rect>
            <x>10</x>
-           <y>570</y>
+           <y>700</y>
            <width>61</width>
            <height>31</height>
           </rect>
@@ -13477,55 +13125,112 @@ background-repeat: none;
           <string/>
          </property>
         </widget>
-        <widget class="QLineEdit" name="lineEdit_ModifNombreLits">
+        <widget class="QWidget" name="layoutWidget">
          <property name="geometry">
           <rect>
-           <x>410</x>
-           <y>379</y>
-           <width>71</width>
-           <height>31</height>
+           <x>80</x>
+           <y>169</y>
+           <width>741</width>
+           <height>391</height>
           </rect>
          </property>
-        </widget>
-        <widget class="QComboBox" name="comboBox_ModifEmplacement">
-         <property name="geometry">
-          <rect>
-           <x>410</x>
-           <y>311</y>
-           <width>331</width>
-           <height>31</height>
-          </rect>
-         </property>
-        </widget>
-        <widget class="QComboBox" name="comboBox_ModifType">
-         <property name="geometry">
-          <rect>
-           <x>410</x>
-           <y>241</y>
-           <width>331</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <item>
-          <property name="text">
-           <string>Chambre de garde</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Chambre du patient</string>
-          </property>
-         </item>
-        </widget>
-        <widget class="QComboBox" name="comboBox_ModifSurveillant">
-         <property name="geometry">
-          <rect>
-           <x>410</x>
-           <y>441</y>
-           <width>331</width>
-           <height>31</height>
-          </rect>
-         </property>
+         <layout class="QGridLayout" name="gridLayout_15">
+          <item row="0" column="0">
+           <widget class="QLabel" name="numero_3">
+            <property name="font">
+             <font>
+              <family>Quicksand SemiBold</family>
+              <pointsize>20</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Numero</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLineEdit" name="lineEdit_ModifNumero">
+            <property name="readOnly">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="type_3">
+            <property name="font">
+             <font>
+              <family>Quicksand SemiBold</family>
+              <pointsize>20</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Type</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QComboBox" name="comboBox_ModifType">
+            <item>
+             <property name="text">
+              <string>Chambre de garde</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Chambre du patient</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="emplacement_3">
+            <property name="font">
+             <font>
+              <family>Quicksand SemiBold</family>
+              <pointsize>20</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Emplacement</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QComboBox" name="comboBox_ModifEmplacement"/>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="nombredelits_3">
+            <property name="font">
+             <font>
+              <family>Quicksand SemiBold</family>
+              <pointsize>20</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Nombre de lits</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QLineEdit" name="lineEdit_ModifNombreLits"/>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="nomduSurveillant_3">
+            <property name="font">
+             <font>
+              <family>Quicksand SemiBold</family>
+              <pointsize>20</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Nom du surveillant</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QComboBox" name="comboBox_ModifSurveillant"/>
+          </item>
+         </layout>
         </widget>
        </widget>
       </widget>
@@ -13533,10 +13238,10 @@ background-repeat: none;
        <widget class="QPushButton" name="pushButton_backstat">
         <property name="geometry">
          <rect>
-          <x>0</x>
-          <y>590</y>
-          <width>51</width>
-          <height>31</height>
+          <x>10</x>
+          <y>690</y>
+          <width>61</width>
+          <height>51</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -13555,10 +13260,10 @@ background-repeat: none;
        <widget class="QWidget" name="stat_chambre" native="true">
         <property name="geometry">
          <rect>
-          <x>70</x>
+          <x>90</x>
           <y>10</y>
-          <width>761</width>
-          <height>601</height>
+          <width>871</width>
+          <height>741</height>
          </rect>
         </property>
         <layout class="QHBoxLayout" name="horizontalLayout_63"/>
@@ -14376,7 +14081,6 @@ background-repeat: none;
            <widget class="QFrame" name="informationsFrame">
             <property name="styleSheet">
              <string notr="true">QFrame{
-border:1px solid rgb(170, 218, 255);
 	margin:50%;
 	border-radius:20px;
 	padding: 10px;

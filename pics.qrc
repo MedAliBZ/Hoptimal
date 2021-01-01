@@ -40,5 +40,8 @@
         <file>pics/download.png</file>
         <file>pics/QRpic.png</file>
         <file>pics/Back.png</file>
+        <file>pics/offres.mp3</file>
+        <file>pics/pdfSahar.png</file>
+        <file>pics/english.qm</file>
     </qresource>
 </RCC>

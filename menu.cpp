@@ -18,6 +18,7 @@
 #include <QWidget>
 #include <QPrintDialog>
 #include <QtPrintSupport>
+#include <QtMultimedia/QMediaPlayer>
 #define CARACTERES_ETRANGERS "~{}[]()|-`'^ç@_]\"°01234567890+=£$*µ/§!?,.&#;><"
 
 
@@ -2639,25 +2640,21 @@ void Menu::on_imprimer_clicked()
        // y.print(&printer);
 
 }
-
-void Menu::on_pushButton_menuChambres_clicked()
+void Menu::animation_chambre()
 {
-    if(rank==1)
-    {
-        ui->ajouter_chambre->setVisible(false);
-        ui->supprimer_chambre->setVisible(false);
-    }
-    ui->tableView_chambres->setModel(cham.afficher_ListeChambre());
-    ui->stackedWidget->setCurrentIndex(26);
+    QPixmap pic_service(":/pics/pics/chambre.png");
+    QPropertyAnimation *animation1;
+    int w2=ui->animation_chambre->width();
+    int h2=ui->animation_chambre->height();
+    ui->animation_chambre->setPixmap(pic_service.scaled(h2,w2,Qt::KeepAspectRatio));
+    animation1 = new QPropertyAnimation(ui->animation_chambre, "geometry");
+                    animation1->setDuration(3000);
+                    animation1->setStartValue(ui->animation_chambre->geometry());
+                    animation1->setEndValue(QRect(720,550,71,61 ));
+                    animation1->start();
 }
-void Menu::on_pushButton_menuServices_clicked()
+void Menu::animation_service()
 {
-    if(rank==1)
-    {
-        ui->ajouter_service->setVisible(false);
-        ui->supprimer_service->setVisible(false);
-    }
-    //animation
     QPixmap pic_service(":/pics/pics/service.png");
     QPropertyAnimation *animation1;
     int w2=ui->animation_service->width();
@@ -2668,8 +2665,28 @@ void Menu::on_pushButton_menuServices_clicked()
                     animation1->setStartValue(ui->animation_service->geometry());
                     animation1->setEndValue(QRect(720,550,71,61 ));
                     animation1->start();
+}
+void Menu::on_pushButton_menuChambres_clicked()
+{
+    if(rank==1)
+    {
+        ui->ajouter_chambre->setVisible(false);
+        ui->supprimer_chambre->setVisible(false);
+    }
+    ui->tableView_chambres->setModel(cham.afficher_ListeChambre());
+    ui->stackedWidget->setCurrentIndex(26);
+    animation_chambre();
+}
+void Menu::on_pushButton_menuServices_clicked()
+{
+    if(rank==1)
+    {
+        ui->ajouter_service->setVisible(false);
+        ui->supprimer_service->setVisible(false);
+    }
     ui->tableView_services->setModel(ser.afficher_ListeService());
     ui->stackedWidget->setCurrentIndex(22);
+    animation_service();
 }
 void Menu::on_ajouter_service_clicked()
 {
@@ -2761,17 +2778,7 @@ void Menu::on_pushButton_Services_clicked()
     ui->tableView_services->setModel(ser.afficher_ListeService());
     ui->stackedWidget->setCurrentIndex(22);
 
-    //animation
-    QPixmap pic_service(":/pics/pics/service.png");
-    QPropertyAnimation *animation1;
-    int w2=ui->animation_service->width();
-    int h2=ui->animation_service->height();
-    ui->animation_service->setPixmap(pic_service.scaled(h2,w2,Qt::KeepAspectRatio));
-    animation1 = new QPropertyAnimation(ui->animation_service, "geometry");
-                    animation1->setDuration(3000);
-                    animation1->setStartValue(ui->animation_service->geometry());
-                    animation1->setEndValue(QRect(720,550,71,61 ));
-                    animation1->start();
+    animation_service();
 }
 void Menu::on_pushButton_Chambres_clicked()
 {
@@ -2784,21 +2791,13 @@ void Menu::on_pushButton_Chambres_clicked()
     ui->stackedWidget->setCurrentIndex(26);
 
     //animation
-    QPixmap pic_service(":/pics/pics/chambre.png");
-    QPropertyAnimation *animation1;
-    int w2=ui->animation_chambre->width();
-    int h2=ui->animation_chambre->height();
-    ui->animation_chambre->setPixmap(pic_service.scaled(h2,w2,Qt::KeepAspectRatio));
-    animation1 = new QPropertyAnimation(ui->animation_chambre, "geometry");
-                    animation1->setDuration(3000);
-                    animation1->setStartValue(ui->animation_chambre->geometry());
-                    animation1->setEndValue(QRect(720,550,71,61 ));
-                    animation1->start();
+   animation_chambre();
 
 }
 void Menu::on_pushButton_petitMenu_clicked()
 {
     ui->stackedWidget->setCurrentIndex(1);
+    player->stop();
 }
 void Menu::on_pushButton_services_clicked()
 {
@@ -2811,16 +2810,7 @@ void Menu::on_pushButton_services_clicked()
     ui->stackedWidget->setCurrentIndex(22);
 
     //animation
-    QPixmap pic_service(":/pics/pics/service.png");
-    QPropertyAnimation *animation1;
-    int w2=ui->animation_service->width();
-    int h2=ui->animation_service->height();
-    ui->animation_service->setPixmap(pic_service.scaled(h2,w2,Qt::KeepAspectRatio));
-    animation1 = new QPropertyAnimation(ui->animation_service, "geometry");
-                    animation1->setDuration(3000);
-                    animation1->setStartValue(ui->animation_service->geometry());
-                    animation1->setEndValue(QRect(720,550,71,61 ));
-                    animation1->start();
+   animation_service();
 
 }
 void Menu::on_pushButton_Chambre_clicked()
@@ -2834,21 +2824,14 @@ void Menu::on_pushButton_Chambre_clicked()
     ui->stackedWidget->setCurrentIndex(26);
 
     //animation
-    QPixmap pic_service(":/pics/pics/chambre.png");
-    QPropertyAnimation *animation1;
-    int w2=ui->animation_chambre->width();
-    int h2=ui->animation_chambre->height();
-    ui->animation_chambre->setPixmap(pic_service.scaled(h2,w2,Qt::KeepAspectRatio));
-    animation1 = new QPropertyAnimation(ui->animation_chambre, "geometry");
-                    animation1->setDuration(3000);
-                    animation1->setStartValue(ui->animation_chambre->geometry());
-                    animation1->setEndValue(QRect(720,550,71,61 ));
-                    animation1->start();
+   animation_chambre();
 
 }
 void Menu::on_pushButton_petitmenu_clicked()
 {
     ui->stackedWidget->setCurrentIndex(1);
+    player->stop();
+
 }
 void Menu::on_pushButton_AnnulerAjoutService_clicked()
 {
@@ -2952,8 +2935,7 @@ void Menu::on_pushButton_AjoutChambre_clicked()
                                         QObject::tr("Nombre de lits ne doit pas etre égal à 0.\n Taper CANCEL pour changer "),
                                         QMessageBox::Cancel);
    }
-   else
-   {
+
    bool test=ch.ajouter_chambre();
    if(test)
    {
@@ -2970,7 +2952,7 @@ void Menu::on_pushButton_AjoutChambre_clicked()
                                         QMessageBox::Cancel);
    }
    ui->stackedWidget->setCurrentIndex(26);
-   }
+
 
 }
 
@@ -3257,12 +3239,24 @@ void Menu::on_pushButton_backstat_clicked()
 
 void Menu::on_gestionOffresMG_2_clicked()
 {
+  /*  QStringList langues;
+    langues<<"Anglais"<<"Français";
+    QString choix=QInputDialog::getItem(NULL,"CHOISIR","Langue",langues);
+    if(choix=="Anglais")
+    {
+        t.load(":/pics/pics/english.qm");
+    }*/
     ui->stackedWidget->setCurrentIndex(21);
+    player->setMedia(QUrl("qrc:/pics/pics/offres.mp3"));
+    player->setVolume(150);
+    player->play();
+
 }
 
 void Menu::on_pushButton_retourGestionoffres_clicked()
 {
     ui->stackedWidget->setCurrentIndex(1);
+    player->stop();
 
 }
 

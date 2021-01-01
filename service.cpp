@@ -51,6 +51,7 @@ service::service(QString nom,QString staff1,QString staff2,QString staff3,QStrin
      model->setHeaderData(3,Qt::Horizontal,QObject::tr("Staff3"));
      model->setHeaderData(4,Qt::Horizontal,QObject::tr("Nom equipement"));
 
+
      return model;
 
  }
@@ -113,10 +114,12 @@ service::service(QString nom,QString staff1,QString staff2,QString staff3,QStrin
  void service::printPDF_service()
  {
 
-     QPdfWriter pdf("C:/Users/WIKI/Downloads/E-Health-2A3-master/printService.pdf");
+     QPdfWriter pdf("C:/Users/WIKI/Desktop/sahaarrrrr/printService.pdf");
      QPainter painter(&pdf);
      QFont font=painter.font();
      QMessageBox msgBox;
+     QImage image(":/pics/pics/pdfSahar.png");
+     painter.drawImage(-20,-30,image);
         font.setPointSize(font.pointSize() * 2);
         painter.setFont(font);
         painter.setPen(Qt::black);

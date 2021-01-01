@@ -35,6 +35,9 @@
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QPixmap>
+#include <QMediaPlayer>
+#include <QInputDialog>
+#include <QTranslator>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Menu; }
@@ -479,6 +482,8 @@ private slots:
 
     void on_downlaod_buttonqrcode_clicked();
 
+    void animation_service();
+    void animation_chambre();
 private:
     Ui::Menu *ui;
     QString username;
@@ -491,5 +496,10 @@ private:
     QList<Employe*> mesEmploye;
      ambulance tmpambulance;
      mission tmpmission;
+     QMediaPlayer *player = new QMediaPlayer();
+     QTranslator t;
+
+
+
 };
 #endif // MENU_H
