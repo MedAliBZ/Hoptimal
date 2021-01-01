@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>973</width>
+    <width>1048</width>
     <height>765</height>
    </rect>
   </property>
@@ -176,7 +176,7 @@ backfround:white;
 }</string>
       </property>
       <property name="currentIndex">
-       <number>26</number>
+       <number>36</number>
       </property>
       <widget class="QWidget" name="loginPage">
        <property name="maximumSize">
@@ -14081,6 +14081,7 @@ background-repeat: none;
            <widget class="QFrame" name="informationsFrame">
             <property name="styleSheet">
              <string notr="true">QFrame{
+	border:1px solid rgb(170, 218, 255);
 	margin:50%;
 	border-radius:20px;
 	padding: 10px;
@@ -14139,10 +14140,16 @@ DU CODE</string>
                </property>
                <item>
                 <widget class="QLabel" name="id_QR_txt">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>0</height>
+                  </size>
+                 </property>
                  <property name="maximumSize">
                   <size>
                    <width>16777215</width>
-                   <height>40</height>
+                   <height>16777215</height>
                   </size>
                  </property>
                  <property name="font">
@@ -14161,7 +14168,7 @@ DU CODE</string>
                  <property name="maximumSize">
                   <size>
                    <width>16777215</width>
-                   <height>40</height>
+                   <height>16777215</height>
                   </size>
                  </property>
                  <property name="font">
