@@ -176,7 +176,7 @@ backfround:white;
 }</string>
       </property>
       <property name="currentIndex">
-       <number>26</number>
+       <number>28</number>
       </property>
       <widget class="QWidget" name="loginPage">
        <property name="maximumSize">

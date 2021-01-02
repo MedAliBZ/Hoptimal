@@ -21,7 +21,7 @@ int arduinoSaharETJasser::connnectArduino()
             }
         }
     }
-    qDebug() << "arduino port name" <<arduino_port_name ;
+    qDebug() << "arduino chambre port name" <<arduino_port_name ;
 
     if (arduino_is_available)
     {
@@ -62,5 +62,5 @@ void arduinoSaharETJasser::write_toArduino(QByteArray d)
     if(serial->isReadable())
         serial->write(d);
     else
-        qDebug()<<"couldn't write to serial!!!!!!";
+        qDebug()<<"couldn't write to serial (chambre)!!!!!!";
 }

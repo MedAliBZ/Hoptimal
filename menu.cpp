@@ -1,6 +1,7 @@
 #include "menu.h"
 #include "chambre.h"
 #include "service.h"
+#include "arduinosaharetjasser.h"
 #include <QFile>
 #include <QFileDialog>
 #include <QPrintDialog>
@@ -53,8 +54,8 @@ Menu::Menu(QWidget *parent)
 
     statistique_med();
 
-    arduinoInit();
-
+    //arduinoInit();
+    arduino_SaharEtJasser();
     stat_sahar();
     ui->tableView_services->setModel(ser.afficher_ListeService());
     ui->tableView_chambres->setModel(cham.afficher_ListeChambre());
@@ -2994,7 +2995,19 @@ void Menu::on_tableView_services_activated(const QModelIndex &index)
     delete query;
 }
 
-
+void Menu::arduino_SaharEtJasser()
+{
+    int res=Ar.connnectArduino();
+    switch(res)
+    {
+       case(0): qDebug()<<"arduino chambre is available and connected to: "<<Ar.get_arduino_port_name();
+        break;
+    case(1): qDebug()<<"arduino chambre is available but not connected to: "<<Ar.get_arduino_port_name();
+        break;
+    case(-1): qDebug()<<"arduino chambre is not available!!!";
+    }
+    QObject::connect(Ar.getserial(),SIGNAL(readyRead()),this,SLOT(update_label));
+}
 
 void Menu::on_tableView_chambres_activated(const QModelIndex &index)
 {
@@ -3024,11 +3037,15 @@ void Menu::on_tableView_chambres_activated(const QModelIndex &index)
                                   QObject::tr("Affichage de la chambre non effectué.\n Taper CANCEL pour quitter"),
                                   QMessageBox::Cancel  );
     delete query;
+    QByteArray lits=ui->lineEdit_AffNombreLits->text().toLocal8Bit();
+    qDebug() << lits << endl;
+    Ar.write_toArduino(lits);
 }
 
 void Menu::on_pushButton_RetourAffChambre_clicked()
 {
     ui->stackedWidget->setCurrentIndex(26);
+    Ar.write_toArduino(0);
 
 }
 

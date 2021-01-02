@@ -19,16 +19,23 @@ void loop() {
     data2 = Serial.read();
   }
 
-  if (data2 == '0')
+  if(data2=="0")
   {
-    digitalWrite(PIN_LED, LOW);
     lcd.setCursor(0,0);
     lcd.print("selectionner");
     lcd.setCursor(0,1);
     lcd.print("une chambre");
     lcd.clear();
-   
   }
+   /* digitalWrite(PIN_LED, LOW);
+    lcd.setCursor(0,0);
+    lcd.print("selectionner");
+    lcd.setCursor(0,1);
+    lcd.print("une chambre");
+    delay(5000);
+    lcd.clear();*/
+   
+  
   if (data2 == '1')
   { digitalWrite(PIN_LED, HIGH);
     lcd.setCursor(0, 0);
@@ -58,7 +65,7 @@ void loop() {
     lcd.print("Nombre de lits:");
     lcd.setCursor(0, 1);
     lcd.print("3");
-    delay(5000);
+    delay(3000);
     digitalWrite(PIN_LED, LOW);
     lcd.clear();
   }
