@@ -176,7 +176,7 @@ backfround:white;
 }</string>
       </property>
       <property name="currentIndex">
-       <number>36</number>
+       <number>9</number>
       </property>
       <widget class="QWidget" name="loginPage">
        <property name="maximumSize">
@@ -785,6 +785,13 @@ QPushButton:focus
            </layout>
           </item>
          </layout>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_7">
+          <property name="text">
+           <string>Consulter notre site web </string>
+          </property>
+         </widget>
         </item>
         <item>
          <widget class="QLabel" name="label_7">
@@ -5464,7 +5471,7 @@ backfround:white;
 }</string>
         </property>
         <property name="currentIndex">
-         <number>2</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="page_4">
          <widget class="QLabel" name="label_5">
@@ -6775,6 +6782,19 @@ Color: #101010;</string>
             </property>
            </widget>
           </widget>
+          <widget class="QPushButton" name="pushButton_8">
+           <property name="geometry">
+            <rect>
+             <x>490</x>
+             <y>360</y>
+             <width>181</width>
+             <height>51</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Boite de réception</string>
+           </property>
+          </widget>
           <zorder>splitter_2</zorder>
           <zorder>label_22</zorder>
           <zorder>label_23</zorder>
@@ -6785,6 +6805,7 @@ Color: #101010;</string>
           <zorder>nameLabel</zorder>
           <zorder>rankLabel</zorder>
           <zorder>pushButton_6</zorder>
+          <zorder>pushButton_8</zorder>
          </widget>
         </item>
        </layout>

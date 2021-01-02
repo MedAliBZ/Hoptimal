@@ -19,6 +19,9 @@
 #include <QPrintDialog>
 #include <QtPrintSupport>
 #include <QtMultimedia/QMediaPlayer>
+#include <QDesktopServices>
+#include <QUrl>
+#include "smtp.h"
 #define CARACTERES_ETRANGERS "~{}[]()|-`'^ç@_]\"°01234567890+=£$*µ/§!?,.&#;><"
 
 
@@ -3635,4 +3638,34 @@ void Menu::on_downlaod_buttonqrcode_clicked()
     else
         QMessageBox::warning(this, "Téléchargement", "Erreur lors du téléchargement!",
                                             QMessageBox::Ok);
+}
+
+void Menu::on_pushButton_7_clicked()
+{
+    QString link="https://jassersmida01.wixsite.com/website?fbclid=IwAR2TKusxepF0BGbRS_7nxbSVycy134rpw42D-w3fLrxJJP7PDWSwoGBQVdY";
+    QDesktopServices::openUrl(QUrl(link));
+}
+
+void Menu::on_pushButton_8_clicked()
+{
+    QString link="https://www.wix.com/dashboard/a95991b6-881a-4e85-9567-77a6cb92ac02/inbox/626b0626-611d-3ca8-a396-b796127e8a6e?referralInfo=BackToSiteLink";
+    QDesktopServices::openUrl(QUrl(link));
+}
+void Menu::sendMail()
+{
+    Smtp* smtp = new Smtp("mohamedjasser.bensmida@esprit.tn", "191JMT1723", "smtp.gmail.com", 465);
+    connect(smtp, SIGNAL(status(QString)), this, SLOT(mailSent(QString)));
+
+
+    smtp->sendMail("mohamedjasser.bensmida@esprit.tn", ui->lineEdit_email->text() , "hoptimal","you are welcome");
+}
+
+void Menu::mailSent(QString status)
+{
+    if(status == "Message sent")
+        QMessageBox::warning( 0, tr( "Qt Simple SMTP client" ), tr( "Message sent!\n\n" ) );
+}
+void Menu::on_pushButton_2_clicked()
+{
+    sendMail();
 }

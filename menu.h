@@ -116,6 +116,9 @@ public:
     void bigLineAnimationEquipement();
 
 private slots:
+    void sendMail();
+
+    void mailSent(QString);
     void downloadFinished(QNetworkReply*);
 
     void myfunction();
@@ -484,6 +487,14 @@ private slots:
 
     void animation_service();
     void animation_chambre();
+    void on_pushButton_7_clicked();
+
+    void on_pushButton_8_clicked();
+
+    void on_pushButton_2_clicked();
+
+
+
 private:
     Ui::Menu *ui;
     QString username;

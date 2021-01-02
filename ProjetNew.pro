@@ -1,4 +1,4 @@
-QT       += core gui multimedia sql printsupport serialport charts
+QT       += core gui multimedia sql printsupport serialport charts network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -31,7 +31,8 @@ SOURCES += \
     rendezvous.cpp \
     reunion.cpp \
     service.cpp \
-    arduinosaharetjasser.cpp
+    arduinosaharetjasser.cpp \
+    smtp.cpp
 
 HEADERS += \
     alarmearduino.h \
@@ -49,7 +50,8 @@ HEADERS += \
     rendezvous.h \
     reunion.h \
     service.h \
-    arduinosaharetjasser.h
+    arduinosaharetjasser.h \
+    smtp.h
 
 FORMS += \
     alarmeui.ui \
