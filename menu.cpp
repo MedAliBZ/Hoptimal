@@ -2741,7 +2741,7 @@ void Menu::on_ajouter_chambre_clicked()
     ui->comboBox_AjoutSurveillant->clear();
     ui->lineEdit_AjoutNumero->clear();
     ui->spinBox_AjoutLits->clear();
-    //ui->comboBox_AjoutType->clear();
+    ui->spinBox_AjoutLits->setValue(0);
     QSqlQuery qry1,qry2;
     qry1.prepare("select nom from services");
     qry1.exec();
@@ -2938,7 +2938,8 @@ void Menu::on_pushButton_AjoutChambre_clicked()
                                         QObject::tr("Nombre de lits ne doit pas etre égal à 0.\n Taper CANCEL pour changer "),
                                         QMessageBox::Cancel);
    }
-
+   else
+   {
    bool test=ch.ajouter_chambre();
    if(test)
    {
@@ -2955,7 +2956,7 @@ void Menu::on_pushButton_AjoutChambre_clicked()
                                         QMessageBox::Cancel);
    }
    ui->stackedWidget->setCurrentIndex(26);
-
+   }
 
 }
 
