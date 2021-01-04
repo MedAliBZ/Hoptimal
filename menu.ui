@@ -178,7 +178,7 @@ backfround:white;
 }</string>
       </property>
       <property name="currentIndex">
-       <number>22</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="loginPage">
        <property name="maximumSize">
@@ -830,8 +830,14 @@ background-image: url(:/user.png);</string>
                <widget class="QPushButton" name="volume_button">
                 <property name="minimumSize">
                  <size>
-                  <width>0</width>
-                  <height>50</height>
+                  <width>40</width>
+                  <height>40</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>40</width>
+                  <height>40</height>
                  </size>
                 </property>
                 <property name="cursor">
