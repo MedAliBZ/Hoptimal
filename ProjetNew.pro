@@ -19,6 +19,7 @@ SOURCES += \
     alarmearduino.cpp \
     alarmeui.cpp \
     ambulance.cpp \
+    arduinow.cpp \
     chambre.cpp \
     connectdb.cpp \
     employe.cpp \
@@ -38,6 +39,7 @@ HEADERS += \
     alarmearduino.h \
     alarmeui.h \
     ambulance.h \
+    arduinow.h \
     chambre.h \
     connectdb.h \
     connection.h \

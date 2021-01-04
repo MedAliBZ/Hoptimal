@@ -4,9 +4,9 @@
 void ConnectDB::Connect()
 {
     db = QSqlDatabase::addDatabase("QODBC");
-   db.setDatabaseName("Source_Projet2A");
-   db.setUserName("system");//inserer nom de l'utilisateur
-   db.setPassword("0000");//inserer mot de passe de cet utilisateur
+   db.setDatabaseName("secour");
+   db.setUserName("secour");//inserer nom de l'utilisateur
+   db.setPassword("esprit20");//inserer mot de passe de cet utilisateur
 
     if (db.open()){
         qDebug("DataBase connected.");

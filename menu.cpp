@@ -23,6 +23,8 @@
 #include <QDesktopServices>
 #include <QUrl>
 #include "smtp.h"
+#include <QDebug>
+#include "arduinow.h"
 #define CARACTERES_ETRANGERS "~{}[]()|-`'^ç@_]\"°01234567890+=£$*µ/§!?,.&#;><"
 
 
@@ -51,7 +53,7 @@ Menu::Menu(QWidget *parent)
     ui->stackedWidget->setCurrentIndex(0);
 
     initialiserDali();
-
+    covid();
     statistique_med();
 
     //arduinoInit();
@@ -61,7 +63,18 @@ Menu::Menu(QWidget *parent)
     ui->tableView_chambres->setModel(cham.afficher_ListeChambre());
     ui->tabambulance->setModel(tmpambulance.Afficher_ambulance());
      ui->tabmission->setModel(tmpmission.afficher_mission());
+    //arduino walid
+     int rett=Z.connect_arduinow();
+     switch (rett)
+     {
+     case (0):qDebug()<<"arduino is available and connected to :"<<Z.getarduinow_port_name();
+         break;
+     case (1):qDebug()<<"arduino is available but not connected to :"<<Z.getarduinow_port_name();
+         break;
+     case (-1):qDebug()<<"arduino is not available";
 
+     }
+     QObject::connect(Z.getserial(),SIGNAL(readyRead()),this,SLOT(update_label()));
 
 }
 
@@ -69,6 +82,20 @@ Menu::~Menu()
 {
     db.closeDB();
     delete ui;
+}
+
+void Menu::covid(){
+    QNetworkAccessManager *man= new QNetworkAccessManager(this);
+    connect(man,&QNetworkAccessManager::finished,this,[&](QNetworkReply* reply){
+        QJsonObject jsonObject= QJsonDocument::fromJson(reply->readAll()).object();
+        qDebug()<< jsonObject["cases"].toDouble();
+        ui->cas_covid->setText(QString::number(jsonObject["cases"].toDouble()));
+        ui->recovered_covid->setText(QString::number(jsonObject["recovered"].toDouble()));
+        ui->Active_covid->setText(QString::number(jsonObject["active"].toDouble()));
+    });
+    const QUrl url=QUrl("https://corona.lmao.ninja/v2/countries/tunisia?yesterday&strict&query%20");
+    QNetworkRequest request(url);
+    man->get(request);
 }
 
 void Menu::myfunction()
@@ -3686,4 +3713,35 @@ void Menu::mailSent(QString status)
 void Menu::on_pushButton_2_clicked()
 {
     sendMail();
+}
+
+
+
+void Menu::on_pushButton_12ard_clicked()
+{
+    Z.write_to_arduinow("1");
+}
+
+void Menu::on_pushButton_13ard_clicked()
+{
+    Z.write_to_arduinow("0");
+}
+
+void Menu::on_pushButton_12menuu_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(31);
+}
+
+void Menu::on_pushButton_12_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(37);
+}
+
+void Menu::update_labelw()
+{
+   datta=Z.read_from_arduinow();
+   if(datta=="1")
+       ui->label_655->setText("ON");
+   else if(datta=="0")
+       ui->label_655->setText("OFF");
 }

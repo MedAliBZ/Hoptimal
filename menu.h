@@ -39,6 +39,8 @@
 #include <QMediaPlayer>
 #include <QInputDialog>
 #include <QTranslator>
+#include "arduinow.h"
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Menu; }
@@ -65,6 +67,7 @@ private:
     arduinoSaharETJasser Ar;
 
     void arduinoInit();
+    void covid();
 
 public:
     Menu(QWidget *parent = nullptr);
@@ -116,6 +119,7 @@ public:
     void smallLineAnimationMedicament();
     void bigLineAnimationMedicament();
     void bigLineAnimationEquipement();
+    void update_labelw();
 
 private slots:
     void sendMail();
@@ -498,6 +502,14 @@ private slots:
 
 
    void arduino_SaharEtJasser();
+   void on_pushButton_12_clicked();
+
+   void on_pushButton_12ard_clicked();
+
+   void on_pushButton_13ard_clicked();
+
+   void on_pushButton_12menuu_clicked();
+
 private:
     Ui::Menu *ui;
     QString username;
@@ -512,6 +524,8 @@ private:
      mission tmpmission;
      QMediaPlayer *player = new QMediaPlayer();
      QTranslator t;
+     arduinow Z;
+     QByteArray datta;
 
 
 

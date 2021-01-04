@@ -6,13 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1048</width>
-    <height>765</height>
+    <width>1060</width>
+    <height>692</height>
    </rect>
   </property>
   <property name="font">
    <font>
     <family>Quicksand SemiBold</family>
+    <pointsize>10</pointsize>
     <weight>50</weight>
     <bold>false</bold>
    </font>
@@ -176,7 +177,7 @@ backfround:white;
 }</string>
       </property>
       <property name="currentIndex">
-       <number>28</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="loginPage">
        <property name="maximumSize">
@@ -185,7 +186,7 @@ backfround:white;
          <height>16777215</height>
         </size>
        </property>
-       <layout class="QVBoxLayout" name="verticalLayout_24">
+       <layout class="QHBoxLayout" name="horizontalLayout_93">
         <item>
          <layout class="QVBoxLayout" name="verticalLayout">
           <item alignment="Qt::AlignHCenter">
@@ -784,43 +785,56 @@ QPushButton:focus
             </item>
            </layout>
           </item>
-         </layout>
-        </item>
-        <item>
-         <widget class="QPushButton" name="pushButton_7">
-          <property name="text">
-           <string>Consulter notre site web </string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_7">
-          <property name="styleSheet">
-           <string notr="true">border-radius: 64px;
+          <item>
+           <widget class="QLabel" name="label_7">
+            <property name="styleSheet">
+             <string notr="true">border-radius: 64px;
 background-image: url(:/user.png);</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="loginLabel">
-          <property name="styleSheet">
-           <string notr="true">color: #fefefe;</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="loginLabel">
+            <property name="styleSheet">
+             <string notr="true">color: #fefefe;</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_7">
+            <property name="text">
+             <string>Consulter notre site web </string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
        </layout>
       </widget>
       <widget class="QWidget" name="MenuG">
-       <layout class="QHBoxLayout" name="horizontalLayout_33">
+       <layout class="QVBoxLayout" name="verticalLayout_24">
         <item>
-         <layout class="QVBoxLayout" name="verticalLayout_21">
-          <item alignment="Qt::AlignHCenter">
+         <layout class="QHBoxLayout" name="horizontalLayout_96">
+          <item>
+           <spacer name="horizontalSpacer_70">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item alignment="Qt::AlignLeft">
            <widget class="QLabel" name="label_3">
             <property name="font">
              <font>
@@ -828,229 +842,370 @@ background-image: url(:/user.png);</string>
               <pointsize>50</pointsize>
              </font>
             </property>
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string>Menu</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QFrame" name="line1_2">
-            <layout class="QHBoxLayout" name="horizontalLayout_29">
-             <item>
-              <widget class="QPushButton" name="gestionOffresMG_2">
-               <property name="minimumSize">
-                <size>
-                 <width>250</width>
-                 <height>120</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <family>Quicksand SemiBold</family>
-                 <pointsize>18</pointsize>
-                </font>
-               </property>
-               <property name="cursor">
-                <cursorShape>PointingHandCursor</cursorShape>
-               </property>
-               <property name="text">
-                <string>Gestion des offres</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="gestionInfrastructrueMG_2">
-               <property name="minimumSize">
-                <size>
-                 <width>250</width>
-                 <height>120</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <family>Quicksand SemiBold</family>
-                 <pointsize>18</pointsize>
-                </font>
-               </property>
-               <property name="cursor">
-                <cursorShape>PointingHandCursor</cursorShape>
-               </property>
-               <property name="text">
-                <string>Gestion des infrastructures</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
+           <spacer name="horizontalSpacer_69">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
           </item>
           <item>
-           <widget class="QFrame" name="line2_2">
-            <layout class="QHBoxLayout" name="horizontalLayout_30">
-             <item>
-              <spacer name="horizontalSpacer_10">
-               <property name="orientation">
-                <enum>Qt::Horizontal</enum>
-               </property>
-               <property name="sizeHint" stdset="0">
-                <size>
-                 <width>40</width>
-                 <height>20</height>
-                </size>
-               </property>
-              </spacer>
-             </item>
-             <item>
-              <widget class="QPushButton" name="gestionPatientMG_2">
-               <property name="minimumSize">
-                <size>
-                 <width>450</width>
-                 <height>120</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <family>Quicksand SemiBold</family>
-                 <pointsize>18</pointsize>
-                </font>
-               </property>
-               <property name="cursor">
-                <cursorShape>PointingHandCursor</cursorShape>
-               </property>
-               <property name="text">
-                <string>Gestion des patients</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <spacer name="horizontalSpacer_24">
-               <property name="orientation">
-                <enum>Qt::Horizontal</enum>
-               </property>
-               <property name="sizeHint" stdset="0">
-                <size>
-                 <width>40</width>
-                 <height>20</height>
-                </size>
-               </property>
-              </spacer>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item>
-           <widget class="QFrame" name="line3_2">
-            <layout class="QHBoxLayout" name="horizontalLayout_31">
-             <item>
-              <widget class="QPushButton" name="gestionSecoursMG_2">
-               <property name="minimumSize">
-                <size>
-                 <width>250</width>
-                 <height>120</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <family>Quicksand SemiBold</family>
-                 <pointsize>18</pointsize>
-                </font>
-               </property>
-               <property name="cursor">
-                <cursorShape>PointingHandCursor</cursorShape>
-               </property>
-               <property name="text">
-                <string>Gestion de secours</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="gestionPersonnelMG_2">
-               <property name="minimumSize">
-                <size>
-                 <width>250</width>
-                 <height>120</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <family>Quicksand SemiBold</family>
-                 <pointsize>18</pointsize>
-                </font>
-               </property>
-               <property name="cursor">
-                <cursorShape>PointingHandCursor</cursorShape>
-               </property>
-               <property name="text">
-                <string>Gestion du personnel</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item>
-           <widget class="QFrame" name="line4_2">
-            <layout class="QHBoxLayout" name="horizontalLayout_32">
-             <item>
-              <widget class="QPushButton" name="LogoutMG">
-               <property name="minimumSize">
-                <size>
-                 <width>200</width>
-                 <height>50</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <family>Quicksand SemiBold</family>
-                 <pointsize>12</pointsize>
-                </font>
-               </property>
-               <property name="cursor">
-                <cursorShape>PointingHandCursor</cursorShape>
-               </property>
-               <property name="text">
-                <string>Logout</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <spacer name="horizontalSpacer_25">
-               <property name="orientation">
-                <enum>Qt::Horizontal</enum>
-               </property>
-               <property name="sizeHint" stdset="0">
-                <size>
-                 <width>40</width>
-                 <height>20</height>
-                </size>
-               </property>
-              </spacer>
-             </item>
-             <item>
-              <widget class="QPushButton" name="ReunionMG">
-               <property name="minimumSize">
-                <size>
-                 <width>200</width>
-                 <height>50</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <family>Quicksand SemiBold</family>
-                 <pointsize>12</pointsize>
-                </font>
-               </property>
-               <property name="cursor">
-                <cursorShape>PointingHandCursor</cursorShape>
-               </property>
-               <property name="text">
-                <string>Reunion</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
+           <layout class="QVBoxLayout" name="verticalLayout_21">
+            <item>
+             <widget class="QLabel" name="label_65">
+              <property name="minimumSize">
+               <size>
+                <width>250</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Quicksand SemiBold</family>
+                <pointsize>12</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>Etat Covid-19 en Tunisie :</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_33">
+              <item>
+               <widget class="QLabel" name="label_66">
+                <property name="font">
+                 <font>
+                  <family>Quicksand SemiBold</family>
+                  <pointsize>10</pointsize>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>Cas : </string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="cas_covid">
+                <property name="font">
+                 <font>
+                  <family>Quicksand SemiBold</family>
+                  <pointsize>10</pointsize>
+                 </font>
+                </property>
+                <property name="cursor">
+                 <cursorShape>IBeamCursor</cursorShape>
+                </property>
+                <property name="text">
+                 <string>TextLabel</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_95">
+              <item>
+               <widget class="QLabel" name="label_68">
+                <property name="font">
+                 <font>
+                  <family>Quicksand SemiBold</family>
+                  <pointsize>10</pointsize>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>Rétablis : </string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="recovered_covid">
+                <property name="font">
+                 <font>
+                  <family>Quicksand SemiBold</family>
+                  <pointsize>10</pointsize>
+                 </font>
+                </property>
+                <property name="cursor">
+                 <cursorShape>IBeamCursor</cursorShape>
+                </property>
+                <property name="text">
+                 <string>TextLabel</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_94">
+              <item>
+               <widget class="QLabel" name="label_70">
+                <property name="font">
+                 <font>
+                  <family>Quicksand SemiBold</family>
+                  <pointsize>10</pointsize>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>Actifs : </string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="Active_covid">
+                <property name="font">
+                 <font>
+                  <family>Quicksand SemiBold</family>
+                  <pointsize>10</pointsize>
+                 </font>
+                </property>
+                <property name="cursor">
+                 <cursorShape>IBeamCursor</cursorShape>
+                </property>
+                <property name="text">
+                 <string>TextLabel</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
           </item>
          </layout>
+        </item>
+        <item>
+         <widget class="QFrame" name="line1_2">
+          <property name="styleSheet">
+           <string notr="true">margin-top:10px;</string>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_29">
+           <item>
+            <widget class="QPushButton" name="gestionOffresMG_2">
+             <property name="minimumSize">
+              <size>
+               <width>250</width>
+               <height>120</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>Quicksand SemiBold</family>
+               <pointsize>18</pointsize>
+              </font>
+             </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="text">
+              <string>Gestion des offres</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="gestionInfrastructrueMG_2">
+             <property name="minimumSize">
+              <size>
+               <width>250</width>
+               <height>120</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>Quicksand SemiBold</family>
+               <pointsize>18</pointsize>
+              </font>
+             </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="text">
+              <string>Gestion des infrastructures</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QFrame" name="line2_2">
+          <layout class="QHBoxLayout" name="horizontalLayout_30">
+           <item>
+            <spacer name="horizontalSpacer_10">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QPushButton" name="gestionPatientMG_2">
+             <property name="minimumSize">
+              <size>
+               <width>450</width>
+               <height>120</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>Quicksand SemiBold</family>
+               <pointsize>18</pointsize>
+              </font>
+             </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="text">
+              <string>Gestion des patients</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_24">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QFrame" name="line3_2">
+          <layout class="QHBoxLayout" name="horizontalLayout_31">
+           <item>
+            <widget class="QPushButton" name="gestionSecoursMG_2">
+             <property name="minimumSize">
+              <size>
+               <width>250</width>
+               <height>120</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>Quicksand SemiBold</family>
+               <pointsize>18</pointsize>
+              </font>
+             </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="text">
+              <string>Gestion de secours</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="gestionPersonnelMG_2">
+             <property name="minimumSize">
+              <size>
+               <width>250</width>
+               <height>120</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>Quicksand SemiBold</family>
+               <pointsize>18</pointsize>
+              </font>
+             </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="text">
+              <string>Gestion du personnel</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QFrame" name="line4_2">
+          <layout class="QHBoxLayout" name="horizontalLayout_32">
+           <item>
+            <widget class="QPushButton" name="LogoutMG">
+             <property name="minimumSize">
+              <size>
+               <width>200</width>
+               <height>50</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>Quicksand SemiBold</family>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="text">
+              <string>Logout</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_25">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QPushButton" name="ReunionMG">
+             <property name="minimumSize">
+              <size>
+               <width>200</width>
+               <height>50</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>Quicksand SemiBold</family>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="text">
+              <string>Reunion</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
         </item>
        </layout>
       </widget>
@@ -13358,6 +13513,21 @@ background-repeat: none;
            </widget>
           </item>
           <item>
+           <widget class="QPushButton" name="pushButton_12">
+            <property name="font">
+             <font>
+              <family>Quicksand SemiBold</family>
+              <pointsize>14</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>URGENCE</string>
+            </property>
+           </widget>
+          </item>
+          <item>
            <spacer name="verticalSpacer_25">
             <property name="orientation">
              <enum>Qt::Vertical</enum>
@@ -14427,6 +14597,95 @@ an error!!</string>
              </size>
             </property>
            </spacer>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="page_22">
+       <layout class="QVBoxLayout" name="verticalLayout_57">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_56">
+          <item>
+           <widget class="QLabel" name="label_64">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="font">
+             <font>
+              <family>Quicksand SemiBold</family>
+              <pointsize>20</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>URGENCE :</string>
+            </property>
+           </widget>
+          </item>
+          <item alignment="Qt::AlignRight">
+           <widget class="QPushButton" name="pushButton_12menuu">
+            <property name="text">
+             <string>MENU</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_92">
+            <item>
+             <widget class="QPushButton" name="pushButton_12ard">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <family>Quicksand SemiBold</family>
+                <pointsize>14</pointsize>
+                <weight>75</weight>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>Signaler une urgence</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_13ard">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <family>Quicksand SemiBold</family>
+                <pointsize>14</pointsize>
+                <weight>75</weight>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>Arreter le signal</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_655">
+              <property name="text">
+               <string>TextLabel</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
          </layout>
         </item>
