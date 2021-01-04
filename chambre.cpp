@@ -56,19 +56,21 @@ QSqlQueryModel* chambre::afficher_ListeChambre()
 QSqlQuery* chambre::afficher_chambre(QString val)
 {
     QSqlQuery* query=new QSqlQuery();
-    query->prepare("select * from CHAMBRE where EMPLACEMENT='"+val+"'");
+    query->prepare("select * from CHAMBRE where (EMPLACEMENT='"+val+"') OR (TYPE='"+val+"') OR (NUMERO='"+val+"') OR (NOMBRE_LITS='"+val+"') OR (NOM_SURVEILLANT='"+val+"')");
     return  query;
 }
-bool chambre::modifier_chambre(QString old_num)
+bool chambre::modifier_chambre(QString old_num,QString emplacemen,QString typ,QString numer,QString nombre_lit,QString nom_surveillan)
 {
     QSqlQuery query;
     query.prepare("update CHAMBRE set EMPLACEMENT=:emplacement,TYPE=:type,NUMERO=:numero,NOMBRE_LITS=:nombre_lits,NOM_SURVEILLANT=:nom_surveillant where NUMERO = '"+old_num+"'");
-    query.bindValue(":emplacement",emplacement);
-    query.bindValue(":type",type);
-    query.bindValue(":numero",numero);
-    query.bindValue(":nombre_lits",nombre_lits);
-    query.bindValue(":nom_surveillant",nom_surveillant);
+    query.bindValue(":emplacement",emplacemen);
+    query.bindValue(":type",typ);
+    query.bindValue(":numero",numer);
+    query.bindValue(":nombre_lits",nombre_lit);
+    query.bindValue(":nom_surveillant",nom_surveillan);
     return query.exec();
+
+
 }
 
 QSqlQueryModel * chambre::rechercher_chambre(QString numero )

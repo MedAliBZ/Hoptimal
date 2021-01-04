@@ -178,7 +178,7 @@ backfround:white;
 }</string>
       </property>
       <property name="currentIndex">
-       <number>29</number>
+       <number>22</number>
       </property>
       <widget class="QWidget" name="loginPage">
        <property name="maximumSize">
@@ -819,9 +819,75 @@ background-image: url(:/user.png);</string>
        </layout>
       </widget>
       <widget class="QWidget" name="MenuG">
-       <layout class="QVBoxLayout" name="verticalLayout_24">
+       <layout class="QVBoxLayout" name="verticalLayout_79">
         <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_96">
+         <layout class="QHBoxLayout" name="horizontalLayout_111">
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_24">
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_96">
+              <item>
+               <widget class="QPushButton" name="volume_button">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>50</height>
+                 </size>
+                </property>
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::LeftToRight</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color:transparent;</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset resource="pics.qrc">
+                  <normaloff>:/pics/pics/volumeON.png</normaloff>:/pics/pics/volumeON.png</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>40</width>
+                  <height>40</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="horizontalSpacer_80">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <spacer name="verticalSpacer_39">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
           <item>
            <spacer name="horizontalSpacer_70">
             <property name="orientation">
@@ -835,7 +901,7 @@ background-image: url(:/user.png);</string>
             </property>
            </spacer>
           </item>
-          <item alignment="Qt::AlignLeft">
+          <item>
            <widget class="QLabel" name="label_3">
             <property name="font">
              <font>
@@ -9781,6 +9847,9 @@ color :rgb(255, 255, 255)</string>
               <pointsize>10</pointsize>
              </font>
             </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
             <property name="text">
              <string>Prix</string>
             </property>
@@ -9799,6 +9868,9 @@ color :rgb(255, 255, 255)</string>
               <family>Quicksand SemiBold</family>
               <pointsize>10</pointsize>
              </font>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="text">
              <string>Quantité</string>
@@ -12011,6 +12083,12 @@ color: rgb(255, 255, 255)
               </item>
               <item>
                <widget class="QPushButton" name="pushButton_rechercherService">
+                <property name="maximumSize">
+                 <size>
+                  <width>50</width>
+                  <height>50</height>
+                 </size>
+                </property>
                 <property name="styleSheet">
                  <string notr="true">#pushButton_rechercherService{
 background-color: transparent;
@@ -12050,7 +12128,7 @@ background-repeat: none;
               </property>
               <property name="maximumSize">
                <size>
-                <width>800</width>
+                <width>700</width>
                 <height>1000</height>
                </size>
               </property>
@@ -12064,74 +12142,82 @@ background:rgb(231, 231, 231);
            </layout>
           </item>
           <item>
-           <layout class="QVBoxLayout" name="verticalLayout_60">
-            <item>
-             <widget class="QPushButton" name="ajouter_service">
-              <property name="maximumSize">
-               <size>
-                <width>50</width>
-                <height>50</height>
-               </size>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">#ajouter_service{
+           <widget class="QFrame" name="ser">
+            <property name="minimumSize">
+             <size>
+              <width>150</width>
+              <height>0</height>
+             </size>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_60">
+             <item>
+              <widget class="QPushButton" name="ajouter_service">
+               <property name="maximumSize">
+                <size>
+                 <width>50</width>
+                 <height>50</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">#ajouter_service{
 background-color: transparent;
 border-image: url(:/pics/pics/add.png);
 background: none;
 border: none;
 background-repeat: none;
 }</string>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="supprimer_service">
-              <property name="maximumSize">
-               <size>
-                <width>50</width>
-                <height>50</height>
-               </size>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">#supprimer_service{
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="supprimer_service">
+               <property name="maximumSize">
+                <size>
+                 <width>50</width>
+                 <height>50</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">#supprimer_service{
 background-color: transparent;
 border-image: url(:/pics/pics/trashSahar.png);
 background: none;
 border: none;
 background-repeat: none;
 }</string>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="pushButton_triServices">
-              <property name="maximumSize">
-               <size>
-                <width>50</width>
-                <height>50</height>
-               </size>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">#pushButton_triServices{
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButton_triServices">
+               <property name="maximumSize">
+                <size>
+                 <width>50</width>
+                 <height>50</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">#pushButton_triServices{
 background-color: transparent;
 border-image: url(:/pics/pics/sort.png);
 background: none;
 border: none;
 background-repeat: none;
 }</string>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-             </widget>
-            </item>
-           </layout>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
           </item>
          </layout>
         </item>
@@ -12547,6 +12633,22 @@ background-repeat: none;
            <item>
             <layout class="QHBoxLayout" name="horizontalLayout_105">
              <item>
+              <widget class="QLabel" name="label_71">
+               <property name="font">
+                <font>
+                 <family>Quicksand SemiBold</family>
+                 <pointsize>25</pointsize>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">margin-bottom:50px;</string>
+               </property>
+               <property name="text">
+                <string>Afficher un service</string>
+               </property>
+              </widget>
+             </item>
+             <item>
               <spacer name="horizontalSpacer_75">
                <property name="orientation">
                 <enum>Qt::Horizontal</enum>
@@ -12678,22 +12780,6 @@ background-repeat: none;
               <widget class="QLineEdit" name="lineEdit_AffStaff1">
                <property name="readOnly">
                 <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="0">
-              <widget class="QLabel" name="label_71">
-               <property name="font">
-                <font>
-                 <family>Quicksand SemiBold</family>
-                 <pointsize>25</pointsize>
-                </font>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">margin-bottom:50px;</string>
-               </property>
-               <property name="text">
-                <string>Afficher un service</string>
                </property>
               </widget>
              </item>
@@ -12843,6 +12929,12 @@ background-repeat: none;
               </item>
               <item>
                <widget class="QPushButton" name="pushButton_rechercherChambre">
+                <property name="maximumSize">
+                 <size>
+                  <width>50</width>
+                  <height>50</height>
+                 </size>
+                </property>
                 <property name="styleSheet">
                  <string notr="true">#pushButton_rechercherChambre{
 background-color: transparent;
@@ -12882,7 +12974,7 @@ background-repeat: none;
               </property>
               <property name="maximumSize">
                <size>
-                <width>800</width>
+                <width>700</width>
                 <height>1000</height>
                </size>
               </property>
@@ -12896,104 +12988,112 @@ background:rgb(231, 231, 231);
            </layout>
           </item>
           <item>
-           <layout class="QVBoxLayout" name="verticalLayout_77">
-            <item>
-             <widget class="QPushButton" name="ajouter_chambre">
-              <property name="maximumSize">
-               <size>
-                <width>50</width>
-                <height>50</height>
-               </size>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">#ajouter_chambre{
+           <widget class="QFrame" name="cham">
+            <property name="minimumSize">
+             <size>
+              <width>150</width>
+              <height>0</height>
+             </size>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_77">
+             <item>
+              <widget class="QPushButton" name="ajouter_chambre">
+               <property name="maximumSize">
+                <size>
+                 <width>50</width>
+                 <height>50</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">#ajouter_chambre{
 background-color: transparent;
 border-image: url(:/pics/pics/add.png);
 background: none;
 border: none;
 background-repeat: none;
 }</string>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="supprimer_chambre">
-              <property name="maximumSize">
-               <size>
-                <width>50</width>
-                <height>50</height>
-               </size>
-              </property>
-              <property name="font">
-               <font>
-                <family>Quicksand SemiBold</family>
-                <pointsize>11</pointsize>
-                <weight>50</weight>
-                <bold>false</bold>
-               </font>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">#supprimer_chambre{
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="supprimer_chambre">
+               <property name="maximumSize">
+                <size>
+                 <width>50</width>
+                 <height>50</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Quicksand SemiBold</family>
+                 <pointsize>11</pointsize>
+                 <weight>50</weight>
+                 <bold>false</bold>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">#supprimer_chambre{
 background-color: transparent;
 border-image: url(:/pics/pics/trashSahar.png);
 background: none;
 border: none;
 background-repeat: none;
 }</string>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="pushButton_triChambre">
-              <property name="maximumSize">
-               <size>
-                <width>50</width>
-                <height>50</height>
-               </size>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">#pushButton_triChambre{
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButton_triChambre">
+               <property name="maximumSize">
+                <size>
+                 <width>50</width>
+                 <height>50</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">#pushButton_triChambre{
 background-color: transparent;
 border-image: url(:/pics/pics/sort.png);
 background: none;
 border: none;
 background-repeat: none;
 }</string>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="pushButton_StatService">
-              <property name="maximumSize">
-               <size>
-                <width>50</width>
-                <height>50</height>
-               </size>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">#pushButton_StatService{
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButton_StatService">
+               <property name="maximumSize">
+                <size>
+                 <width>50</width>
+                 <height>50</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">#pushButton_StatService{
 background-color: transparent;
 border-image: url(:/pics/pics/stats.png);
 background: none;
 border: none;
 background-repeat: none;
 }</string>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-             </widget>
-            </item>
-           </layout>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
           </item>
          </layout>
         </item>

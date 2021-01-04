@@ -35,7 +35,7 @@ public:
     bool supprimer_chambre(QString num_supp);
     QSqlQueryModel* afficher_ListeChambre();
     QSqlQuery* afficher_chambre(QString val);
-    bool modifier_chambre(QString new_type);
+    bool modifier_chambre(QString new_type,QString emplacement,QString type,QString numero,QString nombre_lits,QString nom_surveillant);
 
     QSqlQueryModel * rechercher_chambre(QString numero );
     QSqlQueryModel * trier_chambre();

@@ -3,6 +3,7 @@
 #include <QtSerialPort/QSerialPortInfo>
 #include <QSerialPort>
 #include <QDebug>
+#include <QSqlQuery>
 #include "alarmeui.h"
 
 AlarmeArduino::AlarmeArduino()
@@ -54,6 +55,17 @@ void AlarmeArduino::read_from_arduino(){
         {
             AlarmeUI a;
             a.init(&serial);
+        }
+        if(serialData!="2")
+        {
+            QString DATABASE;
+            QSqlQuery qry("select nombre_lits from chambre where numero='"+serialData+"'");
+            while(qry.next()){
+                DATABASE=qry.value(0).toString();
+            }
+            QByteArray lits=DATABASE.toLocal8Bit();
+            qDebug() << lits;
+            AlarmeArduino::write_to_arduino(lits);
         }
         serialData.clear();
     }

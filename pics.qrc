@@ -43,5 +43,7 @@
         <file>pics/offres.mp3</file>
         <file>pics/pdfSahar.png</file>
         <file>pics/english.qm</file>
+        <file>pics/volumeOFF.png</file>
+        <file>pics/volumeON.png</file>
     </qresource>
 </RCC>

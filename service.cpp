@@ -72,7 +72,7 @@ service::service(QString nom,QString staff1,QString staff2,QString staff3,QStrin
  QSqlQuery* service::afficher_service(QString val)
  {
      QSqlQuery* query=new QSqlQuery();
-     query->prepare("SELECT * FROM SERVICES WHERE NOM='"+val+"'");
+     query->prepare("SELECT * FROM SERVICES WHERE (NOM='"+val+"') OR (STAFF1='"+val+"') OR (STAFF2='"+val+"')OR (STAFF3='"+val+"')");
      return  query;
  }
 
@@ -114,7 +114,7 @@ service::service(QString nom,QString staff1,QString staff2,QString staff3,QStrin
  void service::printPDF_service()
  {
 
-     QPdfWriter pdf("C:/Users/WIKI/Desktop/sahaarrrrr/printService.pdf");
+     QPdfWriter pdf("C:/temp/service.pdf");
      QPainter painter(&pdf);
      QFont font=painter.font();
      QMessageBox msgBox;
@@ -129,11 +129,11 @@ service::service(QString nom,QString staff1,QString staff2,QString staff3,QStrin
         painter.drawText(300, 3200, "Staff3: ");
         painter.drawText(300,4000,"Nom equipement: ");
         painter.setPen(Qt::darkGray);
-        painter.drawText(700, 800, this->nom);
-        painter.drawText(700, 1600, this->staff1);
-        painter.drawText(700, 2400, this->staff2);
-        painter.drawText(700, 3200, this->staff3);
-        painter.drawText(700,4000,this->nom_equipement);
+        painter.drawText(1300, 800, this->nom);
+        painter.drawText(1300, 1600, this->staff1);
+        painter.drawText(1300, 2400, this->staff2);
+        painter.drawText(1300, 3200, this->staff3);
+        painter.drawText(2700,4000,this->nom_equipement);
         painter.end();
         msgBox.setIcon(QMessageBox::Information);
         msgBox.setText("A pdf has been created.");

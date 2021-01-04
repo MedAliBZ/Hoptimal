@@ -1,7 +1,6 @@
 #include "menu.h"
 #include "chambre.h"
 #include "service.h"
-#include "arduinosaharetjasser.h"
 #include <QFile>
 #include <QFileDialog>
 #include <QPrintDialog>
@@ -51,30 +50,34 @@ Menu::Menu(QWidget *parent)
     ui->listeqlogo->setPixmap(listmedlogo.scaled(400,400,Qt::KeepAspectRatio));
 
     ui->stackedWidget->setCurrentIndex(0);
+    player->setMedia(QUrl("qrc:/pics/pics/offres.mp3"));
+    player->setVolume(150);
+
+
 
     initialiserDali();
     covid();
     statistique_med();
 
-    //arduinoInit();
-    arduino_SaharEtJasser();
+    arduinoInit();
+
     stat_sahar();
     ui->tableView_services->setModel(ser.afficher_ListeService());
     ui->tableView_chambres->setModel(cham.afficher_ListeChambre());
     ui->tabambulance->setModel(tmpambulance.Afficher_ambulance());
      ui->tabmission->setModel(tmpmission.afficher_mission());
     //arduino walid
-     int rett=Z.connect_arduinow();
-     switch (rett)
-     {
-     case (0):qDebug()<<"arduino is available and connected to :"<<Z.getarduinow_port_name();
-         break;
-     case (1):qDebug()<<"arduino is available but not connected to :"<<Z.getarduinow_port_name();
-         break;
-     case (-1):qDebug()<<"arduino is not available";
+//     int rett=Z.connect_arduinow();
+//     switch (rett)
+//     {
+//     case (0):qDebug()<<"arduino is available and connected to :"<<Z.getarduinow_port_name();
+//         break;
+//     case (1):qDebug()<<"arduino is available but not connected to :"<<Z.getarduinow_port_name();
+//         break;
+//     case (-1):qDebug()<<"arduino is not available";
 
-     }
-     QObject::connect(Z.getserial(),SIGNAL(readyRead()),this,SLOT(update_label()));
+//     }
+//     QObject::connect(Z.getserial(),SIGNAL(readyRead()),this,SLOT(update_label()));
 
 }
 
@@ -1227,6 +1230,8 @@ void Menu::on_loginButton_clicked()
         ui->loginLabel->setText("");
         ui->stackedWidget->setCurrentIndex(1);
         this->rank=ui->rankLabel->text().toInt();
+        volume=true;
+        player->play();
 
     }
     else
@@ -2113,7 +2118,7 @@ void Menu::on_pushButton_ajouter_clicked()
                 bool test=m.ajouter_medicament();
                 if(test)
                 {
-                    qDebug ()<< "ajout medicament" << endl;
+                    qDebug ()<< "ajout medicament";
                 }
 
             }
@@ -2146,7 +2151,7 @@ void Menu::on_effacer_medicament_clicked()
     bool test = m.supprimer_medicaments(nom);
     if(test)
     {
-        qDebug ()<< "sup medicament reussite" << endl;
+        qDebug ()<< "sup medicament reussite" ;
         afficher_medicament();
     }
 
@@ -2159,7 +2164,7 @@ void Menu::on_effacer_equipement_clicked()
     bool test = e.supprimer_equipement(nom);
     if(test)
     {
-        qDebug ()<< "sup equipement reussite" << endl;
+        qDebug ()<< "sup equipement reussite";
         afficher_equipement();
     }
 }
@@ -2329,7 +2334,7 @@ void Menu::on_ajout_equi_2_clicked()
 
     if (( etat == "0" || etat == "1" )&& (dispo == "0" || dispo == "1") && ( name != ""))
     {
-        qDebug() << etat << name << dispo << endl;
+        qDebug() << etat << name << dispo;
         equipement e(name,etat,dispo);
 
 
@@ -2338,7 +2343,7 @@ void Menu::on_ajout_equi_2_clicked()
                 bool test=e.ajouter_equipement();
                 if(test)
                 {
-                    qDebug ()<< "ajout equipement" << endl;
+                    qDebug ()<< "ajout equipement";
                 }
                 ui->stackedWidget->setCurrentIndex(2);
 
@@ -2658,11 +2663,11 @@ void Menu::on_imprimer_clicked()
 
     painter.setPen(Qt::white);
 
-    painter.drawText(300,160,nom);
-    painter.drawText(470,185,etat);
-    painter.drawText(370,210,dispo);
+    painter.drawText(320,160,nom);
+    painter.drawText(530,185,etat);
+    painter.drawText(400,210,dispo);
 
-    //painter.drawText(QRect(100,2600,2000,300),QPixmap("/Desktop/Equipement/file.pdf"));
+
 
         painter.end();
 
@@ -2828,7 +2833,6 @@ void Menu::on_pushButton_Chambres_clicked()
 void Menu::on_pushButton_petitMenu_clicked()
 {
     ui->stackedWidget->setCurrentIndex(1);
-    player->stop();
 }
 void Menu::on_pushButton_services_clicked()
 {
@@ -2861,7 +2865,6 @@ void Menu::on_pushButton_Chambre_clicked()
 void Menu::on_pushButton_petitmenu_clicked()
 {
     ui->stackedWidget->setCurrentIndex(1);
-    player->stop();
 
 }
 void Menu::on_pushButton_AnnulerAjoutService_clicked()
@@ -3022,19 +3025,7 @@ void Menu::on_tableView_services_activated(const QModelIndex &index)
     delete query;
 }
 
-void Menu::arduino_SaharEtJasser()
-{
-    int res=Ar.connnectArduino();
-    switch(res)
-    {
-       case(0): qDebug()<<"arduino chambre is available and connected to: "<<Ar.get_arduino_port_name();
-        break;
-    case(1): qDebug()<<"arduino chambre is available but not connected to: "<<Ar.get_arduino_port_name();
-        break;
-    case(-1): qDebug()<<"arduino chambre is not available!!!";
-    }
-    QObject::connect(Ar.getserial(),SIGNAL(readyRead()),this,SLOT(update_label));
-}
+
 
 void Menu::on_tableView_chambres_activated(const QModelIndex &index)
 {
@@ -3064,15 +3055,13 @@ void Menu::on_tableView_chambres_activated(const QModelIndex &index)
                                   QObject::tr("Affichage de la chambre non effectué.\n Taper CANCEL pour quitter"),
                                   QMessageBox::Cancel  );
     delete query;
-    QByteArray lits=ui->lineEdit_AffNombreLits->text().toLocal8Bit();
-    qDebug() << lits << endl;
-    Ar.write_toArduino(lits);
+
 }
 
 void Menu::on_pushButton_RetourAffChambre_clicked()
 {
     ui->stackedWidget->setCurrentIndex(26);
-    Ar.write_toArduino(0);
+
 
 }
 
@@ -3094,7 +3083,7 @@ void Menu::on_pushButton_modifierServiceAff_clicked()
     {
         while(query.next())
         {
-    ui->lineEdit_ModifNomService->setText(query.value(0).toString());
+            ui->lineEdit_ModifNomService->setText(query.value(0).toString());
         }
         while(query1.next())
         {
@@ -3190,11 +3179,12 @@ void Menu::on_pushButton_ModifierChambre_clicked()
     QString new_numero=ui->lineEdit_ModifNumero->text();
     QString nombre_lits=ui->lineEdit_ModifNombreLits->text();
     QString nom_surveillant=ui->comboBox_ModifSurveillant->currentText();
-    chambre cham(emplacement,type,new_numero,nombre_lits,nom_surveillant);
-    bool test=cham.modifier_chambre(aux_cham);
+    chambre cham;
+    qDebug()<< nombre_lits;
+    bool test=cham.modifier_chambre(aux_cham,emplacement,type,new_numero,nombre_lits,nom_surveillant);
     if(test)
     {
-        ui->tableView_chambres->setModel(cham.afficher_ListeChambre());
+
         QMessageBox::information(nullptr,QObject::tr("success"),
                                  QObject::tr("Mise à jour effectuée\n.Taper OK pour continuer"),
                                  QMessageBox::Ok);
@@ -3205,6 +3195,7 @@ void Menu::on_pushButton_ModifierChambre_clicked()
                                  QObject::tr("Mise à jour non effectuée\n.Taper CANCEL pour sortir"),
                                  QMessageBox::Cancel);
     }
+    ui->tableView_chambres->setModel(cham.afficher_ListeChambre());
     ui->stackedWidget->setCurrentIndex(26);
 }
 
@@ -3287,24 +3278,14 @@ void Menu::on_pushButton_backstat_clicked()
 
 void Menu::on_gestionOffresMG_2_clicked()
 {
-  /*  QStringList langues;
-    langues<<"Anglais"<<"Français";
-    QString choix=QInputDialog::getItem(NULL,"CHOISIR","Langue",langues);
-    if(choix=="Anglais")
-    {
-        t.load(":/pics/pics/english.qm");
-    }*/
+
     ui->stackedWidget->setCurrentIndex(21);
-    player->setMedia(QUrl("qrc:/pics/pics/offres.mp3"));
-    player->setVolume(150);
-    player->play();
 
 }
 
 void Menu::on_pushButton_retourGestionoffres_clicked()
 {
     ui->stackedWidget->setCurrentIndex(1);
-    player->stop();
 
 }
 
@@ -3744,4 +3725,37 @@ void Menu::update_labelw()
        ui->label_655->setText("ON");
    else if(datta=="0")
        ui->label_655->setText("OFF");
+}
+
+void Menu::on_volume_button_clicked()
+{
+    volume=!volume;
+    if(volume){
+        QIcon volumeON;
+        QPixmap advanced;
+
+        if(advanced.load(":/pics/pics/volumeON.png"))
+        {
+            volumeON.addPixmap(advanced);
+            ui->volume_button->setIcon(advanced);
+        }
+        //ghne
+        player->setMedia(QUrl("qrc:/pics/pics/offres.mp3"));
+        player->setVolume(150);
+        player->play();
+
+    }
+    else if(!volume){
+        QIcon volumeON;
+        QPixmap advanced;
+
+        if(advanced.load(":/pics/pics/volumeOFF.png"))
+        {
+            volumeON.addPixmap(advanced);
+            ui->volume_button->setIcon(advanced);
+        }
+        //stop ghne
+        player->stop();
+
+    }
 }

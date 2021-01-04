@@ -27,7 +27,6 @@
 #include "alarmearduino.h"
 #include "service.h"
 #include "chambre.h"
-#include "arduinosaharetjasser.h"
 #include <QMainWindow>
 #include "ambulance.h"
 #include "mission.h"
@@ -52,6 +51,7 @@ class Menu : public QMainWindow
     int id ;
 
 private:
+    bool volume;
     QPixmap QR;
     Reunion R1;
     Patient P;
@@ -64,7 +64,6 @@ private:
     service ser;
     chambre cham;
     QString aux_ser,aux_cham;
-    arduinoSaharETJasser Ar;
 
     void arduinoInit();
     void covid();
@@ -499,9 +498,6 @@ private slots:
 
     void on_pushButton_2_clicked();
 
-
-
-   void arduino_SaharEtJasser();
    void on_pushButton_12_clicked();
 
    void on_pushButton_12ard_clicked();
@@ -509,6 +505,8 @@ private slots:
    void on_pushButton_13ard_clicked();
 
    void on_pushButton_12menuu_clicked();
+
+   void on_volume_button_clicked();
 
 private:
     Ui::Menu *ui;

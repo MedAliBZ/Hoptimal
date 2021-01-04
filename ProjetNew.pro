@@ -32,7 +32,6 @@ SOURCES += \
     rendezvous.cpp \
     reunion.cpp \
     service.cpp \
-    arduinosaharetjasser.cpp \
     smtp.cpp
 
 HEADERS += \
@@ -52,7 +51,6 @@ HEADERS += \
     rendezvous.h \
     reunion.h \
     service.h \
-    arduinosaharetjasser.h \
     smtp.h
 
 FORMS += \

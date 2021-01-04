@@ -155,23 +155,23 @@
     <message>
         <location filename="menu.ui" line="1597"/>
         <source>Cin</source>
-        <translation>Cin</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="menu.ui" line="1602"/>
         <location filename="menu.ui" line="9589"/>
         <source>Nom</source>
-        <translation>Last name</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="menu.ui" line="1607"/>
         <source>Prenom</source>
-        <translation>First name</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="menu.ui" line="1612"/>
         <source>Numero de la chambre</source>
-        <translation>Room number</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="menu.ui" line="1642"/>
@@ -187,22 +187,22 @@
     <message>
         <location filename="menu.ui" line="2006"/>
         <source>Id de la RDV</source>
-        <translation>Id of Rendez vous</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="menu.ui" line="2011"/>
         <source>Nom du patient</source>
-        <translation>Patient last name</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="menu.ui" line="2016"/>
         <source>Prenom du patient</source>
-        <translation>Patient first name</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="menu.ui" line="2021"/>
         <source>Email du patient</source>
-        <translation>Patient email</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="menu.ui" line="2180"/>
